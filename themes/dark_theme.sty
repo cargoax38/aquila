@@ -1,0 +1,114 @@
+\RequirePackage[utf8]{inputenc} % L'encodage des caractères.
+\RequirePackage[T1]{fontenc} % La police d'écriture.
+\RequirePackage[french]{babel} % La langue.
+\RequirePackage[a5paper]{geometry} % La forme de la page.
+\RequirePackage[colorlinks=true, allcolors=magenta]{hyperref} % Les hyperliens
+\RequirePackage[most]{tcolorbox} % Ligne verticales
+\RequirePackage{enumitem} % Créer des listes personnalisés
+\RequirePackage{xcolor} % Pour les couleurs
+\RequirePackage{ifthen} % Pour les conditions dans les commandes
+\RequirePackage[explicit]{titlesec} % Pour personnaliser les titres des sections.
+\RequirePackage{changepage} % Notamment pour 'adjustwidth'
+\RequirePackage{needspace} % Pour que les blocs de mathématiques restent sur une même page (pour le haut du bloc).
+\RequirePackage{subfiles} % Pour les sous-fichiers.
+
+\RequirePackage{mathrsfs} % Notamment pour \mathscr.
+\RequirePackage{amssymb} % Pour des symbôles mathématiques.
+\RequirePackage{amsmath} % Pour des symbôles mathématiques.
+\RequirePackage{amsthm} % Pour les théorèmes.
+
+\pagecolor[rgb]{0.10, 0.11, 0.15}
+\color[rgb]{1, 1, 1}
+\definecolor{magenta}{RGB}{187, 154, 247}
+\definecolor{violet}{RGB}{238, 130, 238}
+\definecolor{blue}{RGB}{122, 162, 247}
+\definecolor{cyan}{RGB}{125, 207, 255}
+\definecolor{green}{RGB}{158, 206, 106}
+\definecolor{yellow}{RGB}{224, 175, 104}
+\definecolor{red}{RGB}{255, 117, 127}
+
+\definecolor{proposition}{RGB}{252, 183, 88}
+\definecolor{lemma}{RGB}{252, 183, 88}
+\definecolor{corollary}{RGB}{252, 183, 88}
+\definecolor{theorem}{RGB}{115, 222, 220}
+\definecolor{definition}{RGB}{126, 135, 222}
+\definecolor{remark}{RGB}{213, 170, 227}
+\definecolor{example}{RGB}{160, 197, 217}
+\definecolor{proof}{RGB}{255, 255, 255}
+
+\theoremstyle{definition}
+\newtheorem{definition}{\color{definition}Définition}[chapter]
+
+\theoremstyle{plain}
+\newtheorem{lemma}{\color{proposition}Lemme}[chapter]
+\newtheorem{proposition}{\color{proposition}Proposition}[chapter]
+\newtheorem{corollary}{\color{proposition}Corollaire}[chapter]
+\newtheorem{theorem}{\color{theorem}Théorème}[chapter]
+
+\theoremstyle{remark}
+\newtheorem{remark}{\color{remark}Remarque}[chapter]
+\newtheorem{example}{\color{example}Exemple}[chapter]
+
+\newtcolorbox{tcbsiderules}[1][]{blanker, breakable, frame hidden, sharp corners, boxrule=0pt,
+     left=3mm, top=1mm, bottom=1mm,
+         coltext=white,
+     borderline west={1pt}{0pt}{#1}}
+
+\titleformat{\chapter}[display]{\color{magenta}\bfseries\huge}{\centering Chapitre \thechapter \\ ---}{0em}{\centering #1}
+\titleformat{\section}{\color{magenta}\bfseries\Large}{}{0em}{\thesection \quad #1 {\leavevmode\leaders\hrule height 0.7ex depth \dimexpr0.4pt-0.7ex\hfill\kern0pt}}
+\titleformat{name=\section, numberless}{\color{magenta}\bfseries\Large}{}{0em}{#1 {\leavevmode\leaders\hrule height 0.7ex depth \dimexpr0.4pt-0.7ex\hfill\kern0pt}}
+\titleformat{\subsection}{\color{blue}\bfseries\large}{}{0em}{\thesubsection \quad #1}
+\titleformat{\subsubsection}{\color{cyan}\bfseries\normalsize}{}{0em}{\thesubsubsection \quad #1}
+
+\newcommand{\textitc}[1]{
+    \textit{\color{violet}#1}
+}
+
+\newcommand{\textbfc}[1]{
+    \textbf{\color{cyan}#1}
+}
+
+\newlist{mathlist}{enumerate}{1}
+\setlist[mathlist,1]{label=(\textit{\roman*}) :}
+
+\newcommand{\mathblock}[3]{
+        \Needspace{4\baselineskip}
+        \begin{#1}{\textit{\textbf{#2}}}
+                \setlength{\parindent}{0em}
+                \ifthenelse{\equal{#1}{proof}}{
+                        \begin{adjustwidth}{1em}{0em}
+                                \color{white}
+                                #3
+                        \end{adjustwidth}
+                }{
+                        \begin{adjustwidth}{0.5em}{0em}
+                                \vspace{-0.6em}
+                                \begin{tcbsiderules}[#1]
+                                        \color{white}
+                                        #3
+                                \end{tcbsiderules}
+                        \end{adjustwidth}
+                }
+        \end{#1}
+}
+
+\newcommand{\mathblocklabel}[4]{
+    \begin{#1}{\textit{\textbf{#2}}}
+        \label{thm:#4}
+        \setlength{\parindent}{0em}
+                \ifthenelse{\equal{#1}{proof}}{
+                        \begin{adjustwidth}{1em}{0em}
+                                #3
+                        \end{adjustwidth}
+                }{
+                        \begin{adjustwidth}{0.5em}{0em}
+                                \vspace{-0.6em}
+                                \begin{tcbsiderules}[#1]
+                                        #3
+                                \end{tcbsiderules}
+                        \end{adjustwidth}
+                }
+    \end{#1}
+}
+
+\renewcommand\thesection{\Roman{section}}
