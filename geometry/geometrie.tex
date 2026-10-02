@@ -1,0 +1,36 @@
+\documentclass{book}
+
+\usepackage{../themes/dark_theme}
+
+\begin{document}
+	
+	\pagenumbering{Roman}
+    \begin{titlepage}
+        %\tikz[remember picture,overlay] \node[opacity=0.5,inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{"arriere_plan.png"}};
+
+        \vspace*{9em}{\centering\Huge Géométrie avancée\par}
+        \vspace{2em}
+        {\hfill\itshape Enzo Sanfilippo}
+
+        \clearpage
+	    \vspace*{\fill}
+    \end{titlepage}
+
+    \newpage
+    \pagenumbering{roman}
+
+    {
+		\hypersetup{linkcolor=magenta}
+		\tableofcontents
+	}
+
+    \newpage
+	\pagenumbering{arabic}
+
+    \chapter{Variété topologique}{
+        \newpage
+
+        \subfile{chapter_1/chapter_1.tex}
+    }
+
+\end{document}
