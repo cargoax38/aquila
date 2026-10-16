@@ -1,0 +1,32 @@
+\documentclass{book}
+
+\usepackage{../themes/dark_theme}
+
+\begin{document}
+	\pagenumbering{Roman}
+	\begin{titlepage}
+		\vspace*{9em}{\centering\Huge Théorie de la distribution\par}
+        \vspace{2em}
+        {\hfill\itshape Enzo Sanfilippo}
+
+        \clearpage
+	    \vspace*{\fill}
+	\end{titlepage}
+
+	\newpage
+    \pagenumbering{roman}
+
+    {
+		\hypersetup{linkcolor=magenta}
+		\tableofcontents
+	}
+
+    \newpage
+	\pagenumbering{arabic}
+
+    \chapter{Préliminaires}{
+        \newpage
+
+        \subfile{chapter_1/chapter_1.tex}
+    }
+\end{document}
