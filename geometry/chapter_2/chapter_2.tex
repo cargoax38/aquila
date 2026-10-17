@@ -137,7 +137,7 @@
 		$$
 			\mathrm{d} F_{p} :
 			\begin{array}{rcl}
-				\mathrm{T}_{p} N & \longrightarrow & \mathrm{T}_{F(p)} N \\
+				\mathrm{T}_{p} M & \longrightarrow & \mathrm{T}_{F(p)} N \\
 				v & \longmapsto &
 				\begin{array}{rcl}
 					\mathscr{C}^{\infty}(N) & \longrightarrow & \mathbb{R} \\
@@ -182,6 +182,7 @@
 	\section{Dérivée partielle dans une variété}
 
 	\noindent Soit $(M, \mathcal{A})$ une variété lisse de dimension $n$. \\
+	\noindent Soit $(e_{1}, \cdots, e_{n})$ la base canonique de $\mathbb{R}^{n}$. \\
 	\noindent Soit $p \in M$.
 
 	\mathblock{definition}{Dérivée partielle dans $M$}{
@@ -192,13 +193,49 @@
 			\left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} :
 			\begin{array}{rcl}
 				\mathscr{C}^{\infty}(U) & \longrightarrow & \mathbb{R} \\
-				f & \longmapsto & \mathrm{D}_{\varphi(p)}(f \circ \varphi^{-1})
+				f & \longmapsto & \mathrm{D}_{e_{i}, \varphi(p)}(f \circ \varphi^{-1})
 			\end{array}
 		$$
 	}
 
-	On remarque que nous pouvons attribuer également renoter les dérivées partielles des espaces euclidiens en considérant la structure $(\mathbb{E}^{n}, \mathcal{A}^{n})$. On a alors
+	\mathblock{definition}{Dérivée partielle canoniques}{
+		Soit $(\mathbb{E}^{n}, \mathcal{A}^{n})$ l'espace euclidien muni de sa structure standard. \\
+		Soit $(\mathrm{U}, \mathrm{id}_{U}) \in \mathcal{A}^{n}$. \\
+		Soit $p \in \mathrm{U}$. \\
+		Soit $\i \in [\![1, n]\!]$. \bigskip \\
+		On appelle \textit{dérivée partielle canonique} en $p$ de $\mathbb{E}^{n}$ le vecteur tangent définie par
+		$$
+			\left. \frac{\partial}{\partial x_{i}} \right|_{p} := \left. \frac{\partial}{\partial \mathrm{id}_{i}} \right|_{\mathrm{id}(p)}
+		$$
+	}
+
+	On remarque directement par définition de la différentielle que
 	$$
-		\left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} := \mathrm{D}_{p, e_{i}}
+		\left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} = \mathrm{d}(\varphi^{-1})_{\varphi(d)}(\mathrm{D}_{\varphi(p), e_{i}})
 	$$
+
+	\mathblock{proposition}{Dérivée partielle canoniques dans $\mathbb{E}^{n}$}{
+		Soit $(\mathbb{E}^{n}, \mathcal{A}^{n})$ l'espace euclidien muni de sa structure standard. \\
+		Soit $(\mathrm{U}, \mathrm{id}_{U}) \in \mathcal{A}^{n}$. \\
+		Soit $p \in \mathrm{U}$. \\
+		Soit $i \in [\![1, n]\!]$. \bigskip \\
+		Alors
+		$$
+			\left. \frac{\partial}{\partial x_{i}} \right|_{p} = \mathrm{D}_{p, e_{i}}
+		$$
+	}
+
+	\mathblock{proposition}{Base de $\mathrm{T}_{p} U$}{
+		On a
+		$$
+			\left( \left. \frac{\partial}{\partial x_{1}} \right|_{p}, \cdots, \left. \frac{\partial}{\partial x_{n}} \right|_{p} \right)
+		$$
+		qui est une base de $\mathrm{T}_{p} U$.
+	}
+
+	\mathblock{lemma}{Décomposition}{
+		$$
+			\mathrm{d} F_{p} \left( \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} \right) = \sum_{j = 1}^{n} \left( \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} (\psi_{j} \circ F) \right) \times \left. \frac{\partial}{\partial y_{j}} \right|_{F(p)}
+		$$
+	}
 \end{document}
