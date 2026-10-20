@@ -3,239 +3,407 @@
 \begin{document}
 	\tableofcontents{}
 
-	\section{Definition}
+	\section{Definition}{
+		\subsection{Ensemble des \texorpdfstring{$\mathscr{C}^{\infty}$-fonctions}{C-inf fonctions}}{
+			Soit $(M, \mathcal{A})$ une variété lisse.
 
-	\subsection{Ensemble des \texorpdfstring{$\mathscr{C}^{\infty}$-fonctions}{C-inf fonctions}}
+			\mathblock{definition}{Ensemble $\mathscr{C}^{\infty}(M)$}{
+				On note $\mathscr{C}^{\infty}(M)$ l'ensemble des $\mathscr{C}^{\infty}$-fonctions.
+			}
 
-	Soit $(M, \mathcal{A})$ une variété lisse.
+			\mathblock{proposition}{Structure de $\mathscr{C}^{\infty}(M)$}{
+				$\mathscr{C}^{\infty}$ définie une $\mathbb{R}$-algèbre.
+			}
+		}
 
-	\mathblock{definition}{Ensemble $\mathscr{C}^{\infty}(M)$}{
-		On note $\mathscr{C}^{\infty}(M)$ l'ensemble des $\mathscr{C}^{\infty}$-fonctions.
-	}
+		\subsection{Vecteur tangent, espace tangent}{
+			Soit $(M, \mathcal{A})$ une variété lisse. \\
+			Soit $p \in M$.
 
-	\mathblock{proposition}{Structure de $\mathscr{C}^{\infty}(M)$}{
-		$\mathscr{C}^{\infty}$ définie une $\mathbb{R}$-algèbre.
-	}
+			\mathblock{definition}{Vecteur tangent}{
+				Soit $v : \mathscr{C}^{\infty}(M) \longrightarrow \mathbb{R}$. \bigskip \\
+				On dit que $v$ est un \textit{vecteur tangent} de $M$ en $p$ si
+				\begin{mathlist}
+					\item $v$ est linéaire.
+					\item $v$ vérifie la relation de \textsc{Leibniz}.
+						$$
+							\forall f, g \in \mathscr{C}^{\infty}(M), v(fg) = f(p) v(g) + v(f) g(p)
+						$$
+				\end{mathlist}
+			}
 
-	\subsection{Vecteur tangent, espace tangent}
-
-	Soit $(M, \mathcal{A})$ une variété lisse. \\
-	Soit $p \in M$.
-
-	\mathblock{definition}{Vecteur tangent}{
-		Soit $v : \mathscr{C}^{\infty}(M) \longrightarrow \mathbb{R}$. \bigskip \\
-		On dit que $v$ est un \textit{vecteur tangent} de $M$ en $p$ si
-		\begin{mathlist}
-			\item $v$ est linéaire.
-			\item $v$ vérifie la relation de \textsc{Leibniz}.
+			\mathblock{definition}{Ensemble $\mathrm{T}_{p} M$}{
+				On appelle \textit{ensemble des vecteurs tangents} de $M$ en $p$ et on note $\mathrm{T}_{p} M$ l'ensemble définie par
 				$$
-					\forall f, g \in \mathscr{C}^{\infty}(M), v(fg) = f(p) v(g) + v(f) g(p)
+					\mathrm{T}_{p} M := \{ v \ \textit{vecteur tangent}  \}
 				$$
-		\end{mathlist}
+			}
+
+			\mathblock{proposition}{Structure de $\mathrm{T}_{p} M$}{
+				$\mathrm{T}_{p} M$ est un $\mathbb{R}$-espace vectoriel.
+			}
+
+			\mathblock{lemma}{Vecteur tangent et fonction constante}{
+				Soit $v \in \mathrm{T}_{p} M$. \\
+				Soit $f \in \mathscr{C}^{\infty}(M)$ une fonction constante. \bigskip \\
+				Alors
+				$$
+					v(f) = 0
+				$$
+			}
+
+			\mathblock{lemma}{Vecteur tangent et fonction en $p$}{
+				Soit $v \in \mathrm{T}_{p} M$. \\
+				Soient $f, g \in \mathscr{C}^{\infty}(M)$.
+				Supposons $f(p) = g(p) = 0$. \bigskip \\
+				Alors
+				$$
+					v(fg) = 0
+				$$
+			}
+
+			\mathblock{lemma}{Vecteur tangent en fonctions localement égales}{
+				Soit $v \in \mathrm{T}_{p} M$. \\
+				Soient $f, g \in \mathscr{C}^{\infty}(M)$. \\
+				Supposons $\exists U \in \mathcal{O}_{p}$ tel que $f_{| U} = g_{| U}$. \bigskip \\
+				Alors
+				$$
+					v(f) = v(g)
+				$$
+			}
+		}
+
+		\subsection{Espace tangent de \texorpdfstring{$\mathbb{R}^{n}$}{Rn}}{
+			Soit $U \subset \mathbb{R}^{n}$ un ouvert. \\
+			Soit $(e_{1}, \cdots, e_{n})$ la base canonique de $\mathbb{R}^{n}$. \\
+			Soit $p \in U$. \\
+			Soit $r \in \mathbb{R}^{n}$.
+
+			\mathblock{definition}{Opérateur $\mathrm{D}_{p, r}$}{
+				On appelle opérateur dérivée partielle sur $U$ en $p$ la fonctionnelle notée $\mathrm{D}_{p, r}$ et définie par
+				$$
+					\mathrm{D}_{p, r} :
+					\begin{array}{rcl}
+						\mathscr{C}^{\infty}(U) & \longrightarrow & \mathbb{R} \\
+						f & \longmapsto & \displaystyle \frac{\partial f}{\partial r}(p)
+					\end{array}
+				$$
+			}
+
+			\mathblock{proposition}{$\mathrm{D}_{p, r}$ est un vecteur tangent}{
+				$\mathrm{D}_{p, r} \in \mathrm{T}_{p} U$
+			}
+
+			\mathblock{theorem}{$\mathbb{R}^{n} \cong \mathrm{T}_{p} U$}{
+				Soit l'application
+				$$
+					\mathrm{D}_{p} :
+					\begin{array}{rcl}
+						\mathbb{R}^{n} & \longrightarrow & \mathrm{T}_{p} U \\
+						r & \longmapsto & \mathrm{D}_{p, r}
+					\end{array}
+				$$
+				Alors $\mathrm{D}_{p}$ est un isomorphisme.
+			}
+
+			\mathblock{corollary}{Une base de $\mathrm{T}_{p} U$}{
+				Soit $\mathcal{B} := (\mathrm{D}_{p, e_{1}}, \cdots, \mathrm{D}_{p, e_{n}})$. \bigskip \\
+				Alors $\mathcal{B}$ est une base de $\mathrm{T}_{p} U$.
+			}
+
+			\mathblock{definition}{Opérateur dérivée partielle dans $\mathbb{R}^{n}$}{
+				Soit $(M, \mathcal{A})$ une variété lisse de dimension $n$. \\
+				Soit $(V, \varphi) \in \mathcal{A}$ telle que $\varphi(V) = U$. \\
+				Soit $i \in [\![1, n]\!]$. \bigskip \\
+				On appelle \textit{opérateur dérivée partielle} $U$ en $p$ selon la direction $i$ le vecteur tangent définie par
+				$$
+					\left. \frac{\partial}{\partial \varphi_{i}} \right|_{\varphi(p)} := \mathrm{D}_{p, e_{i}}
+				$$
+			}
+		}
 	}
 
-	\mathblock{definition}{Ensemble $\mathrm{T}_{p} M$}{
-		On appelle \textit{ensemble des vecteurs tangents} de $M$ en $p$ et on note $\mathrm{T}_{p} M$ l'ensemble définie par
-		$$
-			\mathrm{T}_{p} M := \{ v \ \textit{vecteur tangent}  \}
-		$$
-	}
+	\section{Différentielle}{
+		\noindent Soit $(M, \mathcal{A})$ une variété lisse. \\
+		\noindent Soit $(N, \mathcal{B})$ une variété lisse. \\
+		\noindent Soit $(Q, \mathcal{C})$ une variété lisse. \\
+		\noindent Soit $F : M \longrightarrow N$ une $\mathscr{C}^{\infty}$-application. \\
+		\noindent Soit $G : N \longrightarrow Q$ une $\mathscr{C}^{\infty}$-application. \\
+		\noindent Soit $p \in M$.
 
-	\mathblock{proposition}{Structure de $\mathrm{T}_{p} M$}{
-		$\mathrm{T}_{p} M$ est un $\mathbb{R}$-espace vectoriel.
-	}
-
-	\mathblock{lemma}{Vecteur tangent et fonction constante}{
-		Soit $v \in \mathrm{T}_{p} M$. \\
-		Soit $f \in \mathscr{C}^{\infty}(M)$ une fonction constante. \bigskip \\
-		Alors
-		$$
-			v(f) = 0
-		$$
-	}
-
-	\mathblock{lemma}{Vecteur tangent et fonction en $p$}{
-		Soit $v \in \mathrm{T}_{p} M$. \\
-		Soient $f, g \in \mathscr{C}^{\infty}(M)$.
-		Supposons $f(p) = g(p) = 0$. \bigskip \\
-		Alors
-		$$
-			v(fg) = 0
-		$$
-	}
-
-	\mathblock{lemma}{Vecteur tangent en fonctions localement égales}{
-		Soit $v \in \mathrm{T}_{p} M$. \\
-		Soient $f, g \in \mathscr{C}^{\infty}(M)$. \\
-		Supposons $\exists U \in \mathcal{O}_{p}$ tel que $f_{| U} = g_{| U}$. \bigskip \\
-		Alors
-		$$
-			v(f) = v(g)
-		$$
-	}
-
-	\subsection{Espace tangent de \texorpdfstring{$\mathbb{R}^{n}$}{Rn}}
-
-	Soit $U \subset \mathbb{R}^{n}$ un ouvert. \\
-	Soit $(e_{1}, \cdots, e_{n})$ la base canonique de $\mathbb{R}^{n}$. \\
-	Soit $p \in U$. \\
-	Soit $r \in \mathbb{R}^{n}$.
-
-	\mathblock{definition}{Opérateur $\mathrm{D}_{p, r}$}{
-		On appelle opérateur dérivée partielle sur $U$ en $p$ la fonctionnelle notée $\mathrm{D}_{p, r}$ et définie par
-		$$
-			\mathrm{D}_{p, r} :
-			\begin{array}{rcl}
-				\mathscr{C}^{\infty}(U) & \longrightarrow & \mathbb{R} \\
-				f & \longmapsto & \displaystyle \frac{\partial f}{\partial r}(p)
-			\end{array}
-		$$
-	}
-
-	\mathblock{proposition}{$\mathrm{D}_{p, r}$ est un vecteur tangent}{
-		$\mathrm{D}_{p, r} \in \mathrm{T}_{p} U$
-	}
-
-	\mathblock{theorem}{$\mathbb{R}^{n} \cong \mathrm{T}_{p} U$}{
-		Soit l'application
-		$$
-			\mathrm{D}_{p} :
-			\begin{array}{rcl}
-				\mathbb{R}^{n} & \longrightarrow & \mathrm{T}_{p} U \\
-				r & \longmapsto & \mathrm{D}_{p, r}
-			\end{array}
-		$$
-		Alors $\mathrm{D}_{p}$ est un isomorphisme.
-	}
-
-	\mathblock{corollary}{Une base de $\mathrm{T}_{p} U$}{
-		Soit $\mathcal{B} := (\mathrm{D}_{p, e_{1}}, \cdots, \mathrm{D}_{p, e_{n}})$. \bigskip \\
-		Alors $\mathcal{B}$ est une base de $\mathrm{T}_{p} U$.
-	}
-
-	\mathblock{definition}{Opérateur dérivée partielle dans $\mathbb{R}^{n}$}{
-		Soit $(M, \mathcal{A})$ une variété lisse de dimension $n$. \\
-		Soit $(V, \varphi) \in \mathcal{A}$ telle que $\varphi(V) = U$. \\
-		Soit $i \in [\![1, n]\!]$. \bigskip \\
-		On appelle \textit{opérateur dérivée partielle} $U$ en $p$ selon la direction $i$ le vecteur tangent définie par
-		$$
-			\left. \frac{\partial}{\partial \varphi_{i}} \right|_{\varphi(p)} := \mathrm{D}_{p, e_{i}}
-		$$
-	}
-
-	\section{Différentielle}
-
-	\noindent Soit $(M, \mathcal{A})$ une variété lisse. \\
-	\noindent Soit $(N, \mathcal{B})$ une variété lisse. \\
-	\noindent Soit $(Q, \mathcal{C})$ une variété lisse. \\
-	\noindent Soit $F : M \longrightarrow N$ une $\mathscr{C}^{\infty}$-application. \\
-	\noindent Soit $G : N \longrightarrow Q$ une $\mathscr{C}^{\infty}$-application. \\
-	\noindent Soit $p \in M$.
-
-	\mathblock{definition}{Différentielle de $F$ en $p$}{
-		On appelle \textit{différentielle} de $F$ en $p$ l'application notée $\mathrm{d} F_{p}$ définie par
-		$$
-			\mathrm{d} F_{p} :
-			\begin{array}{rcl}
-				\mathrm{T}_{p} M & \longrightarrow & \mathrm{T}_{F(p)} N \\
-				v & \longmapsto &
+		\mathblock{definition}{Différentielle de $F$ en $p$}{
+			On appelle \textit{différentielle} de $F$ en $p$ l'application notée $\mathrm{d} F_{p}$ définie par
+			$$
+				\mathrm{d} F_{p} :
 				\begin{array}{rcl}
-					\mathscr{C}^{\infty}(N) & \longrightarrow & \mathbb{R} \\
-					\varphi & \longmapsto & v(\varphi \circ F)
+					\mathrm{T}_{p} M & \longrightarrow & \mathrm{T}_{F(p)} N \\
+					v & \longmapsto &
+					\begin{array}{rcl}
+						\mathscr{C}^{\infty}(N) & \longrightarrow & \mathbb{R} \\
+						\varphi & \longmapsto & v(\varphi \circ F)
+					\end{array}
 				\end{array}
-			\end{array}
-		$$
+			$$
+		}
+
+		\mathblock{proposition}{$\mathrm{d} F_{p}$ est bien définie}{
+			Soit $v \in \mathrm{T}_{p} M$. \bigskip \\
+			Alors
+			$$
+				\mathrm{d} F_{p}(v) \in \mathrm{T}_{F(p)} N
+			$$
+		}
+
+		\mathblock{proposition}{Composition de différentielles}{
+			$$
+				\mathrm{d}(G \circ F)_{p} = \mathrm{d} G_{F(p)} \circ \mathrm{d} F_{p}
+			$$
+		}
+
+		\mathblock{lemma}{Différentielle de l'identité}{
+			$$
+				\mathrm{d} \mathrm{id}_{M} = \mathrm{id}_{\mathrm{T}_{p} M}
+			$$
+		}
+
+		\mathblock{proposition}{$\mathrm{d} F_{p}$ est un isomorphisme}{
+			$$
+				\mathrm{d} F_{p} \in \mathrm{GL}(\mathrm{T}_{p} M, \mathrm{T}_{F(p)} N)
+			$$
+		}
+
+		\mathblock{theorem}{Dimension de $\mathrm{T}_{p} M$}{
+			$$
+				\dim \mathrm{T}_{p} M = \dim M
+			$$
+		}
 	}
 
-	\mathblock{proposition}{$\mathrm{d} F_{p}$ est bien définie}{
-		Soit $v \in \mathrm{T}_{p} M$. \bigskip \\
-		Alors
+	\section{Dérivée partielle dans une variété}{
+		\noindent Soit $(M, \mathcal{A})$ une variété lisse de dimension $n$. \\
+		\noindent Soit $(e_{1}, \cdots, e_{n})$ la base canonique de $\mathbb{R}^{n}$. \\
+		\noindent Soit $p \in M$.
+
+		\mathblock{definition}{Dérivée partielle dans $M$}{
+			Soit $(U, \varphi) \in \mathcal{A}$ telle que $p \in U$. \\
+			Soit $i \in [\![ 1, n]\!]$. \bigskip \\
+			On appelle \textit{dérivée partielle selon $i$} en $p$ la dans $U$ fonctionnelle définie par
+			$$
+				\left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} :
+				\begin{array}{rcl}
+					\mathscr{C}^{\infty}(U) & \longrightarrow & \mathbb{R} \\
+					f & \longmapsto & \mathrm{D}_{\varphi(p), e_{i}}(f \circ \varphi^{-1})
+				\end{array}
+			$$
+		}
+
+		Dans le contexte de la $\mathscr{C}^{\infty}$-carte $(U, \varphi)$, les $n$ applications pour $i \in [\![1, n]\!]$
 		$$
-			\mathrm{d} F_{p}(v) \in \mathrm{T}_{F(p)} N
+			\varphi_{i} : U \longrightarrow \mathbb{R}
 		$$
+		définissent les applications coordonnées. \\
+		Si nous considèrons la configuration particulière de $(\mathbb{R}^{n}, \mathrm{id}_{\mathbb{R}^{n}})$, retrouvons en particulier les dérivées partielles de $\mathbb{R}^{n}$ en $p$ selon les directions canoniques
+		$$
+			\forall f \in \mathscr{C}^{\infty}(\mathbb{R}^{n}), \left. \frac{\partial}{\partial (\mathrm{id}_{\mathbb{R}^{n}})_{i}} \right|_{p}(f) = \frac{\partial f}{\partial x_{i}}(p)
+		$$
+		On remarque directement par définition de la différentielle que
+		$$
+			\left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} = \mathrm{d}(\varphi^{-1})_{\varphi(d)}(\mathrm{D}_{\varphi(p), e_{i}})
+		$$
+		Il est également possible de définir une dérivée partielle sur l'ouvert $\varphi(U)$ dans $\mathbb{R}^{n}$.
+
+		\mathblock{definition}{Dérivée partielle dans $\varphi(U)$}{
+			Soit $(U, \varphi) \in \mathcal{A}$ telle que $p \in U$. \\
+			Soit $i \in [\![ 1, n]\!]$. \bigskip \\
+			On appelle \textit{dérivée partielle selon $i$} dans en $p$ dans $\varphi(U)$ la fonctionnelle définie par
+			$$
+				\left. \frac{\partial}{\partial \varphi_{i}} \right|_{\varphi(p)} :
+				\begin{array}{rcl}
+					\mathscr{C}^{\infty}(\varphi(U)) & \longrightarrow & \mathbb{R} \\
+					f & \longmapsto & \mathrm{D}_{\varphi(p), e_{i}}(f)
+				\end{array}
+			$$
+		}
+
+		\mathblock{proposition}{Base de $\mathrm{T}_{p} U$}{
+			On a
+			$$
+				\left( \left. \frac{\partial}{\partial \mathrm{\varphi}_{1}} \right|_{p}, \cdots, \left. \frac{\partial}{\partial \mathrm{id}_{n}} \right|_{p} \right)
+			$$
+			qui est une base de $\mathrm{T}_{p} U$.
+		}
+
+		En particulier n'importe quelle $\mathscr{C}^{\infty}$-carte permet de former une base dans son domaine.
+
+		\mathblock{proof}{}{
+			On a $\mathrm{d} (\varphi^{-1})_{\varphi(p)} : \mathrm{T}_{\varphi(p)} \varphi(U) \longrightarrow \mathrm{T}_{p} U$ qui est un isomorphisme. \\
+			Or
+			$$
+				\left( \left. \frac{\partial}{\partial \varphi_{1}} \right|_{p}, \cdots \left. \frac{\partial}{\partial \varphi_{n}} \right|_{p} \right)
+			$$
+			est une base de $\mathrm{T}_{\varphi(p)} \varphi(U)$. \\
+			De plus, pour $i \in [\![ 1, n  ]\!]$, et par la remarque précédente
+			$$
+				\mathrm{d} (\varphi^{-1})_{\varphi(p)} \! \left( \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} \right) = \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p}
+			$$
+			D'où
+			$$
+				\left( \left. \frac{\partial}{\partial x_{1}} \right|_{p}, \cdots, \left. \frac{\partial}{\partial x_{n}} \right|_{p} \right)
+			$$
+			est une base de $\mathrm{T}_{p} U$.
+		}
+
+		\mathblock{lemma}{Dérivée partielle et application coordonnée}{
+			On a
+			$$
+				\left. \frac{\partial}{\partial \varphi_{i}} \right|_{p}(\varphi_{k}) = \delta_{i, k}
+			$$
+		}
+
+		\mathblock{proposition}{Décomposition}{
+			Soient $(M, \mathcal{A}), (N, \mathcal{B})$ deux variété lisses de dimension $n$. \\
+			Soit $p \in M$. \\
+			Soit $F : M \longrightarrow N$ une $\mathscr{C}^{\infty}$-application. \\
+			Soit $(U, \varphi) \in \mathcal{A}$ telle que $p \in U$. \\
+			Soit $(V, \psi) \in \mathcal{B}$ telle que $F(U) \subset V$. \bigskip \\
+			Alors
+			$$
+				\mathrm{d} F_{p} \left( \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} \right) = \sum_{j = 1}^{n} \left( \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} (\psi_{j} \circ F) \right) \times \left. \frac{\partial}{\partial \psi_{j}} \right|_{F(p)}
+			$$
+		}
+
+		\mathblock{proof}{}{
+			On remarque d'une part que
+			$$
+				\mathrm{d} F_{p} \! \left( \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} \right) \in \mathrm{T}_{F(p) N}
+			$$
+			Or
+			$$
+				\left( \left. \frac{\partial}{\partial \psi_{1}} \right|_{F(p)}, \cdots, \left. \frac{\partial}{\partial \psi_{n}} \right|_{F(p)} \right)
+			$$
+			est une base de $T_{F(p)} N$. \\
+			Soit $\lambda_{1}, \cdots, \lambda_{n} \in \mathbb{R}$ des coefficients tels que
+			$$
+				\mathrm{d} F_{p} \! \left( \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} \right) = \sum_{j = 1}^{n} \lambda_{j} \times \left. \frac{\partial}{\partial \psi_{i}} \right|_{F(p)}
+			$$
+			Soit $k \in [\![1, n]\!]$. \\
+			Alors par le lemme précédent,
+			$$
+				\sum_{j = 1}^{n} \lambda_{j} \times \left. \frac{\partial}{\partial \psi_{i}} \right|_{F(p)}(\psi_{k}) = \lambda_{k}
+			$$
+			Et on a par définition de la différentielle,
+			$$
+				\lambda_{k} = \mathrm{d} F_{p} \! \left( \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} \right)(\psi_{k}) = \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p}(\psi_{k} \circ F)
+			$$
+			Finalement on retrouve bien la formule.
+		}
+
+		\mathblock{corollary}{Décomposition dans le cas euclidien}{
+			
+		}
+
+		\mathblock{proposition}{Dérivée partielle et changement de carte}{
+			On a
+			$$
+				\left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} = \sum_{j = 1}^{n} \left. \frac{\partial}{\partial \varphi_{i}} \right|_{\varphi(p)}(\psi_{j} \circ \varphi^{-1}) \times \left. \frac{\partial}{\partial \psi_{j}} \right|_{p}
+			$$
+		}
+
+		\mathblock{proof}{}{
+
+		}
 	}
 
-	\mathblock{proposition}{Composition de différentielles}{
-		$$
-			\mathrm{d}(G \circ F)_{p} = \mathrm{d} G_{F(p)} \circ \mathrm{d} F_{p}
-		$$
-	}
+	\section{Espace fibré tangent total}{
+		Soit $(M, \mathcal{A})$ une variété lisse de dimension $n$.
 
-	\mathblock{lemma}{Différentielle de l'identité}{
-		$$
-			\mathrm{d} \mathrm{id}_{M} = \mathrm{id}_{\mathrm{T}_{p} M}
-		$$
-	}
+		\subsection{Définition}{
 
-	\mathblock{proposition}{$\mathrm{d} F_{p}$ est un isomorphisme}{
-		$$
-			\mathrm{d} F_{p} \in \mathrm{GL}(\mathrm{T}_{p} M, \mathrm{T}_{F(p)} N)
-		$$
-	}
+			\mathblock{definition}{Espace tangent total}{
+				On appelle \textit{espace tangent total de $M$} l'espace noté $\mathrm{T} M$ et définie par
+				$$
+					\begin{aligned}
+						\mathrm{T} M & := \bigsqcup_{p \in M} {p} \times \mathrm{T}_{p} M \\
+						& := \{ (p, v), p \in M, v \in \mathrm{T}_{p} M \}
+					\end{aligned}
+				$$
+			}
 
-	\mathblock{theorem}{Dimension de $\mathrm{T}_{p} M$}{
-		$$
-			\dim \mathrm{T}_{p} M = \dim M
-		$$
-	}
+			\mathblock{definition}{Projection naturelle}{
+				On appelle \textit{projection naturelle de $\mathrm{T} M$ vers $M$} l'application notée $\pi$ définie par
+				$$
+					\pi :
+					\begin{array}{rcl}
+						\mathrm{T} M & \longrightarrow & M \\
+						(p, v) & \longmapsto & p
+					\end{array}
+				$$
+			}
 
-	\section{Dérivée partielle dans une variété}
+			\mathblock{proposition}{Ensemble $\pi^{-1}(U)$}{
+				$$
+					\pi^{-1}(U) = \mathrm{T} U
+				$$
+			}
 
-	\noindent Soit $(M, \mathcal{A})$ une variété lisse de dimension $n$. \\
-	\noindent Soit $(e_{1}, \cdots, e_{n})$ la base canonique de $\mathbb{R}^{n}$. \\
-	\noindent Soit $p \in M$.
+			\mathblock{proof}{}{
+				\begin{itemize}
+					\item[$\bullet$] Soit $(p, v) \in \mathrm{T} U$. \\
+					Alors $p = \pi(p, v) \in U$. \\
+					Donc $(p, v) \in \pi^{-1}(U)$. \\
+					D'où $\mathrm{T} U \subset \pi^{-1}(U)$.
 
-	\mathblock{definition}{Dérivée partielle dans $M$}{
-		Soit $(U, \varphi) \in \mathcal{A}$ telle que $p \in U$. \\
-		Soit $i \in [\![ 1, n]\!]$. \bigskip \\
-		On appelle \textit{dérivée partielle selon $i$} en $p$ la fonctionnelle définie par
-		$$
-			\left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} :
-			\begin{array}{rcl}
-				\mathscr{C}^{\infty}(U) & \longrightarrow & \mathbb{R} \\
-				f & \longmapsto & \mathrm{D}_{e_{i}, \varphi(p)}(f \circ \varphi^{-1})
-			\end{array}
-		$$
-	}
+					\item[$\bullet$] Inversement, soit $(p, v) \in \pi^{-1}(U)$. \\
+					Alors $p = \pi(p, v) \in U$. \\
+					Donc $(p, v) \in \{ p \} \times \mathrm{T}_{p} U$.
+				\end{itemize}
+			}
 
-	\mathblock{definition}{Dérivée partielle canoniques}{
-		Soit $(\mathbb{E}^{n}, \mathcal{A}^{n})$ l'espace euclidien muni de sa structure standard. \\
-		Soit $(\mathrm{U}, \mathrm{id}_{U}) \in \mathcal{A}^{n}$. \\
-		Soit $p \in \mathrm{U}$. \\
-		Soit $\i \in [\![1, n]\!]$. \bigskip \\
-		On appelle \textit{dérivée partielle canonique} en $p$ de $\mathbb{E}^{n}$ le vecteur tangent définie par
-		$$
-			\left. \frac{\partial}{\partial x_{i}} \right|_{p} := \left. \frac{\partial}{\partial \mathrm{id}_{i}} \right|_{\mathrm{id}(p)}
-		$$
-	}
+			\mathblock{definition}{Extension $\tilde{\varphi}$}{
+				Soit $(U, \varphi) \in \mathcal{A}$. \bigskip \\
+				On appelle \textit{extension de $\varphi$} la fonction notée $\tilde{\varphi}$ définie par
+				$$
+					\tilde{\varphi} :
+					\begin{array}{rcl}
+						\pi^{-1}(U) & \longrightarrow & \varphi(U) \times \mathbb{R}^{n} \\
+						\displaystyle \left(p, \sum_{i = 1}^{n} v_{i} \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} \right) & \longmapsto & \displaystyle \left(\varphi(p), \sum_{i = 1}^{n} v_{i} e_{i} \right)
+					\end{array}
+				$$
+			}
 
-	On remarque directement par définition de la différentielle que
-	$$
-		\left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} = \mathrm{d}(\varphi^{-1})_{\varphi(d)}(\mathrm{D}_{\varphi(p), e_{i}})
-	$$
+			On vérifie que cette fonction est bien définie.
 
-	\mathblock{proposition}{Dérivée partielle canoniques dans $\mathbb{E}^{n}$}{
-		Soit $(\mathbb{E}^{n}, \mathcal{A}^{n})$ l'espace euclidien muni de sa structure standard. \\
-		Soit $(\mathrm{U}, \mathrm{id}_{U}) \in \mathcal{A}^{n}$. \\
-		Soit $p \in \mathrm{U}$. \\
-		Soit $i \in [\![1, n]\!]$. \bigskip \\
-		Alors
-		$$
-			\left. \frac{\partial}{\partial x_{i}} \right|_{p} = \mathrm{D}_{p, e_{i}}
-		$$
-	}
+			\mathblock{proposition}{$\tilde{\varphi}$ est bijectif}{
+				\begin{mathlist}
+					\item $\tilde{\varphi}$ est bien définie.
+					\item $\tilde{\varphi}$ est bijectif.
+				\end{mathlist}
+			}
 
-	\mathblock{proposition}{Base de $\mathrm{T}_{p} U$}{
-		On a
-		$$
-			\left( \left. \frac{\partial}{\partial x_{1}} \right|_{p}, \cdots, \left. \frac{\partial}{\partial x_{n}} \right|_{p} \right)
-		$$
-		qui est une base de $\mathrm{T}_{p} U$.
-	}
+			\mathblock{proof}{}{
+				\begin{mathlist}
+					\item Montrons que $\tilde{\varphi}$ est bien définie. \\
+					Soient 
+				\end{mathlist}
+			}
+		}
 
-	\mathblock{lemma}{Décomposition}{
-		$$
-			\mathrm{d} F_{p} \left( \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} \right) = \sum_{j = 1}^{n} \left( \left. \frac{\partial}{\partial \varphi_{i}} \right|_{p} (\psi_{j} \circ F) \right) \times \left. \frac{\partial}{\partial y_{j}} \right|_{F(p)}
-		$$
+		\subsection{Topologie sur \texorpdfstring{$\mathrm{T} M$}{TM}}{
+			\mathblock{proposition}{Topologie à partie d'une carte}{
+				Soit $(U_{\alpha}, \varphi_{\alpha})_{\alpha \in A}$ une base dénombrable de $\mathscr{C}^{\infty}$-cartes sur M. \\
+				Soit
+				$$
+					\begin{aligned}
+						\mathcal{T}_{\varphi_{\alpha}} := & \{ \tilde{\varphi_{\alpha}}^{-1}(W), W \subset \varphi_{\alpha}(U_{\alpha}) \times \mathbb{R}^{n}, \\
+						& W \ \text{ouvert pour} \ \varphi_{\alpha}(U_{\alpha}) \times \mathbb{R}^{n} \}
+					\end{aligned}
+				$$
+				Alors
+				\begin{mathlist}
+					\item $\mathcal{T}_{\varphi_{\alpha}}$ définie une topologie sur $\mathrm{T} U_{\alpha}$.
+					\item $\tilde{\varphi_{\alpha}} : \mathrm{T} U_{\alpha} \longrightarrow \varphi_{\alpha}(U_{\alpha}) \times \mathbb{R}^{n}$ est un homéomorphisme.
+				\end{mathlist}
+			}
+		}
 	}
 \end{document}

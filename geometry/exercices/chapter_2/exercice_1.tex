@@ -1,0 +1,71 @@
+\documentclass[../exercices.tex]{subfiles}
+
+\begin{document}
+	\mathblock{exercice}{Espace tangent de $\mathbb{S}^{1}$}{
+		Soit $\mathbb{S}^{1}$ la $1$-sphère unité. \\
+		Soient $U, \tilde{U} \subsetneq \mathbb{S}^{1}$ deux ouverts. \\
+		Soit $\theta : U \longrightarrow \theta{U}$ un $\mathscr{C}^{\infty}$-difféomorphisme telle que
+		$$
+			\forall z \in U, \exp(i \theta(z)) = z
+		$$
+		Soit $\tilde{\theta} : \tilde{U} \longrightarrow \tilde{\theta}(\tilde{U})$ un $\mathscr{C}^{\infty}$-difféomorphisme telle que
+		$$
+			\forall z \in \tilde{U}, \exp(i \tilde{\theta}(z)) = z
+		$$
+		Soit
+		$$
+			\varphi :
+			\begin{array}{rcl}
+				U \cap \tilde{U} & \longrightarrow & \mathbb{R} \\
+				p & \longmapsto & \theta(p) - \tilde{\theta}(p)
+			\end{array}
+		$$
+		\begin{enumerate}
+			\item Montrer que $\varphi$ est constante sur chacune de ses composantes connexes.
+			\item Montrer l'égalité suivante entre les champs de vecteurs
+				$$
+					\frac{\partial}{\partial \theta}_{| U \cap \tilde{U}} = \frac{\partial}{\partial \tilde{\theta}}_{| U \cap \tilde{U}}
+				$$
+		\end{enumerate}
+	}
+
+	\begin{enumerate}
+		\item Soit $V \subset U \cap \tilde{U}$ une composante connexe. \\
+			Soit $p \in V$. En particulier $p \neq 0$. \\
+			Alors
+			$$
+				\begin{aligned}
+					\exp(i \varphi(p)) & = \exp(i \theta(p) - i \tilde{\theta}(p)) \\
+					& = \frac{\exp(i \theta(p))}{\exp(i \tilde{\theta}(p))} \\
+					& = \frac{p}{p} = 1 = \exp(i 0)
+				\end{aligned}
+			$$
+			Ainsi $\varphi(p) \equiv 0 [2 \pi]$. \\
+			Comme $\varphi$ est continue sur $V$, soit $k \in \mathbb{Z}$ tel que $\forall q \in V, \varphi(q) = 2 \pi k$. Donc bien $\forall q \in V, \theta(q) = \tilde{\theta}(q) + 2 \pi k$.
+		\item Soit $p \in U \cap \tilde{U}$. \\
+			On utilide la formule de changement de cartes.
+			$$
+				\left. \frac{\partial}{\partial \tilde{\theta}} \right|_{p} = \left. \frac{\partial}{\partial \tilde{\theta}} \right|_{\tilde{\theta}(p)}(\theta \circ \tilde{\theta}^{-1}) \times \left. \frac{\partial}{\partial \theta} \right|_{p}
+			$$
+			Or $\theta \circ \tilde{\theta}^{-1} : \tilde{\theta}(U \cap \tilde{U}) \longrightarrow \theta(U \cap \tilde{U})$ est un $\mathscr{C}^{\infty}$-difféomorphisme de \flqq{} $\mathbb{R}$ dans $\mathbb{R}$ \frqq{}. \\
+			Donc
+			$$
+				\left. \frac{\partial}{\partial \tilde{\theta}} \right|_{\tilde{\theta}(p)}(\theta \circ \tilde{\theta}^{-1}) = \frac{\partial \theta \circ \tilde{\theta}^{-1}}{\partial y}(\tilde{\theta}(p))
+			$$
+			Soit $x \in \tilde{\theta}(V)$. \\
+			On a alors
+			$$
+				\theta(\tilde{\theta}^{-1}(p)) = \tilde{\theta}(\tilde{\theta}^{-1}(p)) + 2 \pi k = p + 2 \pi k
+			$$
+			D'où
+			$$
+				\left. \frac{\partial}{\partial \tilde{\theta}} \right|_{\tilde{\theta}(p)}(\theta \circ \tilde{\theta}^{-1}) = 1
+			$$
+			Et enfin l'égalité
+			$$
+				\frac{\partial}{\partial \theta}_{| V} = \frac{\partial}{\partial \tilde{\theta}}_{| V}
+			$$
+			Comme $V$ est une composante connexe, on conclue l'égalité sur l'ensemble $U \cap \tilde{U}$.
+
+	\end{enumerate}
+\end{document}

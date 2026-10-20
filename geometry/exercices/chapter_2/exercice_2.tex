@@ -1,0 +1,77 @@
+\documentclass[../exercices.tex]{subfiles}
+
+\begin{document}
+
+	\mathblock{exercice}{$\mathrm{T} \mathbb{S}^{1} \cong \mathbb{S}^{1} \times \mathbb{R}$}{
+		Soit l'application
+		$$
+			\Phi :
+			\begin{array}{rcl}
+				\mathbb{S}^{1} \times \mathbb{R} & \longrightarrow & \mathrm{T} \mathbb{S}^{1} \\
+				(p, t) & \longmapsto & \displaystyle \left( p, t \times \left. \frac{\partial}{\partial \theta} \right|_{p} \right)
+			\end{array}
+		$$
+		Alors
+		\begin{enumerate}
+			\item $\Phi$ est bien définie.
+			\item $\Phi$ est un $\mathscr{C}^{\infty}$-difféomorphisme entre ses deux espaces.
+		\end{enumerate}
+	}
+
+	\begin{enumerate}
+		\item Montrons que $\Phi$ est bien définie.
+			Soit $(p, t) \in \mathbb{S}^{1} \times \mathbb{R}$. \\
+			Soit alors $U \subsetneq \mathbb{S}^{1}$ tel que $p \in U$. \\
+			Par l'exercice précédent, soit $\theta : U \longrightarrow \theta(U)$ un $\mathscr{C}^{\infty}$-difféomorphisme telle que
+			$$
+				\frac{\partial}{\partial \theta} : M \longrightarrow \mathrm{T} M
+			$$
+			Et toujours par l'exercice précédent, $\Phi$ est bien définie.
+
+		\item Montrons le caractère difféomorphe.
+			Soit l'application
+			$$
+				\Psi :
+				\begin{array}{rcl}
+					\mathrm{T} \mathbb{S}^{1} & \longrightarrow & \mathbb{S}^{1} \times \mathbb{R} \\
+					\displaystyle \left( p, v = t \left. \frac{\partial}{\partial \theta} \right|_{p} \right) & \longmapsto & (p, t)
+				\end{array}
+			$$
+			Cette fonction est à nouveau bien définie, par le caractère de base de $\mathrm{T}_{p} \mathbb{S}^{1}$ (par identification)
+			$$
+				\mathrm{Vect} \! \left( \left. \frac{\partial}{\partial \theta} \right|_{p} \right) = \mathrm{T}_{p} \mathbb{S}^{1}
+			$$
+			On a directement $\Psi \circ \Phi = \mathrm{id}_{\mathbb{S}^{1} \times \mathbb{R}}$ et $\Phi \circ \Psi = \mathrm{id}_{\mathrm{T} \mathbb{S}^{1}}$.
+			D'où $\Phi$ qui est bijectif sur son ensemble de définition. \\
+			Montrons le caractère difféomorphe par le critère local. \\
+			Soit $(p, t) \in \mathbb{S}^{1} \times \mathbb{R}$. \\
+			Soit $(U, \varphi) \in \mathcal{A}_{\mathbb{S}^{1}}$ une $\mathbb{C}^{\infty}$-carte de $\mathbb{S}^{1}$. \\
+			On considère $(V, \mathrm{id}_{V}) \in \mathcal{A}^{1}$. \\
+			On pose alors $\psi = \varphi \times \mathrm{id}_{V}$.
+			$$
+				(U \times V, \psi) \in \mathcal{A}_{\mathbb{S}^{1} \times \mathbb{R}}
+			$$
+			qui est une $\mathscr{C}^{\infty}$-carte de $\mathbb{S}^{1} \times \mathbb{R}$. \\
+			On a alors $(\mathrm{T} U, \tilde{\varphi}) \in \mathcal{A}_{\mathrm{T} U}$ qui est une $\mathscr{C}^{\infty}$-carte de $\mathrm{T} U$. \\
+			On considère alors la composition
+			$$
+				(\tilde{\varphi} \circ \Phi \circ \psi^{-1}) : \psi(U \times V) \longrightarrow \tilde{\varphi}(\mathrm{T} U)
+			$$
+			Soit $(x, t) \in \psi(U \times V)$. \\
+			Alors $\psi(x, t) = (\varphi^{-1}(x), \mathrm{id}_{V}^{-1}(t)) = (\varphi^{-1}(x), t)$. \\
+			Donc
+			$$
+				\Phi(\varphi^{-1}(x), t) = \left( \varphi^{-1}(x), t \times \left. \frac{\partial}{\partial \theta} \right|_{\varphi^{-1}(x)} \right)
+			$$
+			D'où finalement par composition avec $\tilde{\varphi}$, il vient que
+			$$
+				\tilde{\varphi} \! \left( \varphi^{-1}(x), t \times \left. \frac{\partial}{\partial \theta} \right|_{\varphi^{-1}} \right) = (\varphi(\varphi^{-1}(x)), t) = (x, t)
+			$$
+			On a donc par la fonction identité (moyennant une éventuelle restriction qui ne modifie par la régularité)
+			$$
+				\tilde{\varphi} \circ \Phi \psi^{-1} \in \mathscr{C}^{\infty}(\psi(U \times V), \tilde{\varphi}(\mathrm{T} U))
+			$$
+			qui est donc $\mathscr{C}^{\infty}$. Donc $\Phi$ est un $\mathscr{C}^{\infty}$-difféomorphisme de $\mathrm{T} \mathbb{S}^{1}$ vers $\mathbb{S}^{1} \times \mathbb{R}$.
+	\end{enumerate}
+
+\end{document}
