@@ -1,0 +1,78 @@
+\documentclass{book}
+
+\usepackage{../themes/dark_theme}
+
+\begin{document}
+	
+	\pagenumbering{Roman}
+    \begin{titlepage}
+        %\tikz[remember picture,overlay] \node[opacity=0.5,inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{"arriere_plan.png"}};
+
+        \vspace*{9em}{\centering\Huge Mathématiques pour l'économie\par}
+        \vspace{2em}
+        {\hfill\itshape Enzo Sanfilippo}
+
+        \clearpage
+	    \vspace*{\fill}
+    \end{titlepage}
+
+    \newpage
+    \pagenumbering{roman}
+
+    {
+		\hypersetup{linkcolor=magenta}
+		\tableofcontents
+	}
+
+    \newpage
+	\pagenumbering{arabic}
+
+	\chapter{Enoncé des propriétés}{
+		\mathblock{definition}{Variational inéquality problem (page 4)}{
+			Soit $X$ un espace de \textsc{Banach}. \\
+			Soit $C \subset X$. \\
+			Soit $T : C \longrightarrow X^{*}$ un opérateur. \bigskip \\
+			On appelle \textit{problème V.I.P.} et on note $\mathrm{VI}(T, C)$ un problème définie par
+			\begin{center}
+				\flqq{} Trouver $x \in C$ tel que $\forall y \in C, \langle T(x), y - x \rangle \geq 0$ \frqq{}
+			\end{center}
+		}
+
+		\mathblock{definition}{Stratégie (page 9)}{
+			Soit un jeu à deux joueurs $A, B$. \bigskip \\
+			On appelle \textit{stratégie} de $A$ sur $B$ toute fonction
+			$$
+				F_{A} : B \rightrightarrows A
+			$$
+		}
+
+		\mathblock{definition}{Stratégie mixte (page 10)}{
+			Soit un jeu à deux joueurs $A, B$. \bigskip \\
+			On appelle \textit{stratégie mixte} une fonction définie par
+			$$
+				F :
+				\begin{array}{rcl}
+					A \times B & \rightrightarrows & A \times B \\
+					(x, y) & \longmapsto & F_{A}(x) \times F_{B}(x)
+				\end{array}
+			$$
+		}
+
+		\mathblock{definition}{Paire consistante (page 10)}{
+			Soit un jeu à deux joueurs $A, B$. \\
+			Soit $(x, y) \in A \times B$. \bigskip \\
+			On dit que $(x, y)$ est une paire consistante si
+			$$
+				\left\{
+					\begin{array}{l}
+						x \in F_{A}(y) \\
+						y \in F_{B}(x)
+					\end{array}
+				\right.
+				\iff
+				(x, y) \in F(x, y)
+			$$
+		}
+	}
+
+\end{document}
