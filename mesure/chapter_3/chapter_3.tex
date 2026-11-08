@@ -1,96 +1,11 @@
 \documentclass[../mesure.tex]{subfiles}
 
 \begin{document}
-	
-	\tableofcontents
+
+	\etocsetnexttocdepth{3}
+	\localtableofcontents
 
 	\section{Question 1}{
-		Soit $X$ un ensemble non nul. \\
-		Soit $\mathcal{R} \subset \mathcal{P}(X)$ un clan sur $X$.
-
-		\mathblock{definition}{Ensemble $\mathscr{L}(A)$ pour une partie de $X$}{
-			Soit $A \subset X$. \bigskip \\
-			On définie l'ensemble
-			$$
-				\begin{aligned}
-					\mathscr{L}(A) := \{ B \subset X \ | \ & A \cup B \in \mathscr{M}(\mathcal{R}) \\
-					& A \cap B^{c} \in \mathscr{M}(\mathcal{R}) \\
-					& A^{c} \cap B \in \mathscr{M}(\mathcal{R}) \}
-				\end{aligned}
-			$$
-		}
-
-		\mathblock{definition}{Ensemble $\mathscr{L}(\mathcal{C})$ pour une collection de $X$}{
-			Soit $\mathcal{C} \subset \mathcal{P}(X)$. \bigskip \\
-			On définie l'ensemble
-			$$
-				\mathscr{L}(\mathcal{C}) := \bigcap_{A \in \mathcal{C}} \mathscr{L}(A)
-			$$
-		}
-
-		\mathblock{lemma}{Relation avec $\mathscr{L}(A)$}{
-			Soient $A, B \subset X$. \bigskip \\
-			Alors
-			$$
-				B \in \mathscr{L}(A) \iff A \in \mathscr{L}(B)
-			$$
-		}
-
-		\mathblock{proof}{}{
-			\begin{itemize}
-				\item[$\bullet$] $\implies$ : Supposons $B \in \mathscr{L}(A)$. \\
-					On a alors $A \cup B \in \mathscr{M}(\mathcal{R}) \vee A \cap B^{c} \in \mathscr{M}(\mathcal{R}) \vee A^{c} \cup B \in \mathscr{M}(\mathcal{R})$. \\
-					Donc $B \cup A \in \mathscr{M}(\mathcal{R}) \vee B \cap A^{c} \in \mathscr{M}(\mathcal{R}) \vee B^{c} \cup A \in \mathscr{M}(\mathcal{R})$. \\
-					Donc $A \in \mathscr{L}(B)$.
-
-				\item[$\bullet$] $\impliedby$ : Supposons $A \in \mathscr{L}(B)$. \\
-					Le raisonnement est similaire puisque $A$ et $B$ sont interchangeables.
-			\end{itemize}
-		}
-
-		\mathblock{lemma}{$\mathscr{M}(\mathcal{R}) \subset \mathscr{L}(\mathscr{M}(\mathcal{R}))$}{
-			On possède l'inclusion suivante
-			$$
-				\mathscr{M}(\mathcal{R}) \subset \mathscr{L}(\mathscr{M}(\mathcal{R}))
-			$$
-		}
-
-		\mathblock{proof}{}{
-			Pour montrer cette inclusion, on montre les deux propriétés suivantes :
-			\begin{mathlist}
-				\item Montrons que $\mathcal{R} \subset \mathscr{L}(\mathscr{M}(\mathcal{R}))$.
-					Soit $B \in \mathcal{R}$. \\
-					En particulier $B \in \mathscr{M}(\mathcal{R})$. \\
-					Par définition, on a
-					$$
-						\mathscr{L}(\mathscr{M}(\mathcal{R})) = \bigcap_{A \in \mathscr{M}} \mathscr{L}(A)
-					$$
-					Soit $A \in \mathscr{M}(\mathcal{R})$.
-				\item $\mathscr{L}(\mathscr{M}(\mathcal{R}))$ est une classe monotone.
-			\end{mathlist}
-		}
-
-		\mathblock{lemma}{$\mathscr{M}(\mathcal{R})$ est un clan}{
-			Soit $X$ un ensemble non vide. \\
-			Soit $\mathcal{R} \subset \mathcal{P}(X)$ un clan sur $X$. \bigskip \\
-			Alors $\mathscr{M}(\mathcal{R})$ est un clan sur $X$.
-		}
-
-		\mathblock{theorem}{Lien tribu et classe monotone}{
-			Soit $X$ un ensemble non vide. \\
-			Soit $\mathcal{R} \subset \mathcal{P}(X)$ un clan sur $X$. \bigskip \\
-			Alors
-			$$
-				\sigma(\mathcal{R}) = \mathscr{M}(\mathcal{R})
-			$$
-		}
-
-		\mathblock{proof}{}{
-			D'une part, $\sigma(\mathcal{R})$ est une tribu par définition. \\
-			Donc $\sigma(\mathcal{R})$ est une classe monotone. \\
-			Par conséquent, $\mathscr{M}(\mathcal{R}) \subset \sigma(\mathcal{R})$. \bigskip \\
-			Montrons à présent l'inclusion réciproque.
-		}
+		\subfile{question_1.tex}
 	}
-
 \end{document}
