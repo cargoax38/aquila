@@ -54,8 +54,6 @@
 	}
 
 	\subsection{Produit extérieur}{
-		Cette partie est encore à terminer, il y a sûrement des omissions involontaires vis-à-vis d'égalités confondus avec des identifications canoniques qui seront corrigés plus tard.
-
 		\noindent Soient $h, k, \ell \in \mathbb{N}$. \\
 		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel. \\
 		En exploitant les propriétés de $\pi_{m}$, nous construisons un \flqq{} produit extérieur \frqq{}
@@ -126,6 +124,39 @@
 			$$
 				v_{1} \wedge \cdots \wedge v_{m} = \pi_{m}(v_{1} \otimes \cdots v_{m}) \in \wedge_{m} V
 			$$
+		}
+
+		On montre à présent que le $\wedge$ est antisymétrique.
+
+		\mathblock{theorem}{Antisymétrie de $\wedge$}{
+			Soit $\xi \in \wedge_{k} V$. \\
+			Soit $\eta \in \wedge_{h} V$. \bigskip \\
+			Alors
+			$$
+				\xi \wedge \eta = (-1)^{k h} \eta \wedge \xi
+			$$
+		}
+	}
+
+	\subsection{Base de \texorpdfstring{$\wedge_{m} V$}{l'espace des m-vecteurs}}{
+		\indent Soit $m \in \mathbb{N}$. \\
+		\indent Soit $V$ un $\mathbb{R}$-espace vectoriel possédant une base dénombrable.
+
+		\vspace{1em}
+
+		Dans cette section, on s'intéresse à déterminer une base de $\wedge_{m} V$.
+
+		\mathblock{theorem}{Base $\wedge_{m} V$ avec $V$ dénombrable}{
+			Soit $\mathcal{B} := (e_{i})_{i \in \mathbb{N}^{\star}}$ une base dénombrable de $V$. \\
+			Soit l'ensemble
+			$$
+				I_{m} := \{ \lambda \in \mathcal{F}([\![1, m]\!], \mathbb{N}) \ \text{strictement croissante} \}
+			$$
+			Alors
+			$$
+				\{ e_{\lambda(1)} \wedge \cdots \wedge e_{\lambda(m)}, \lambda \in I_{m} \}
+			$$
+			est une base de $\wedge_{m} V$.
 		}
 	}
 \end{document}
