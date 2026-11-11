@@ -11,6 +11,9 @@
 \RequirePackage{changepage} % Notamment pour 'adjustwidth'
 \RequirePackage{needspace} % Pour que les blocs de mathématiques restent sur une même page (pour le haut du bloc).
 \RequirePackage{subfiles} % Pour les sous-fichiers.
+\RequirePackage{etoc}
+
+\setcounter{tocdepth}{1}
 
 \RequirePackage{mathrsfs} % Notamment pour \mathscr.
 \RequirePackage{amssymb} % Pour des symbôles mathématiques.
@@ -59,6 +62,8 @@
 \titleformat{name=\section, numberless}{\color{magenta}\bfseries\Large}{}{0em}{#1 {\leavevmode\leaders\hrule height 0.7ex depth \dimexpr0.4pt-0.7ex\hfill\kern0pt}}
 \titleformat{\subsection}{\color{blue}\bfseries\large}{}{0em}{\thesubsection \quad #1}
 \titleformat{\subsubsection}{\color{cyan}\bfseries\normalsize}{}{0em}{\thesubsubsection \quad #1}
+
+\setcounter{tocdepth}{1}
 
 \newcommand{\textitc}[1]{
     \textit{\color{violet}#1}

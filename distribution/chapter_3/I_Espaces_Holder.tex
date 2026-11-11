@@ -1,0 +1,105 @@
+\documentclass[chapter_3.tex]{subfiles}
+
+\begin{document}
+	\noindent Soit $n \in \mathbb{N}$. \\
+	\noindent Soit $U \subset \mathbb{R}^{n}$ un ouvert. \\
+	\noindent Soit $\gamma \in \; ]0, 1]$.
+
+	\vspace{1em}
+
+	On s'intéresse dans cette partie aux espaces de \textsc{Hölder} qui restent très régulier. On rappelle juste avant la définition de fonction lipschitzienne.
+
+	\mathblock{definition}{Fonction lipschitzienne}{
+		Soit $u : U \longrightarrow \mathbb{R}$. \\
+		Soit $C > 0$. \bigskip \\
+		On dit que $u$ est $C$-lipschitzienne si
+		$$
+			\forall x, y \in U, |u(x) - u(y)| \leq C |x - y|
+		$$
+	}
+
+	Il est possible de généraliser cette notion en rajoutant une puissance $\gamma$ dans le facteur de droite. Il en découle ce qu'on appelle la continuité dite de \textsc{Hölder}.
+
+	\mathblock{definition}{Fonction $\gamma$-\textsc{Hölder}-continue}{
+		Soit $u : U \longrightarrow \mathbb{R}$. \\
+		Soit $C > 0$. \bigskip \\
+		On dit que $u$ est $\gamma$-\textsc{Hölder}-continue si
+		$$
+			\forall x, y \in U, |u(x) - u(y)| \leq C |x - y|^{\gamma}
+		$$
+	}
+
+	\mathblock{definition}{Ensemble des $\gamma$-\textsc{Hölder}-continues}{
+		On appellera \textit{espace des fonctions $\gamma$-\textsc{Hölder}-continues} l'ensemble noté $\mathscr{C}^{0, k}(\overline{U})$ contenant les application $u : U \longrightarrow \mathbb{R}$ $\gamma$-\textsc{Hölder}-continues.
+	}
+
+	\mathblock{proposition}{$\mathscr{C}^{0, k}(\overline{U})$ comme un $\mathbb{R}$-espace vectoriel}{
+		On a $\mathscr{C}^{0, k}(\overline{U})$ qui est un $\mathbb{R}$ sous-espace vectoriel de $\mathcal{F}(U, \mathbb{R})$.
+	}
+
+	On cherche à présent à définir une norme sur les fonction $\gamma$-\textsc{Hölder}-continue. On adoptera la notation suivante pour la norme infinie.
+
+	\mathblock{definition}{Norme infinie sur $U$}{
+		Soit $u : U \longrightarrow \mathbb{R}$ bornée et continue. \bigskip \\
+		On considère
+		$$
+			\lVert u \rVert_{\mathscr{C}(\overline{U})} := \sup_{x \in U} |u(x)| := \lVert u \lVert_{\infty, U}
+		$$
+	}
+
+	On considère à présent le lemme suivant.
+
+	\mathblock{lemma}{Propriété sur les $\gamma$-\textsc{Hölder}-continues}{
+		Soit $u : U \longrightarrow \mathbb{R}$ une application $\gamma$-\textsc{Hölder}-continue. \bigskip \\
+		Alors
+		$$
+			\exists C > 0, \forall x \neq y \in U, \frac{|u(x) - u(y)|}{|x - y|^{\gamma}} < C
+		$$
+	}
+
+	\mathblock{proof}{}{
+		Cette propriété découle directement de la définition de $\gamma$-\textsc{Hölder}-continue.
+	}
+
+	On définie alors la quantité suivante
+
+	\mathblock{definition}{Le réel $[u]_{\mathscr{C}^{0, \gamma}}$}{
+		Soit $u : U \longrightarrow \mathbb{R}$ une fonction $\gamma$-\textsc{Hölder}-continue. \bigskip \\
+		On appelle \textit{semi-norme de \textsc{Hölder}}, la quantité notée $[u]_{\mathscr{C}^{0, \gamma}}$ définie par
+		$$
+			[u]_{\mathscr{C}^{0, \gamma}} := \sup_{x \neq y \in U} \left\{ \frac{|u(x) - u(y)|}{|x - y|^{\gamma}} \right\}
+		$$
+	}
+
+	\mathblock{proposition}{$[\cdot]_{\mathscr{C}^{0, \gamma}(\overline{U})}$ qui est bien une semi-norme}{
+		On a $[\cdot]_{\mathscr{C}^{0, \gamma}(\overline{U})}$ qui définie une semi-norme sur $\mathscr{C}^{0, \gamma}(\overline{U})$.
+	}
+
+	On définie à présent une norme sur $\mathscr{C}^{0, \gamma}$ comme la somme des deux quantités introduites précédemment.
+
+	\mathblock{definition}{Quantité $\lVert u \rVert_{\mathscr{C}^{0, \gamma}(\overline{U})}$}{
+		Soit $u \in \mathscr{C}^{0, \gamma}(\overline{U})$. \bigskip \\
+		On appelle \textit{$(0, \gamma)$-norme de \textsc{Hölder}} la quantitée définie par
+		$$
+			\lVert u \rVert_{\mathscr{C}^{0, \gamma}(\overline{U})} := \lVert u \rVert_{\mathscr{\overline{U}}} + [u]_{\mathscr{0, \gamma}(\overline{U})}
+		$$
+	}
+
+	\mathblock{proposition}{$\lVert \cdot \rVert_{\mathscr{C}^{0, \gamma}(\overline{U})}$ est une norme sur $\mathscr{C}^{0, \gamma}(\overline{U})$}{
+		On a $\lVert \cdot \rVert_{\mathscr{C}^{0, \gamma}(\overline{U})}$ qui définie une semi-norme sur $\mathscr{C}^{0, \gamma}(\overline{U})$.
+	}
+
+	Il est également possible d'étendre cette norme aux fonction $\mathscr{D}^{k}(\overline{U})$ dont les dérivées $k$-ième sont $\gamma$-\textsc{Hölder}-continues (à la place de continue).
+
+	\mathblock{definition}{Espaces de \textsc{Hölder}}{
+		
+	}
+
+	\mathblock{definition}{Quantité $\lVert u \rVert_{\mathscr{C}^{k, \gamma}(\overline{U})}$}{
+		Soit $u \in \mathscr{D}^{k}(\overline{U})$ dont les dérivées $k$-ièmes sont $\gamma$-\textsc{Hölder}-continues. \\
+		On appelle \textit{$(k, \gamma)$-norme de \textsc{Hölder}} la quantitée définie par
+		$$
+			\lVert u \rVert_{\mathscr{C}^{k, \gamma}(\overline{U})} := \sum_{|\alpha| \leq k} \lVert \partial^{\alpha} u \rVert_{\mathscr{\overline{U}}} + \sum_{|\alpha| = k} [\partial^{\alpha} u]_{\mathscr{C}^{0, \gamma}(\overline{U})}
+		$$
+	}
+\end{document}
