@@ -158,6 +158,24 @@
 			$$
 		}
 
+		Dans le cas particulier où on ne s'intéresse qu'à un seul espace vectoriel, on adoptera la notation suivante
+
+		\mathblock{definition}{Notation $\bigotimes_{k} V$}{
+			Soit $V$ un $\mathbb{R}$-espace vectoriel. \bigskip \\
+			On adoptera la notation suivante
+
+			\begin{mathlist}
+				\item Dans le cas où $k > 0$
+					$$
+						\bigotimes_{k} V := \underset{k \ \text{fois}}{\underbrace{V \otimes \cdots \otimes V}}
+					$$
+				\item Dans le cas où $k = 0$, on adoptera la convention suivante
+					$$
+						\bigotimes_{0} V := \mathbb{R}
+					$$
+			\end{mathlist}
+		}
+
 		On cherche maintenant à mieux comprendre les propriétés de $V_{1} \otimes \cdots \otimes V_{k}$.
 	}
 
@@ -215,5 +233,74 @@
 				\end{aligned}
 			$$
 		}
+
+		On termine cette partie en parlant du produit tensoriel de vecteurs.
+	}
+
+	\subsection{Produit tensoriel de vecteurs}{
+		\noindent Soient $k, h \in \mathbb{N}$. \\
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel.
+
+		La question qu'on pourrait se poser c'est celle de l'existence d'un produit liant des $k$-tenseurs de $\bigotimes_{k} V$ et des $h$-tenseurs de $\bigotimes_{h} V$. Pour pouvoir définir un tel produit, on souhaiterez pouvoir multiplier un $k$-tenseur par un $h$-tenseur et obtenir un $(k+h)$-tenseur. Le théorème précédent sur \flqq{} l'associativité \frqq{} de l'espace produit tensoriel nous permettra d'arriver à ce résultat. Nous montrons dans un premier temps ce résultat intermédiaire.
+
+		\mathblock{lemma}{Application bilinéaire $\otimes_{k, h}$}{
+			Soit $\Phi : \bigotimes_{k} V \otimes \bigotimes_{h} V \longrightarrow \bigotimes_{k + h} V$ du théorème précédent. \\
+			Soit $\mu_{k, h} \in \mathcal{L}^{2}(\bigotimes_{k} V \times \bigotimes_{h} V, \bigotimes_{k} V \otimes \bigotimes_{h} V)$ de la définition de l'espace produit tensoriel. \\
+			Soit l'application $\cdot_{\otimes}$ définie par
+			$$
+				\otimes_{k, h} :
+				\begin{array}{rcl}
+					\bigotimes_{k} V \times \bigotimes_{h} V & \longrightarrow & \bigotimes_{k + h} V \\
+					(a, b) & \longmapsto & a \otimes_{k, h} b := (\Phi \circ \mu_{k, h})(a, b)
+				\end{array}
+			$$
+			Alors $\otimes_{k, h}$ est bien définie, est bilinéaire et est unique.
+		}
+
+		\mathblock{proof}{}{
+			L'existence et l'unicité ainsi que le caractère bilinéaire découlent du théorème d'existence du produit tensoriel. On utilise ensuite le théorème d'associativité pour arriver au résultat souhaité.
+		}
+
+		On notera que dans le cas où $k = 0$ ou $h = 0$, on retrouve la multiplication externe de l'espace produit tensoriel de la somme $V$. Par exemple, dans le cas où $k = 0$,
+		$$
+			\forall a \in \mathbb{R}, \forall b \in \bigotimes_{h} V, a \otimes_{0, h} b = a \cdot b \in \bigotimes_{h} V
+		$$
+
+		Comme pour le paragraphe précédent, on montre que $\otimes_{h, k}$ se comporte comme une opération associative.
+
+		\mathblock{theorem}{Associativité de $\otimes_{k, h}$}{
+			Soient $h, k, \ell \in \mathbb{N}$. \\
+			Soit $a \in \bigotimes_{k} V$. \\
+			Soit $b \in \bigotimes_{h} V$. \\
+			Soit $c \in \bigotimes_{\ell} V$. \bigskip \\
+			Alors
+			$$
+				(a \otimes_{k, h} b) \otimes_{k + h, \ell} c = a \otimes_{k, h + \ell} (b \otimes_{h, \ell} c) \in \bigotimes_{h + k + \ell} V
+			$$
+		}
+
+		Le théorème précédent permet donc d'affirmer que le parenthésage n'est plus indispensable. Cela en est de même pour la notation $\otimes_{k, h}$ qui n'est plus utile à préciser. Nous opterons dans toute la suite pour la notation suivante
+
+		\mathblock{definition}{Notation $\otimes$ pour les $k$-tenseurs}{
+			Soit $a \in \bigotimes_{k} V$. \\
+			Soit $b \in \bigotimes_{h} V$. \bigskip \\
+			On emploiera la notation suivante
+			$$
+				a \otimes b := a \otimes_{k, h} b
+			$$
+		}
+
+		Nous voyons dans la suite que la notation \flqq{} $a \otimes b$ \frqq{} possède un lien très fort avec $\mu(a, b)$ où $\mu$ satisfait la définition de l'espace produit tensoriel.
+
+		\mathblock{corollary}{Lien $a \otimes b$ avec $\mu(a, b)$}{
+			Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel. \\
+			Soit $(v_{1}, \cdots, v_{k}) \in V_{1} \otimes \cdots \otimes V_{k}$. \bigskip \\
+			Alors
+			$$
+				v_{1} \otimes \cdots \otimes v_{k} = \mu(v_{1}, \cdots, v_{k})
+			$$
+		}
+
+		Il s'agit bien ici d'une égalité et non d'une identification canonique.
 	}
 \end{document}
