@@ -9,7 +9,7 @@
 	L'objectif de cette partir est d'éterdre des fonctions de $W^{1, p}(U)$ à des fonctions de $W^{1, p}(\mathbb{R}^{n})$.
 
 	\mathblock{theorem}{d'extension}{
-		Soit $V \subset \subset U$. \bigskip \\
+		Soit $V \subset \subset U$ tel que $U \subset \subset V$. \bigskip \\
 		Alors il existe un opérateur linéaire bornée $E$
 		$$
 			E : W^{1, p}(U) \longrightarrow W^{1, p}(\mathbb{R}^{n})
@@ -24,4 +24,16 @@
 				$$
 		\end{mathlist}
 	}
-\end{document}lVer
+
+	\mathblock{definition}{Extension de $u$ sur $\mathbb{R}^{n}$}{
+		Soit $V \subset \subset U$ tel que $U \subset \subset V$. \\
+		Soit $E : W^{1, p}(U) \longrightarrow W^{1, p}(\mathbb{R}^{n})$ un opérateur linéaire satisfaisant le théorème précédent. \\
+		Soit $u \in W^{1, p}(U)$. \bigskip \\
+		On dit que $E u$ est une \textit{extension} de $u$ sur $\mathbb{R}^{n}$.
+	}
+
+	Il est également possible d'étendre cette extension pour $k = 2$. On obtiendra alors une majoration telle
+	$$
+		\lVert E u \rVert_{W^{2, p}(\mathbb{R}^{n})} \leq C \lVert u \rVert_{W^{2, p}(U)}
+	$$
+\end{document}

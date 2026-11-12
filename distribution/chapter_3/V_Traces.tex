@@ -1,0 +1,18 @@
+\documentclass[../distribution.tex]{subfiles}
+
+\begin{document}
+	\noindent Soit $U \subset \mathbb{R}^{n}$ un ouvert bornée, tel que $\partial U$ est $\mathscr{C}^{1}$.
+	\noindent Soit $p \in [1, +infty[$.
+
+	\mathblock{theorem}{de la trace}{
+		Alors il existe un opérateur linéaire
+		$$
+			T : W^{1, p}(U) \longrightarrow \mathrm{L}^{p}(\partial U)
+		$$
+		telle que
+		\begin{mathlist}
+			\item $\forall u \in W^{1, p}(U) \cap \mathscr{C}(\overline{U}), T u = u_{| \partial U}$.
+			\item $\exists C > 0$
+		\end{mathlist}
+	}
+\end{document}
