@@ -2,14 +2,16 @@
 
 \begin{document}
 	\subsection{Ensemble \texorpdfstring{$\mathscr{F}(S)$}{F(S)}}{
-		Avant de définir l'espace vectoriel \flqq{} produit tensoriel \frqq{}, nous commençons cette section par nous intéresser à l'espace des fonctions nulles partout sauf en un nombre fini de points. \bigskip
-
 		\noindent Soit $S$ un ensemble non vide.
+
+		\vspace{1em}
+
+		Avant de définir l'espace vectoriel \flqq{} produit tensoriel \frqq{}, nous commençons cette section par nous intéresser à l'espace des fonctions nulles partout sauf en un nombre fini de points.
 
 		\mathblock{definition}{Ensemble $\mathscr{F}(S)$}{
 			On appelle \textit{espace des fonctions presques nulles de $S$} l'ensemble noté $\mathscr{F}(S)$ définie par
 			$$
-				\mathscr{F}(S) := \{ f \in \mathcal{F}(S, \mathbb{R}) \exists J \subset S \ \text{fini} \ \forall s \in S \setminus J, f(s) = 0 \}
+				\mathscr{F}(S) := \{ f \in \mathcal{F}(S, \mathbb{R}) \ | \ \exists J \subset S \ \text{fini} \ \forall x \in S \setminus J, f(x) = 0 \}
 			$$
 		}
 
@@ -56,12 +58,50 @@
 			L'application $\delta : S \longrightarrow \mathscr{F}(S)$ est injective.
 		}
 
-		Ce caractère d'injectivité de $\delta$ nous permettra d'identifier canoniquement un élément $x \in S$ à son image par $\delta$. On pourra donc être amené à employer cette identification ($\text{id.}$ pour identification)
+		Ce caractère d'injectivité de $\delta$ nous permettra d'identifier canoniquement un élément $x \in S$ à son image par $\delta$. On pourra donc être amené à employer cette identification (\flqq{} $\text{id.}$ \frqq{} pour identification)
 		$$
 			\forall x \in S, x \overset{\text{id.}}{=} \delta_{x}
 		$$
 
-		Une des caractéristique fondamentale de $\delta$ est qu'elle satisfait une \flqq{} propriété universelle \frqq{} telle que les projections canoniques des quotients (confère la partie précédente). Plus formellement, on a donc
+		On termine finalement cette section en montrant que les $\delta_{x}$ pour $x \in S$ forment une base de $\mathscr{F}(S)$.
+
+		\mathblock{theorem}{Une base de $\mathscr{F}(S)$}{
+			La famille
+			$$
+				(\delta_{x})_{x \in S} := \{ \delta_{x}, x \in S \}
+			$$
+			forme une base de $\mathscr{F}(S)$
+		}
+
+		\mathblock{proof}{}{
+			On note $\mathcal{B} := (\delta_{x})_{x \in S}$.
+
+			\begin{itemize}
+				\item[$\bullet$] Montrons que $\mathcal{B}$ génère $\mathscr{F}(S)$. \\
+					Soit $f \in \mathscr{F}(S)$. \\
+					Par définition, soit $J \subset S$ fini tel que $\forall x \in S \setminus J, f(x) = 0$. \\
+					On montre alors que
+					$$
+						f = \sum_{x \in J} f(x) \times \delta_{x} 
+					$$
+					(la somme est bien définie car $J$ est finie)
+
+				\item[$\bullet$] Montrons que $\mathcal{B}$ est libre. \\
+					Soit $(\lambda_{x})_{x \in S} \in \mathbb{R}^{S}$ une famille presque nulle telle que
+					$$
+						\sum_{x \in S} \lambda_{x} \times \delta_{x} = 0_{\mathcal{F}(S, \mathbb{R})}
+					$$
+					Soit $s \in S$, on évalue cette expression en $s$. \\
+					Alors
+					$$
+						\lambda_{s} \times \delta_{s}(s) = 0
+					$$
+					D'où $\forall s \in S, \lambda_{s} = 0$. \\
+					Donc $\mathcal{B}$ est libre.
+			\end{itemize}
+		}
+
+		On termine finalement cette section en montrant une caractéristique fondamentale de $\delta$. On montre en effet que $\delta$ satisfait une \flqq{} propriété universelle \frqq{} telle que les projections canoniques des quotients (confère la partie précédente). Plus formellement, on a donc
 
 		\mathblock{theorem}{Propriété universelle de $\delta$}{
 			Soit $W$ un $\mathbb{R}$-espace vectoriel. \\
@@ -84,20 +124,42 @@
 			$$
 		}
 
-		On termine finalement cette section en montrant que les $\delta_{x}$ pour $x \in S$ forment une base de $\mathscr{F}(S)$.
+		\mathblock{proof}{}{
+			On raisonne par analyse-synthèse.
 
-		\mathblock{theorem}{Une base de $\mathscr{F}(S)$}{
-			La famille
-			$$
-				(\delta_{x})_{x \in S} := \{ \delta_{x}, x \in S \}
-			$$
-			forme une base de $\mathscr{F}(S)$
+			\begin{itemize}
+				\item[$\bullet$] Sous réserve d'existence, montrons l'unicité. \\
+					Soient $\overline{A}, \overline{B} \in \mathcal{L}(\mathscr{F}(S), W)$ telles que
+					$$
+						\overline{A} \circ \delta = \overline{B} \circ \delta = A
+					$$
+					Soit $x \in S$. \\
+					Alors en particulier $\overline{A}(\delta_{x}) = \overline{B}(\delta_{x})$. \\
+					Par le théorème précédent, on arrive au fait que $\overline{A}$ et $\overline{B}$ coïncident sur une base de $\mathscr{F}(S)$. \\
+					Donc $\overline{A} = \overline{B}$. \\
+					Sous réserve d'existence, on a donc l'unicité.
+
+				\item[$\bullet$] Montrons à présent l'existence. \\
+					On considère une fonction
+					$$
+						\overline{A} : {rcl}\mathscr{F}(S) \longrightarrow \mathbb{R}
+					$$
+					telle que
+					$$
+						\forall x \in S, \overline{A}(\delta_{x}) = A(x)
+					$$
+					On montre que cette définition est cohérence. \\
+					Autrement dit, nous montrons
+			\end{itemize}
 		}
 	}
 
 	\subsection{Espace produit tensoriel}{
 		\noindent Soit $k \in \mathbb{N}^{\star}$. \\
-		\noindent Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel. \bigskip \\
+		\noindent Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel.
+
+		\vspace{1em}
+
 		Avant de définir l'espace produit tensoriel de $k$ $\mathbb{R}$-espaces vectoriel, nous exposant l'espace vectoriel suivant, qu'on appèlera espace $R$ définie comme le plus petit espace vectoriel stable par opérations linéaires sur les applications $\delta$. Plus formellement,
 
 		\mathblock{definition}{Espace $R$}{
@@ -185,8 +247,12 @@
 
 	\subsection{Base de \texorpdfstring{$V_{1} \otimes \cdots \otimes V_{k}$}{V1 tenseur ... tenseur Vk}}{
 		\noindent Soit $k \in \mathbb{N}^{\star}$. \\
-		\noindent Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel. \bigskip \\
+		\noindent Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel.
+
+		\vspace{1em}
+
 		On commence cette partie en rajoutant une distinction supplémentaire parmi les $k$-tenseurs.
+
 		\mathblock{definition}{$k$-tenseur simple}{
 			On appelle \textit{$k$-tenseur simple} de $V_{1} \otimes \cdots \otimes V_{k}$ les éléments de $\mathrm{Im} \ \mu$.
 		}
@@ -244,6 +310,8 @@
 	\subsection{Produit tensoriel de vecteurs}{
 		\noindent Soient $k, h \in \mathbb{N}$. \\
 		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel.
+
+		\vspace{1em}
 
 		La question qu'on pourrait se poser c'est celle de l'existence d'un produit liant des $k$-tenseurs de $\bigotimes_{k} V$ et des $h$-tenseurs de $\bigotimes_{h} V$. Pour pouvoir définir un tel produit, on souhaiterez pouvoir multiplier un $k$-tenseur par un $h$-tenseur et obtenir un $(k+h)$-tenseur. Le théorème précédent sur \flqq{} l'associativité \frqq{} de l'espace produit tensoriel nous permettra d'arriver à ce résultat. Nous montrons dans un premier temps ce résultat intermédiaire.
 
