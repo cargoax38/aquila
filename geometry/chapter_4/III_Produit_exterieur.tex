@@ -1,0 +1,162 @@
+\documentclass[../geometrie.tex]{subfiles}
+
+\begin{document}
+	\subsection{Espace des \texorpdfstring{$m$-vecteurs}{m-vecteurs}}{
+		\noindent Soit $m \in \mathbb{N}$. \\
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel.
+
+		\mathblock{definition}{Espace $\mathcal{U}_{m} V$}{
+			On considère l'ensemble
+			$$
+				\begin{aligned}
+					\mathcal{U}_{m} V := \mathrm{Vect}(\{ & v_{1} \otimes \cdots \otimes v_{m}, \\
+					& \forall i \in [\![1, m]\!], v_{i} \in V, \exists i < j, v_{i} = v_{j} \})
+				\end{aligned}
+			$$
+		}
+
+		Cet ensemble correspond au $\mathbb{R}$-sous-espace de $\bigotimes_{m} V$ tel que les $m$-tenseurs simples possèdent au moins deux composantes identiques.
+
+		\mathblock{definition}{Espace des $m$-vecteurs $\wedge_{m} V$}{
+			On appelle \textit{espace produit extérieur d'ordre $m$} ou ($m$-fold extension product) l'ensemble noté $\wedge_{m} V$ et définie par
+			$$
+				\wedge_{m} V := \frac{\bigotimes_{m} V}{\mathcal{U}_{m} V}
+			$$
+		}
+
+		\mathblock{definition}{$m$-vecteur}{
+			On appelle \textit{$m$-vecteur} tout élément de $\wedge_{m} V$.
+		}
+
+		\mathblock{definition}{Notation de la projection canonique $\pi_{m}$}{
+			On notera la projection (ou surjection) canonique de $\wedge_{m} V$ par $\pi_{m}$.
+			$$
+				\pi_{m} :
+				\begin{array}{rcl}
+					\bigotimes_{m} V & \longrightarrow & \wedge_{m} V \\
+					a & \longmapsto & a + \mathcal{U}_{m} V
+				\end{array}
+			$$
+		}
+
+		Par construction, il possible de projeter une base $\bigotimes_{m} V$ par $\pi_{m}$ pour obtenir par la surjection canonique une famille génératrice de $\wedge_{m} V$.
+
+		\mathblock{proposition}{Famille génératrice de $\wedge_{m} V$}{
+			Soit $\mathcal{B}$ une base de $V$. \bigskip \\
+			Alors
+			$$
+				\wedge_{m} V = \mathrm{Vect}(\{ \pi_{m}(b_{1} \otimes \cdots \otimes b_{m}), \forall (b_{1}, \cdots, b_{m}) \in \mathcal{B}^{m} \})
+			$$
+		}
+
+		Les tels $m$-tenseurs simples $b_{1} \otimes \cdots \otimes b_{m}$ formant une base de $\otimes_{m} V$. \\
+		La question qu'on se pose à présent est de savoir si comme pour le produit tensoriel entre $m$-tenseurs $\otimes$, il est possible de définir un \flqq{} produit extérieur \frqq{} entre des $m$-vecteurs.
+	}
+
+	\subsection{Produit extérieur}{
+		\noindent Soient $h, k, \ell \in \mathbb{N}$. \\
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel. \\
+		En exploitant les propriétés de $\pi_{m}$, nous construisons un \flqq{} produit extérieur \frqq{}
+
+		\mathblock{theorem}{Application bilinéaire $\wedge_{k, h}$}{
+			Il existe une unique application bilinéaire
+			$$
+				\wedge_{k, h} :
+				\begin{array}{rcl}
+					\wedge_{k} V \times \wedge_{h} V & \longrightarrow & \wedge_{k + h} V \\
+					(\pi_{k}(a), \pi_{h}(b)) & \longmapsto & \pi_{k + h}(a \otimes b)
+				\end{array}
+			$$
+		}
+
+		L'idée de cette construction est donc de partir du produit déjà construit $\otimes$ et de le projeter via $\pi_{m}$.
+
+		% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGJpZ290aW1lc197a30gViBcXHRpbWVzIFxcYmlnb3RpbWVzX3tofSBWIl0sWzAsMiwiXFx3ZWRnZV97a30gViBcXHRpbWVzIFxcd2VkZ2Vfe2h9IFYiXSxbMiwwLCJcXGJpZ290aW1lc197ayArIGh9IFYiXSxbMiwyLCJcXHdlZGdlX3trICsgaH0gViJdLFswLDEsIlxccGlfe2h9Il0sWzAsMiwiXFxvdGltZXNfe2ssIGh9IiwyXSxbMSwzLCJcXHdlZGdlX3trLCBofSJdLFsyLDMsIlxccGlfe2sgKyBofSJdXQ==
+		$$
+			\begin{tikzcd}
+				{\bigotimes_{k} V \times \bigotimes_{h} V} && {\bigotimes_{k + h} V} \\
+				\\
+				{\wedge_{k} V \times \wedge_{h} V} && {\wedge_{k + h} V}
+				\arrow["{\otimes_{k, h}}"', from=1-1, to=1-3]
+				\arrow["{\pi_{k}}", from=1-1, to=3-1, shift right=7]
+				\arrow["{\pi_{h}}", from=1-1, to=3-1, shift left=6]
+				\arrow["{\pi_{k + h}}", from=1-3, to=3-3]
+				\arrow["{\wedge_{k, h}}", from=3-1, to=3-3]
+			\end{tikzcd}
+		$$
+
+		\mathblock{proof}{}{
+			Le principe de la preuve est surtout de montrer que la fonction est bien définie. Autrement dit que deux représentant d'une même classe donnent le même résultat.
+		}
+
+		On étudie à présent les propriétés relatives à $\wedge_{k, h}$.
+
+		\mathblock{theorem}{Associativité de $\wedge_{k, h}$}{
+			Soit $\xi \in \wedge_{k} V$. \\
+			Soit $\eta \in \wedge_{h} V$. \\
+			Soit $\zeta \in \wedge_{\ell} V$. \bigskip \\
+			Alors
+			$$
+				(\xi \wedge_{k, h} \eta) \wedge_{k + h, \ell} \zeta = \xi \wedge_{k, h + \ell} (\eta \wedge_{h, \ell} \zeta)
+			$$
+		}
+
+		\mathblock{proof}{}{
+			On se ramène à la commutativité de $\otimes_{k, h}$.
+		}
+
+		Ainsi, comme pour le produit tensoriel entre vecteurs, le parenthésage des expressions n'importe plus. De même à nouveau pour les indices $\wedge_{k, h}$. Nous opterons alors pour la notations suivante
+
+		\mathblock{definition}{Notation $\wedge$ pour les $m$-vecteurs}{
+			Soit $\xi \in \wedge_{k} V$. \\
+			Soit $\eta \in \wedge_{h} V$. \bigskip \\
+			On emploiera la notation suivante
+			$$
+				\xi \wedge \eta := \xi \wedge_{k, h} \eta
+			$$
+		}
+
+		Encore une fois, comme avec $\otimes$, $\wedge$ possède un lien avec $\pi_{m}$.
+
+		\mathblock{corollary}{Lien entre $\wedge$ et $\pi_{m}$}{
+			Soit $(v_{1}, \cdots, v_{m}) \in V$. \bigskip \\
+			Alors
+			$$
+				v_{1} \wedge \cdots \wedge v_{m} = \pi_{m}(v_{1} \otimes \cdots v_{m}) \in \wedge_{m} V
+			$$
+		}
+
+		On montre à présent que le $\wedge$ est antisymétrique.
+
+		\mathblock{theorem}{Antisymétrie de $\wedge$}{
+			Soit $\xi \in \wedge_{k} V$. \\
+			Soit $\eta \in \wedge_{h} V$. \bigskip \\
+			Alors
+			$$
+				\xi \wedge \eta = (-1)^{k h} \eta \wedge \xi
+			$$
+		}
+	}
+
+	\subsection{Base de \texorpdfstring{$\wedge_{m} V$}{l'espace des m-vecteurs}}{
+		\indent Soit $m \in \mathbb{N}$. \\
+		\indent Soit $V$ un $\mathbb{R}$-espace vectoriel possédant une base dénombrable.
+
+		\vspace{1em}
+
+		Dans cette section, on s'intéresse à déterminer une base de $\wedge_{m} V$.
+
+		\mathblock{theorem}{Base $\wedge_{m} V$ avec $V$ dénombrable}{
+			Soit $\mathcal{B} := (e_{i})_{i \in \mathbb{N}^{\star}}$ une base dénombrable de $V$. \\
+			Soit l'ensemble
+			$$
+				I_{m} := \{ \lambda \in \mathcal{F}([\![1, m]\!], \mathbb{N}) \ \text{strictement croissante} \}
+			$$
+			Alors
+			$$
+				\{ e_{\lambda(1)} \wedge \cdots \wedge e_{\lambda(m)}, \lambda \in I_{m} \}
+			$$
+			est une base de $\wedge_{m} V$.
+		}
+	}
+\end{document}

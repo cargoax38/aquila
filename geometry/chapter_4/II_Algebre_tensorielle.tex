@@ -1,0 +1,310 @@
+\documentclass[../geometrie.tex]{subfiles}
+
+\begin{document}
+	\subsection{Ensemble \texorpdfstring{$\mathscr{F}(S)$}{F(S)}}{
+		Avant de définir l'espace vectoriel \flqq{} produit tensoriel \frqq{}, nous commençons cette section par nous intéresser à l'espace des fonctions nulles partout sauf en un nombre fini de points. \bigskip
+
+		\noindent Soit $S$ un ensemble non vide.
+
+		\mathblock{definition}{Ensemble $\mathscr{F}(S)$}{
+			On appelle \textit{espace des fonctions presques nulles de $S$} l'ensemble noté $\mathscr{F}(S)$ définie par
+			$$
+				\mathscr{F}(S) := \{ f \in \mathcal{F}(S, \mathbb{R}) \exists J \subset S \ \text{fini} \ \forall s \in S \setminus J, f(s) = 0 \}
+			$$
+		}
+
+		On vérifie ensuite que cette ensemble possède une structure d'espace vectoriel héritée de l'espace des fonctions $\mathcal{F}(S, \mathbb{R})$.
+
+		\mathblock{proposition}{$\mathscr{F}(S)$ est un $\mathbb{R}$-espace vectoriel}{
+			On a l'espace $(\mathscr{F}(S), +, \cdot)$ qui est un $\mathbb{R}$-sous-espace vectoriel de $(\mathcal{F}(S, \mathbb{R}, +, \cdot)$.
+		}
+
+		Pour pouvoir caractériser au mieux cet espace, nous nous intéressons à présent aux application \flqq{} symbole de \textsc{Kronecker} \frqq{}, qui s'avèrent utilent ici pour pouvoir décrire des fonctions qui ne sont définies que ponctuellement. On montrera même que ces fonctions forment une base de $\mathscr{F}(S)$. Dans $\mathbb{R}$, on représentera le symbole de \textsc{Kronecker} de la manière suivante
+		$$
+			\forall x, y \in \mathbb{R}, \delta_{x, y} =
+			\left\{
+				\begin{array}{rcl}
+					1 & \text{si} & x = y \\
+					0 & \text{si} & x \neq y
+				\end{array}
+			\right.
+		$$
+
+		\mathblock{definition}{Application $\delta$}{
+			On appelle \textit{application $\delta$} la fonctionnelle définie par
+			$$
+				\delta :
+				\begin{array}{rcl}
+					S & \longrightarrow & \mathscr{F}(S) \\
+					x & \longmapsto &
+					\begin{array}{rcl}
+						S & \longrightarrow & \mathbb{R} \\
+						s & \longmapsto & \delta_{s, x}
+					\end{array}
+				\end{array}
+			$$
+		}
+
+		Pour $x \in S$, on privilégiera la notation suivante pour $\delta(x)$
+		$$
+			\delta_{x} := \delta(x)
+		$$
+
+		A présent, on montre que $\delta : S \longrightarrow \mathscr{F}(S)$ décrit une application injective.
+
+		\mathblock{proposition}{$\delta$ est injective}{
+			L'application $\delta : S \longrightarrow \mathscr{F}(S)$ est injective.
+		}
+
+		Ce caractère d'injectivité de $\delta$ nous permettra d'identifier canoniquement un élément $x \in S$ à son image par $\delta$. On pourra donc être amené à employer cette identification ($\text{id.}$ pour identification)
+		$$
+			\forall x \in S, x \overset{\text{id.}}{=} \delta_{x}
+		$$
+
+		Une des caractéristique fondamentale de $\delta$ est qu'elle satisfait une \flqq{} propriété universelle \frqq{} telle que les projections canoniques des quotients (confère la partie précédente). Plus formellement, on a donc
+
+		\mathblock{theorem}{Propriété universelle de $\delta$}{
+			Soit $W$ un $\mathbb{R}$-espace vectoriel. \\
+			Soit $A : S \longrightarrow W$ une application. \bigskip \\
+			Alors $\exists ! \overline{A} \in \mathcal{L}(\mathscr{F}(S), W)$ telle que
+			$$
+				\overline{A} \circ \delta = A
+			$$
+			Ce qui revient à dire que $\overline{A}$ satisfait le diagramme commutatif suivant
+			% https://q.uiver.app/#q=WzAsMyxbMCwwLCJTIl0sWzIsMCwiVyJdLFswLDIsIlxcbWF0aHNjcntGfShTKSJdLFswLDEsIkEiXSxbMCwyLCJcXGRlbHRhIiwyXSxbMiwxLCJcXG92ZXJsaW5le0F9IiwyXV0=
+			$$
+				\begin{tikzcd}[ampersand replacement=\&]
+					S \&\& W \\
+					\\
+					{\mathscr{F}(S)}
+					\arrow["A", from=1-1, to=1-3]
+					\arrow["\delta"', from=1-1, to=3-1]
+					\arrow["{\overline{A}}"', from=3-1, to=1-3]
+				\end{tikzcd}
+			$$
+		}
+
+		On termine finalement cette section en montrant que les $\delta_{x}$ pour $x \in S$ forment une base de $\mathscr{F}(S)$.
+
+		\mathblock{theorem}{Une base de $\mathscr{F}(S)$}{
+			La famille
+			$$
+				(\delta_{x})_{x \in S} := \{ \delta_{x}, x \in S \}
+			$$
+			forme une base de $\mathscr{F}(S)$
+		}
+	}
+
+	\subsection{Espace produit tensoriel}{
+		\noindent Soit $k \in \mathbb{N}^{\star}$. \\
+		\noindent Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel. \bigskip \\
+		Avant de définir l'espace produit tensoriel de $k$ $\mathbb{R}$-espaces vectoriel, nous exposant l'espace vectoriel suivant, qu'on appèlera espace $R$ définie comme le plus petit espace vectoriel stable par opérations linéaires sur les applications $\delta$. Plus formellement,
+
+		\mathblock{definition}{Espace $R$}{
+			On appelle \textit{espace $R$} l'espace vectoriel définie par
+			$$
+				\begin{aligned}
+					R := \mathrm{Vect}( & \{\delta_{(v_{1}, \cdots, a v_{i}, \cdots, v_{k})} - a \times \delta_{(v_{1}, \cdots, v_{k})} \\
+					& \delta_{(v_{1}, \cdots, v_{i} + \tilde{v}_{i})} - \delta_{(v_{1}, \cdots, v_{k})} - \delta_{(v_{1}, \cdots, \tilde{v}_{i}, \cdots, v_{k})}, \\
+					& \forall a \in \mathbb{R}, \\
+					& \forall i \in [\![1, k]\!], \forall \tilde{v}_{i} \in V_{i}, \\
+					& \forall (v_{1}, \cdots, v_{k}) \in V_{1} \times \cdots \times V_{k}
+					\})
+				\end{aligned}
+			$$
+		}
+
+		Nous allons à présent donner la définition du produit tensoriel de $k$ espaces vectoriels quelconques. Mais avant, nous introduisont la notation suivante. Pour $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriels et $W$ un $R$-espace vectoriel, on notera $\mathcal{L}^{k}(V_{1} \times \cdots \times V_{k}, W)$ l'ensemble des application $k$-linéaire de $V_{1} \times \cdots \times V_{k}$ vers $W$. \bigskip
+
+		\mathblock{definition}{Espace produit tensoriel}{
+			Soit $V$ un $\mathbb{R}$-espace vectoriel. \bigskip \\
+			On dit que $V$ est un \textit{produit tensoriel} de $V_{1} \times \cdots \times V_{k}$ s'il existe $\mu \in \mathcal{L}^{k}(V_{1} \times \cdots \times V_{k}, V)$ telle que pour tout $\mathbb{R}$-espace vectoriel $W$, $\mu$ satisfait la \flqq{} propriété universelle \frqq{} suivante : $\forall f \in \mathcal{L}^{k}(V_{1} \times \cdots \times V_{k}, V), \exists ! \overline{f} \in \mathcal{L}^{k}(V, W)$ telle que
+			$$
+				\overline{f} \circ \mu = f
+			$$
+			Autrement dit, que $\mu$ satisfait le diagramme commutatif suivant pour un tel $f$.
+
+			% https://q.uiver.app/#q=WzAsMyxbMCwwLCJWX3sxfSBcXHRpbWVzIFxcY2RvdHMgXFx0aW1lcyBWX3trfSJdLFsyLDAsIlciXSxbMCwyLCJWIl0sWzAsMSwiZiJdLFswLDIsIlxcbXUiLDJdLFsyLDEsIlxcb3ZlcmxpbmV7Zn0iLDJdXQ==
+			$$
+				\begin{tikzcd}[ampersand replacement=\&]
+					{V_{1} \times \cdots \times V_{k}} \&\& W \\
+					\\
+					V
+					\arrow["f", from=1-1, to=1-3]
+					\arrow["\mu"', from=1-1, to=3-1]
+					\arrow["{\overline{f}}"', from=3-1, to=1-3]
+				\end{tikzcd}
+			$$
+		}
+
+		\mathblock{definition}{$k$-tenseur}{
+			Soit $V$ un produit tensoriel de $V_{1} \times \cdots \times V_{k}$. \bigskip \\
+			On appelle \textit{$k$-tenseur} les éléments de $V$.
+		}
+
+		Cette définition permet de donner un nom à un tel espace vectoriel $V$, mais elle ne garantit en rien son existence ni même son éventuelle unicité. Le théorème suivant permet d'afficher qu'un tel espace $V$ existe avec la configuration de la définition et est même unique à un isomorphisme près.
+
+		\mathblock{theorem}{Existence et unicité de l'espace produit tensoriel}{
+			On a $V_{1} \times \cdots \times V_{k}$ qui admet un unique espace produit tensoriel à un isomorphisme près.
+		}
+
+		Ce théorème nous permet donc par son résultat d'unicité de définir la notation suivante
+		
+		\mathblock{definition}{Notation $V_{1} \otimes \cdots \otimes V_{k}$}{
+			Soit $V$ un produit tensoriel de $V_{1} \times \cdots \times V_{k}$. \bigskip \\
+			On adoptera la notation suivante
+			$$
+				V_{1} \otimes \cdots \otimes V_{k} := V
+			$$
+		}
+
+		Dans le cas particulier où on ne s'intéresse qu'à un seul espace vectoriel, on adoptera la notation suivante
+
+		\mathblock{definition}{Notation $\bigotimes_{k} V$}{
+			Soit $V$ un $\mathbb{R}$-espace vectoriel. \bigskip \\
+			On adoptera la notation suivante
+
+			\begin{mathlist}
+				\item Dans le cas où $k > 0$
+					$$
+						\bigotimes_{k} V := \underset{k \ \text{fois}}{\underbrace{V \otimes \cdots \otimes V}}
+					$$
+				\item Si $k = 1$, on notera
+					$$
+						\bigotimes_{1} V := V
+					$$
+				\item Dans le cas où $k = 0$, on adoptera la convention suivante
+					$$
+						\bigotimes_{0} V := \mathbb{R}
+					$$
+			\end{mathlist}
+		}
+
+		On cherche maintenant à mieux comprendre les propriétés de $V_{1} \otimes \cdots \otimes V_{k}$.
+	}
+
+	\subsection{Base de \texorpdfstring{$V_{1} \otimes \cdots \otimes V_{k}$}{V1 tenseur ... tenseur Vk}}{
+		\noindent Soit $k \in \mathbb{N}^{\star}$. \\
+		\noindent Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel. \bigskip \\
+		On commence cette partie en rajoutant une distinction supplémentaire parmi les $k$-tenseurs.
+		\mathblock{definition}{$k$-tenseur simple}{
+			On appelle \textit{$k$-tenseur simple} de $V_{1} \otimes \cdots \otimes V_{k}$ les éléments de $\mathrm{Im} \ \mu$.
+		}
+
+		Dans le cas général, il n'est pas vrai que $V_{1} \otimes \cdots \otimes V_{k} = \mathrm{Im} \ \mu$, toutefois, $\mathrm{Im} \ mu$ génère toujours l'espace produit tensoriel.
+
+		\mathblock{proposition}{Les $k$-tenseurs simples génèrent $V_{1} \otimes \cdots \otimes V_{k}$}{
+			On a
+			$$
+				V_{1} \otimes \cdots \otimes V_{k} = \mathrm{Vect}(\mathrm{Im} \ \mu)
+			$$
+		}
+
+		En raffinant encore l'ensemble des $k$-tenseurs simples en ne prenant que des vecteurs de bases des espaces $V_{1}, \cdots, V_{k}$ il est même possible d'obtenir la liberté et donc de trouver une base de $V_{1} \otimes \cdots \otimes V_{k}$.
+
+		\mathblock{theorem}{Une base de $V_{1} \otimes \cdots \otimes V_{k}$}{
+			Pour $i \in [\![1, k]\!]$, soit $\mathcal{B}_{i}$ une base de $V_{k}$. \\
+			Soit l'ensemble
+			$$
+				\mathcal{B} := \{ \mu(b_{1}, \cdots, b_{k}), \forall i \in [\![1, k]\!], b_{i} \in \mathcal{B}_{i} \}
+			$$
+			Alors $\mathcal{B}$ est une base de $V_{1} \otimes \cdots \otimes V_{k}$.
+		}
+
+		Pour terminer cette section, on montre un résultat fondamental des espaces produit tensoriel, à savoir \flqq{} l'associativité de $\otimes$ \frqq{}. Autrement dit que d'une certaine manière, $V_{1} \otimes (V_{2} \otimes V_{3})$ et $(V_{1} \otimes V_{2}) \otimes V_{3}$ sont similaires (à un isomorphisme près).
+
+		\mathblock{theorem}{Associativité de $\otimes$}{
+			Soit $\ell \in \mathbb{N}^{\star}$. \\
+			Soit $m_{0} := 0$. \\
+			Soient $m_{1}, \cdots, m_{\ell} \in \mathbb{N}^{\star}$ tels que
+			$$
+				\sum_{j = 1}^{\ell} m_{j} = k
+			$$
+			Pour $j \in [\![1, \ell]\!]$, on pose
+			\begin{mathlist}
+				\item $W_{j} := V_{m_{j-1}+1} \otimes \cdots \otimes V_{m_{j}}$.
+				\item $\mu_{W_{j}}$ l'application $(m_{j} - m_{j - 1})$-linéaire.
+			\end{mathlist} \bigskip
+			Alors il existe un unique isomorphisme
+			$$
+				\Phi : V_{1} \otimes \cdots \otimes V_{k} \longrightarrow W_{1} \otimes \cdots \otimes W_{\ell}
+			$$
+			telle que $\forall \mu(v_{1}, \cdots, v_{k}) \in \mathrm{Im} \ \mu$
+			$$
+				\begin{aligned}
+					\Phi(\mu(v_{1}, \cdots, v_{k})) = \mu_{W}( & \mu_{W_{1}}(v_{1}, \cdots, v_{m_{1}}), \cdots, \\
+					& \mu_{W_{\ell}}(v_{m_{\ell-1}+1}, \cdots, v_{m_{\ell}}))
+				\end{aligned}
+			$$
+		}
+
+		On termine cette partie en parlant du produit tensoriel de vecteurs.
+	}
+
+	\subsection{Produit tensoriel de vecteurs}{
+		\noindent Soient $k, h \in \mathbb{N}$. \\
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel.
+
+		La question qu'on pourrait se poser c'est celle de l'existence d'un produit liant des $k$-tenseurs de $\bigotimes_{k} V$ et des $h$-tenseurs de $\bigotimes_{h} V$. Pour pouvoir définir un tel produit, on souhaiterez pouvoir multiplier un $k$-tenseur par un $h$-tenseur et obtenir un $(k+h)$-tenseur. Le théorème précédent sur \flqq{} l'associativité \frqq{} de l'espace produit tensoriel nous permettra d'arriver à ce résultat. Nous montrons dans un premier temps ce résultat intermédiaire.
+
+		\mathblock{lemma}{Application bilinéaire $\otimes_{k, h}$}{
+			Soit $\Phi : \bigotimes_{k} V \otimes \bigotimes_{h} V \longrightarrow \bigotimes_{k + h} V$ du théorème précédent. \\
+			Soit $\mu_{k, h} \in \mathcal{L}^{2}(\bigotimes_{k} V \times \bigotimes_{h} V, \bigotimes_{k} V \otimes \bigotimes_{h} V)$ de la définition de l'espace produit tensoriel. \\
+			Soit l'application $\cdot_{\otimes}$ définie par
+			$$
+				\otimes_{k, h} :
+				\begin{array}{rcl}
+					\bigotimes_{k} V \times \bigotimes_{h} V & \longrightarrow & \bigotimes_{k + h} V \\
+					(a, b) & \longmapsto & a \otimes_{k, h} b := (\Phi \circ \mu_{k, h})(a, b)
+				\end{array}
+			$$
+			Alors $\otimes_{k, h}$ est bien définie, est bilinéaire et est unique.
+		}
+
+		\mathblock{proof}{}{
+			L'existence et l'unicité ainsi que le caractère bilinéaire découlent du théorème d'existence du produit tensoriel. On utilise ensuite le théorème d'associativité pour arriver au résultat souhaité.
+		}
+
+		On notera que dans le cas où $k = 0$ ou $h = 0$, on retrouve la multiplication externe de l'espace produit tensoriel de la somme $V$. Par exemple, dans le cas où $k = 0$,
+		$$
+			\forall a \in \mathbb{R}, \forall b \in \bigotimes_{h} V, a \otimes_{0, h} b = a \cdot b \in \bigotimes_{h} V
+		$$
+
+		Comme pour le paragraphe précédent, on montre que $\otimes_{h, k}$ se comporte comme une opération associative.
+
+		\mathblock{theorem}{Associativité de $\otimes_{k, h}$}{
+			Soient $h, k, \ell \in \mathbb{N}$. \\
+			Soit $a \in \bigotimes_{k} V$. \\
+			Soit $b \in \bigotimes_{h} V$. \\
+			Soit $c \in \bigotimes_{\ell} V$. \bigskip \\
+			Alors
+			$$
+				(a \otimes_{k, h} b) \otimes_{k + h, \ell} c = a \otimes_{k, h + \ell} (b \otimes_{h, \ell} c) \in \bigotimes_{h + k + \ell} V
+			$$
+		}
+
+		Le théorème précédent permet donc d'affirmer que le parenthésage n'est plus indispensable. Cela en est de même pour la notation $\otimes_{k, h}$ qui n'est plus utile à préciser. Nous opterons dans toute la suite pour la notation suivante
+
+		\mathblock{definition}{Notation $\otimes$ pour les $k$-tenseurs}{
+			Soit $a \in \bigotimes_{k} V$. \\
+			Soit $b \in \bigotimes_{h} V$. \bigskip \\
+			On emploiera la notation suivante
+			$$
+				a \otimes b := a \otimes_{k, h} b
+			$$
+		}
+
+		Nous voyons dans la suite que la notation \flqq{} $a \otimes b$ \frqq{} possède un lien très fort avec $\mu(a, b)$ où $\mu$ satisfait la définition de l'espace produit tensoriel.
+
+		\mathblock{corollary}{Lien $a \otimes b$ avec $\mu(a, b)$}{
+			Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel. \\
+			Soit $(v_{1}, \cdots, v_{k}) \in V_{1} \otimes \cdots \otimes V_{k}$. \bigskip \\
+			Alors
+			$$
+				v_{1} \otimes \cdots \otimes v_{k} = \mu(v_{1}, \cdots, v_{k})
+			$$
+		}
+
+		Il s'agit bien ici d'une égalité et non d'une identification canonique.
+	}
+\end{document}
