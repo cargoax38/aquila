@@ -1,0 +1,58 @@
+\documentclass[../distribution.tex]{subfiles}
+
+\begin{document}
+	\subsection{Approximation locale}{
+		\noindent Soit $U \subset \mathbb{R}^{n}$. \\
+		\noindent Soit $k \in \mathbb{N}$. \\
+		\noindent Soit $p \in [1, +\infty[$.
+
+		\mathblock{definition}{Intérieur $U_{\varepsilon}$}{
+			Soit $\varepsilon > 0$. \bigskip \\
+			On appelle \textit{intérieur $\varepsilon$ de $U$} l'ensemble $U_{\varepsilon}$ définie par
+			$$
+				U_{\varepsilon} := \{ x \in U \ | \ d(x, U) < \varepsilon \}
+			$$
+		}
+
+		\mathblock{theorem}{Approximation locale via fonctions lisses}{
+			Soit $u \in W^{k, p}(U)$. \\
+			Soit $(\eta_{\varepsilon})_{\varepsilon > 0}$ la famille des adoucisseurs de \textsc{Friedrichs}. \\
+			Soit la famille de fonctions $(u^{\varepsilon})$ définie par
+			$$
+				\forall \varepsilon > 0, u^{\varepsilon} := \eta_{\varepsilon} * u
+			$$
+			Alors
+			\begin{mathlist}
+				\item $\forall \varepsilon > 0, u^{\varepsilon} \in \mathscr{C}^{\infty}(U_{\varepsilon})$.
+				\item On a
+					$$
+						u^{\varepsilon} \overset{W_{\text{loc}}^{k, p}(U)}{\underset{\varepsilon \to 0}{\longrightarrow}} u
+					$$
+			\end{mathlist}
+		}
+	}
+
+	\subsection{Approximation globale}{
+		\noindent Soit $U \subset \mathbb{R}^{n}$ un ouvert borné. \\
+		\noindent Soit $k \in \mathbb{N}$. \\
+		\noindent Soit $p \in [1, +\infty[$.
+
+		\mathblock{theorem}{Approximation par des fonctions $\mathscr{C}^{\infty}(U)$}{
+			Soit $u \in W^{k, p}(U)$. \bigskip \\
+			Alors il existe une suite $(u_{m}) \in (\mathscr{C}^{\infty} \cap W^{k, p}(U))^{\mathbb{N}}$ telle que
+			$$
+				u_{m} \overset{W^{k, p}(U)}{\underset{m \to +\infty}{\longrightarrow}} u
+			$$
+		}
+
+
+		\mathblock{theorem}{Approximation par des fonctions $\mathscr{C}^{\infty}(\overline{U})$}{
+			Supposons $\partial U$ qui est $\mathscr{C}^{1}$. \\
+			Soit $u \in W^{k, p}(U)$. \bigskip \\
+			Alors il existe une suite $(u_{m}) \in (\mathscr{C}^{\infty}(\overline{U}))^{\mathbb{N}}$
+			$$
+				u_{m} \overset{W^{k, p}(U)}{\underset{m \to +\infty}{\longrightarrow}} u
+			$$
+		}
+	}
+\end{document}

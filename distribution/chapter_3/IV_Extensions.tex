@@ -1,0 +1,27 @@
+\documentclass[../distribution.tex]{subfiles}
+
+\begin{document}
+	\noindent Soit $U \subset \mathbb{R}^{n}$ un ouvert bornée tel que $\partial U$ est $\mathscr{C}^{1}$. \\
+	\noindent Soit $p \in [1, +\infty]$.
+
+	\vspace{1em}
+
+	L'objectif de cette partir est d'éterdre des fonctions de $W^{1, p}(U)$ à des fonctions de $W^{1, p}(\mathbb{R}^{n})$.
+
+	\mathblock{theorem}{d'extension}{
+		Soit $V \subset \subset U$. \bigskip \\
+		Alors il existe un opérateur linéaire bornée $E$
+		$$
+			E : W^{1, p}(U) \longrightarrow W^{1, p}(\mathbb{R}^{n})
+		$$
+		tel que
+		\begin{mathlist}
+			\item $\forall u \in W^{1, p}(U), (E u)_{| U} = u$ (dans $\mathrm{L}^{p}(U)$).
+			\item $\forall u \in W^{1, p}(U), \mathrm{Supp} \ E u \subset V$.
+			\item $\exists C > 0, \forall u \in W^{1, p}(U)$,
+				$$
+					\lVert E u \rVert_{W^{1, p}(\mathbb{R}^{n})} \leq C \lVert u \rVert_{W^{1, p}(U)}
+				$$
+		\end{mathlist}
+	}
+\end{document}lVer
