@@ -507,6 +507,88 @@
 			Alors $\mathcal{B}$ est une base de $V_{1} \otimes \cdots \otimes V_{k}$.
 		}
 
+		\mathblock{proof}{}{
+			\begin{mathlist}
+				\item Montrons que $\mathcal{B}$ génère $V_{1} \otimes \cdots \otimes V_{k}$. \\
+					Pour cela, on utilise la proposition précédente en montrant que
+					$$
+						\mathrm{Vect}(\mathrm{Im} \ \mu) = \mathrm{Vect}(\mathcal{B})
+					$$
+					Soit $a \in \mathrm{Im} \ \mu$. \\
+					Soit alors $(v_{1}, \cdots, v_{k}) \in V_{1} \times \cdots \times V_{k}$ tel que
+					$$
+						a = \mu(v_{1}, \cdots, v_{k})
+					$$
+					Soit $i \in [\![1, k]\!]$. \\
+					Puisque $\mathcal{B}_{i}$ est une base de $V_{i}$, soit $(\lambda_{i, b_{i}})_{b_{i} \in \mathcal{B}_{i}} \in \mathbb{R}^{\mathcal{B}_{i}}$ une famille presque nulle telle que
+					$$
+						v_{i} = \sum_{b_{i} \in \mathcal{B}_{i}} \lambda_{i, b_{i}} \times b_{i}
+					$$
+					Ainsi pour tout $i \in [\![1, k]\!]$, la somme est finie et on a par $k$-linéarité de $\mu$
+					$$
+						\begin{aligned}
+							a & = \mu(v_{1}, \cdots, v_{k}) = \mu \! \left( \sum_{b_{1} \in \mathcal{B}_{1}} \lambda_{1, b_{1}}, \cdots, \sum_{b_{k} \in \mathcal{B}_{k}} \lambda_{k, b_{k}} \times b_{k} \right) \\
+							& = \sum_{b_{1} \in \mathcal{B}_{1}} \cdots \sum_{b_{k} \in \mathcal{B}_{k}} \lambda_{1, b_{1}} \times \cdots \times \lambda_{k, b_{k}} \times \mu(b_{1}, \cdots, b_{k})
+						\end{aligned}
+					$$
+					Donc $a$ est une combinaison linéaire finie des éléments de $\mathcal{B}$. \\
+					Donc $a \in \mathrm{Vect}(\mathcal{B})$. \\
+					Donc
+					$$
+						\mathrm{Vect}(\mathrm{Im} \ \mu) \subset \mathrm{Vect}(\mathcal{B})
+					$$
+					Inversement, on a directement que $\mathcal{B} \subset \mathrm{Im} \ \mu$ d'où
+					$$
+						\mathrm{Vect}(\mathcal{B}) \subset \mathrm{Vect}(\mathrm{Im} \ \mu)
+					$$
+					et l'égalité. \\
+					Par la proposition précédente, on conclue bien que $\mathcal{B}$ génère $V_{1} \otimes \cdots \otimes V_{k}$
+					$$
+						V_{1} \otimes \cdots \otimes V_{k} = \mathrm{Vect}(\mathcal{B})
+					$$
+				\item Montrons à présent la liberté de $\mathcal{B}$. \\
+					On note $\mathfrak{B} := \mathcal{B}_{1} \times \cdots \times \mathcal{B}_{k}$. \\
+					Soit $(\lambda_{b_{1}, \cdots, b_{k}}) \in \mathbb{R}^{\mathfrak{B}}$ une famille presque nulle telle que
+					$$
+						\sum_{(b_{1}, \cdots, b_{k}) \in \mathfrak{B}} \lambda_{(b_{1}, \cdots, b_{k})} \times \mu(b_{1}, \cdots, b_{k}) = 0_{V_{1} \otimes \cdots \otimes V_{k}}
+					$$
+					Soit $(b_{1}, \cdots, b_{k}) \in \mathfrak{B}$, on considère l'application
+					$$
+						L_{(b_{1}, \cdots, b_{k})} :
+						\begin{array}{rcl}
+							V_{1} \times \cdots \times V_{k} & \longrightarrow & \mathbb{R} \\
+							(v_{1}, \cdots, v_{k}) & \longmapsto & \displaystyle \prod_{i = 1}^{k} b_{i}^{*}(v_{i})
+						\end{array}
+					$$
+					Par construction (linéarité des $b_{i}^{*}$), $L_{(v_{1}, \cdots, v_{k})} \in \mathcal{L}^{k}(V_{1} \times \cdots \times V_{k}, \mathbb{R})$.
+					En particulier, pour $(\beta_{1}, \cdots, \beta_{k}) \in \mathfrak{B}$, on a
+					$$
+						\begin{aligned}
+							L_{(b_{1}, \cdots, b_{k})}(\beta_{1}, \cdots, \beta_{k}) & = \prod_{i = 1}^{k} b_{i}^{*}(\beta_{i}) \\
+							& = \prod_{i = 1}^{k} \delta_{b_{i}, \beta_{i}} \\
+							& = \delta_{(b_{1}, \cdots, b_{k}), (\beta_{1}, \cdots, \beta_{k})}
+						\end{aligned}
+					$$
+					De plus, par la propriété universelle de $\mu$, soit l'unique application $\overline{L}_{(v_{1}, \cdots, v_{k}} \in \mathcal{L}(V_{1} \otimes \cdots \otimes V_{k}, \mathbb{R})$ telle que
+					$$
+						\overline{L}_{(v_{1}, \cdots, v_{k})} \circ \mu = L_{(v_{1}, \cdots, v_{k})}
+					$$
+					On a donc par linéarité de $\overline{L}_{(b_{1}, \cdots, b_{k})}$
+					$$
+						\begin{aligned}
+							0 & = \overline{L}_{(v_{1}, \cdots, v_{k})} \! \left( \sum_{(\beta_{1}, \cdots, \beta_{k}) \in \mathfrak{B}} \lambda_{(\beta_{1}, \cdots, \beta_{k})} \times \mu(\beta_{1}, \cdots, \beta_{k}) \right) \\
+							& = \sum_{(\beta_{1}, \cdots, \beta_{k}) \in \mathfrak{B}} \lambda_{(\beta_{1}, \cdots, \beta_{k})} \times \overline{L}_{(b_{1}, \cdots, b_{k})}(\mu(\beta_{1}, \cdots, \beta_{k})) \\
+							& = \sum_{(\beta_{1}, \cdots, \beta_{k}) \in \mathfrak{B}} \lambda_{(\beta_{1}, \cdots, \beta_{k})} \times \delta_{(b_{1}, \cdots, b_{k}), (\beta_{1}, \cdots, \beta_{k})} \\
+							& = \lambda_{(b_{1}, \cdots, b_{k})}
+						\end{aligned}
+					$$
+					Ainsi $\forall (b_{1}, \cdots, b_{k}) \in \mathfrak{B}, \lambda_{(b_{1}, \cdots, b_{k})} = 0$. \\
+					Donc $\mathcal{B}$ est libre.
+			\end{mathlist}
+
+			Finalement, $\mathcal{B}$ est bien une base de $V_{1} \otimes \cdots \otimes V_{k}$.
+		}
+
 		Pour terminer cette section, on montre un résultat fondamental des espaces produit tensoriel, à savoir \flqq{} l'associativité de $\otimes$ \frqq{}. Autrement dit que d'une certaine manière, $V_{1} \otimes (V_{2} \otimes V_{3})$ et $(V_{1} \otimes V_{2}) \otimes V_{3}$ sont similaires (à un isomorphisme près).
 
 		\mathblock{theorem}{Associativité de $\otimes$}{
@@ -595,14 +677,14 @@
 		Nous voyons dans la suite que la notation \flqq{} $a \otimes b$ \frqq{} possède un lien très fort avec $\mu(a, b)$ où $\mu$ satisfait la définition de l'espace produit tensoriel.
 
 		\mathblock{corollary}{Lien $a \otimes b$ avec $\mu(a, b)$}{
-			Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel. \\
-			Soit $(v_{1}, \cdots, v_{k}) \in V_{1} \otimes \cdots \otimes V_{k}$. \bigskip \\
+			Soient $V$ $\mathbb{R}$-espaces vectoriel. \\
+			Soit $(v_{1}, \cdots, v_{k}) \in V^{k}$. \bigskip \\
 			Alors
 			$$
 				v_{1} \otimes \cdots \otimes v_{k} = \mu(v_{1}, \cdots, v_{k})
 			$$
 		}
 
-		Il s'agit bien ici d'une égalité et non d'une identification canonique.
+		(A vérifier : Il s'agit bien ici d'une égalité et non d'une identification canonique).
 	}
 \end{document}

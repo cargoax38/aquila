@@ -158,5 +158,89 @@
 			$$
 			est une base de $\wedge_{m} V$.
 		}
+
+		On prend le temps de s'intéresser à ce qu'il se passe en dimension finie. Ce sera notamment utile pour la section suivante qui traîtera du déterminant.
+
+		\mathblock{corollary}{Dimension de $\wedge_{m} V$}{
+			Soit $V$ un $\mathbb{R}$-ev de dimension finie $n$. \\
+			On a
+			\begin{mathlist}
+				\item Si $m < n$, alors
+					$$
+						\dim \wedge_{m} V = \binom{n}{m}
+					$$
+				\item En particulier, si $m = n$, on a
+					$$
+						\dim \wedge_{n} V = 1
+					$$
+				\item Si $m > n$, alors
+					$$
+						\dim \wedge_{m} V = 0
+					$$
+			\end{mathlist}
+		}
+
+		On essaye à présent de définir une \flqq{} extension \frqq{} d'une application linéaire à l'espace des $m$-vecteurs pour pouvoir bénéficier de l'opération $\wedge$.
+
+		\mathblock{proposition}{Extension d'applications linéaires}{
+			Soient $V, V'$ deux $\mathbb{R}$-espace vectoriels quelconques. \\
+			Soit $f \in \mathcal{L}(V, V')$. \bigskip \\
+			Alors il existe une unique application $F \in \mathcal{L}(\wedge_{m} V, \wedge_{m} V')$ telle que
+			$$
+				\forall v_{1}, \cdots, v_{m} \in V, F(v_{1} \wedge \cdots \wedge v_{m}) = f(v_{1}) \wedge \cdots \wedge f(v_{m})
+			$$
+		}
+
+		On notera cette fonction $\wedge_{m} f := F$.
+	}
+
+	\subsection{Déterminant}{
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel de dimension $n$.
+
+		\vspace{1em}
+
+		On terminer cette section en donnant une définition très générale du déterminant en dimension finie. On montrera ensuite que cette définition coïncide avec le déterminant déjà connu. La principale propriété qui nous permet de définir le déterminant est que
+		$$
+			\dim \wedge_{n} V = 1
+		$$
+		Ce qui permet d'identifier (à un unique isomorphisme près) cet espace avec $\mathbb{R}$
+		$$
+			\wedge_{n} V \cong \mathbb{R}
+		$$
+		Autrement dit qu'à un vecteur de $\wedge_{n} V$ il est possible d'associer un et un seul réel.
+
+		\mathblock{lemma}{Existence du déterminant}{
+			Soit $f \in \mathcal{L}(V)$. \\
+			Soit $\wedge_{n} f \in \mathcal{L}(\wedge_{n} V)$ l'unique extension de $f$ à $\wedge_{n} V$. \bigskip \\
+			Alors $\exists ! a_{f} \in \mathbb{R}$ telle que
+			$$
+				\forall \xi \in \wedge_{n} V, \wedge_{n} f(\xi) = a_{f} \xi
+			$$
+		}
+
+		\mathblock{definition}{Déterminant d'un endomorphisme}{
+			Soit $f \in \mathcal{L}(V)$. \\
+			Soit $a_{f}$ l'unique réel par le lemme précédent. \bigskip \\
+			On appelle \textit{déterminant de $f$} le réel noté $\det f$ définie par
+			$$
+				\det f := a_{f}
+			$$
+		}
+
+		On montre a présent que ce déterminant correspond au déterminant \flqq{} des matrices \frqq{}.
+
+		\mathblock{proposition}{Cohérence des notations}{
+			Soit $(e_{1}, \cdots, e_{n})$ une base de $V$. \\
+			Soit $A = (a_{i, j}) \in \mathscr{M}_{n, n}(\mathbb{R})$. \\
+			Soit $f \in \mathcal{L}(V)$ canoniquement associé à $A$
+			$$
+				\mathrm{Mat}_{\mathcal{B}_{\text{can}}}(f) = A
+			$$
+			Soit $a_{f}$ le déterminant de $f$. \\
+			Alors
+			$$
+				a_{f} = \det A (= \det f)
+			$$
+		}
 	}
 \end{document}
