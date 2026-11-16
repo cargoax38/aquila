@@ -225,11 +225,11 @@
 			Soient $\lambda, \mu \in \mathbb{R}$. \bigskip \\
 			Alors
 			\begin{mathlist}
-				\item $D^{\alpha} u \in W^{k - |\alpha|, p}(U)$.
 				\item $D^{\alpha} (D^{\beta} u) = D^{\alpha + \beta} u$.
+				\item $D^{\alpha} u \in W^{k - |\alpha|, p}(U)$.
 				\item $\lambda u + \mu v \in W^{k, p}(U)$ et $D^{\alpha}(\lambda u + \mu v) = \lambda D^{\alpha} u + \mu D^{\alpha} v$.
 				\item Soit $V \subset U$ un ouvert. Alors $u \in W^{k, p}(V)$.
-				\item Soit $\zeta \in \mathscr{C}_{0}^{\infty}(U)$. Alors $\zeta u \in W^{k, p}$ et
+				\item Soit $\zeta \in \mathscr{C}_{0}^{\infty}(U)$. Alors $\zeta u \in W^{k, p}(U)$ et
 					$$
 						D^{\alpha}(\zeta u) = \sum_{\beta \leq \alpha} \binom{\alpha}{\beta} D^{\beta} \zeta \times D^{\alpha - \beta} u
 					$$
@@ -237,7 +237,90 @@
 		}
 
 		\mathblock{proof}{}{
-			
+			\begin{mathlist}
+				\item Soit $\phi \in \mathscr{C}_{0}^{\infty}(U)$. \\
+					Alors
+					$$
+						\begin{aligned}
+							\int_{U} u \times \partial^{\alpha + \beta} \phi \, \mathrm{d}x & = (-1)^{|\beta|} \int_{U} D^{\beta} u \times \partial^{\alpha} \phi \, \mathrm{d}x \\
+							& = \underset{= (-1)^{|\alpha + \beta|}}{\underbrace{(-1)^{|\beta|} \times (-1)^{|\alpha|}}} \int_{U} D^{\alpha}(D^{\beta} u) \times \phi \, \mathrm{d}x
+						\end{aligned}
+					$$
+					Par unicité de la dérivée faible, on conclue que
+					$$
+						D^{\alpha}(D^{\beta} u) = D^{\alpha + \beta} u
+					$$
+					Comme $\alpha$ et $\beta$ sont interchangeables, on a même que
+					$$
+						D^{\alpha}(D^{\beta} u) = D^{\alpha + \beta} u = D^{\beta + \alpha} u = D^{\beta}(D^{\alpha} u)
+					$$
+				\item Par le point précédent, on a $D^{\beta}(D^{\alpha} u) = D^{\alpha + \beta} u$. \\
+					Donc $D^{\alpha} u$ admet des dérivées faibles d'ordre $\beta$. \\
+					De plus, $D^{\alpha + \beta} \in \mathrm{L}^{p}(U)$ par hypothèse sur $u$. \\
+					Donc $D^{\alpha} u \in W^{k - |\alpha|, p}(U)$.
+
+				\item Par linéarité de l'intégrale, on obtient
+					$$
+						\begin{aligned}
+							\int_{U} (\lambda u + \mu v) \times \partial^{\alpha} \phi \, \mathrm{d}x & = \lambda \int_{U} u \times \partial^{\alpha} \phi \, \mathrm{d}x \\
+							& + \mu \int_{U} v \times \partial^{\alpha} \phi \, \mathrm{d}x
+						\end{aligned}
+					$$
+					Il est bien possible de séparer l'intégrale de gauche en deux par hypothèses sur $u$ et $v$. \\
+					De plus,
+					$$
+						\int_{U} u \times \partial^{\alpha} \phi \, \mathrm{d}x = (-1)^{|\alpha|} \int_{U} D^{\alpha} u \times \phi \, \mathrm{d}x
+					$$
+					et de même pour $v$,
+					$$
+						\int_{U} v \times \partial^{\alpha} \phi \, \mathrm{d}x = (-1)^{|\alpha|} \int_{U} D^{\alpha} v \times \phi \, \mathrm{d}x
+					$$
+					Soit alors
+					$$
+						\begin{aligned}
+							\int_{U} (\lambda u + \mu v) \times \partial^{\alpha} \phi \, \mathrm{d}x & = \lambda \times (-1)^{|\alpha|} \int_{U} D^{\alpha} u \times \phi \, \mathrm{d}x \\
+							& + \mu \times (-1)^{|\alpha|} \int_{U} D^{\alpha} u \times \phi \, \mathrm{d}x
+						\end{aligned}
+					$$
+					Et à nouveau par linéarité de l'intégrale
+					$$
+						\int_{U} (\lambda u + \mu v) \times \partial^{\alpha} \phi \, \mathrm{d}x = (-1)^{|\alpha|} \int_{U} (\lambda D^{\alpha} u + \mu D^{\alpha} v) \times \phi \, \mathrm{d}x
+					$$
+					Et finalement par unicité de la dérivée faible, on obtient bien
+					$$
+						D^{\alpha}(\lambda u + \mu v) = \lambda D^{\alpha} u + \mu D^{\alpha} v
+					$$
+				\item Soit $V \subset U$ un ouvert. \\
+					Soit $\phi \in \mathscr{C}_{0}^{\infty}(V)$. \\
+					On considère alors $\tilde{\phi}$ l'extension \flqq{} triviale \frqq{} de $\phi$ sur $U$ :
+					$$
+						\tilde{\phi} :
+						\begin{array}{rcl}
+							U & \longrightarrow & \mathbb{R} \\
+							x & \longmapsto &
+							\left\{
+								\begin{array}{rcl}
+									\phi(x) & \text{si} & x \in V \\
+									0 & \text{si} & x \notin V
+								\end{array}
+							\right.
+						\end{array}
+					$$
+					Alors par construction on a $\tilde{\phi} \in \mathscr{C}_{0}^{\infty}(U)$ puisque $\mathrm{Supp} \ \tilde{\phi} = \mathrm{Supp} \ \phi \subset V \subset U$. \\
+					Ainsi
+					$$
+						\begin{aligned}
+							\int_{V} u \partial^{\alpha} \phi \, \mathrm{d}x & = \int_{V} u \times \partial^{\alpha} \tilde{\phi} \, \mathrm{d}x \\
+							& = \int_{U} u \times \partial^{\alpha} \tilde{\phi} \, \mathrm{d}x \\
+							& = (-1)^{|\alpha|} \int_{U} D^{\alpha} u \times \tilde{\phi} \, \mathrm{d}x \\
+							& = (-1)^{|\alpha|} \int_{V} D^{\alpha} v \times \tilde{\phi} \, \mathrm{d}x \\
+							& = (-1)^{|\alpha|} \int_{V} D^{\alpha} v \times \phi \, \mathrm{d}x
+						\end{aligned}
+					$$
+					De plus, on a $D^{\alpha} u \in \mathrm{L}^{p}(V)$ car dans $\mathrm{L}^{p}(U)$. \\
+					Donc $u \in W^{1, p}(V)$.
+				\item Soit $\zeta \in \mathscr{0}^{\infty}(U)$.
+			\end{mathlist}
 		}
 
 		En plus de ces propriétés, on montre que muni de la norme $\lVert \cdot \rVert_{W^{k, p}(U)}$, l'espace de \textsc{Sobolev} $W^{k, p}(U)$ est un espace de \textsc{Banach}.
