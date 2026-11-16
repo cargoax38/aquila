@@ -107,6 +107,72 @@
 			On a $\lVert \cdot \rVert_{W^{k, p}(U)}$ qui définie bien une norme sur $W^{k, p}(U)$.
 		}
 
+		\mathblock{proof}{}{
+			On distinguera les cas où $p \in [1, \infty[$ et $p = +\infty$.
+
+			\begin{itemize}
+				\item[$\bullet$] Si $p \in [1, +\infty[$. \\
+					Alors on remarque dans un premier temps qu'on peut écrire pour $u \in W^{1, p}(U)$,
+					$$
+						\lVert u \rVert_{W^{1, p}(U)} = \left( \sum_{|\alpha| \leq k} \lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p}
+					$$
+					D'où
+					\begin{mathlist}
+						\item Axiome de séparation. \\
+							Soit $u \in W^{1, p}(U)$ telle que $\lVert u \rVert_{W^{k, p}} = 0$. \\
+							Alors
+							$$
+								\left( \sum_{|\alpha| \leq k} \lVert D^{\alpha} \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} = 0
+							$$
+							En particulier,
+							$$
+								\sum_{|\alpha| \leq k} \lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} = 0
+							$$
+							Puisque tous les termes sont positifs, on a en particulier pour $\alpha = (0, \cdots, 0)$,
+							$$
+								\lVert u \rVert_{\mathrm{L}^{p}(U)}^{p} = 0 \,
+							$$
+							Donc par axiome de séparation de $\lVert \cdot \rVert_{\mathrm{L}^{p}(U)}$, il vient que $u = 0_{W^{1, p}(U)}$.
+
+						\item Homogénéité. \\
+							Soit $u \in W^{1, p}(U)$. \\
+							Soit $\lambda \in \mathbb{R}$. \\
+							Alors par homogénéité de $\lVert \cdot \rVert_{\mathrm{L}^{p}(U)}$
+							$$
+								\begin{aligned}
+									\lVert \lambda u \rVert_{W^{1, p}(U)} & = \left( \sum_{|\alpha| \leq k} \lVert D^{\alpha}(\lambda u) \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} \\
+									& = \left( \sum_{|\alpha| \leq k} \lVert \lambda D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} \\
+									& = \left( \sum_{|\alpha| \leq k} |\lambda|^{p} \lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} \\
+									& = \left( |\lambda|^{p} \sum_{|\alpha| \leq k} \lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} \\
+									& = |\lambda| \lVert u \rVert_{W^{1, p}}
+								\end{aligned}
+							$$
+
+						\item Inégalité triangulaire. \\
+							Soient $u, v \in W^{1, p}(U)$. \\
+							Alors par inégalité triangulaire de $\lVert \cdot \rVert_{\mathrm{L}^{p}(U)}$, il vient que
+							$$
+								\begin{aligned}
+									\lVert u + v \rVert_{W^{1, p}(U)}^{p} & = \sum_{|\alpha| \leq k} \lVert D^{\alpha}(u + v) \rVert_{\mathrm{L}^{p}(U)}^{p} \\
+									& = \sum_{|\alpha| \leq k} \lVert D^{\alpha} u + D^{\alpha} v \rVert_{\mathrm{L}^{p}(U)}^{p} \\
+									& \leq \sum_{|\alpha| \leq k} (\lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)} + \lVert D^{\alpha} v \rVert_{\mathrm{L}^{p}(U)})^{p}
+								\end{aligned}
+							$$
+							On utilise ensuite l'inégalité de \textsc{Minkowski} (pour les sommes), il vient que
+							$$
+								\begin{aligned}
+									& \left( \sum_{|\alpha| \leq k} (\lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)} + \lVert D^{\alpha} v \rVert_{\mathrm{L}^{p}(U)})^{p} \right)^{1 / p} \\
+									& \leq \left( \sum_{|\alpha| \leq k} \lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} + \left( \sum_{|\alpha| \leq k} \lVert D^{\alpha} v \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p}
+								\end{aligned}
+							$$
+							D'où finalement
+							$$
+								\lVert u + v \rVert_{W^{1, p}(U)} \leq \lVert u \rVert_{W^{1, p}(U)} + \lVert v \rVert_{W^{1, p}(U)}
+							$$
+					\end{mathlist}
+			\end{itemize}
+		}
+
 		Nous pouvons à présent définir un mode de convergence dans $W^{k, p}(U)$.
 
 		\mathblock{definition}{Convergence séquentielle dans $W^{k, p}(U)$}{
@@ -159,7 +225,7 @@
 			Soient $\lambda, \mu \in \mathbb{R}$. \bigskip \\
 			Alors
 			\begin{mathlist}
-				\item $D^{\alpha} u \in W^{k - |\alpha|, p})(U)$.
+				\item $D^{\alpha} u \in W^{k - |\alpha|, p}(U)$.
 				\item $D^{\alpha} (D^{\beta} u) = D^{\alpha + \beta} u$.
 				\item $\lambda u + \mu v \in W^{k, p}(U)$ et $D^{\alpha}(\lambda u + \mu v) = \lambda D^{\alpha} u + \mu D^{\alpha} v$.
 				\item Soit $V \subset U$ un ouvert. Alors $u \in W^{k, p}(V)$.
@@ -168,6 +234,10 @@
 						D^{\alpha}(\zeta u) = \sum_{\beta \leq \alpha} \binom{\alpha}{\beta} D^{\beta} \zeta \times D^{\alpha - \beta} u
 					$$
 			\end{mathlist}
+		}
+
+		\mathblock{proof}{}{
+			
 		}
 
 		En plus de ces propriétés, on montre que muni de la norme $\lVert \cdot \rVert_{W^{k, p}(U)}$, l'espace de \textsc{Sobolev} $W^{k, p}(U)$ est un espace de \textsc{Banach}.
