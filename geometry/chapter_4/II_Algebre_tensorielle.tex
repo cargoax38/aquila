@@ -165,7 +165,7 @@
 				\item[$\bullet$] Montrons à présent l'existence. \\
 					On considère une fonction
 					$$
-						\overline{A} : {rcl}\mathscr{F}(S) \longrightarrow \mathbb{R}
+						\overline{A} : \mathscr{F}(S) \longrightarrow \mathbb{R}
 					$$
 					telle que
 					$$
@@ -277,13 +277,13 @@
 					$$
 					On a alors en particulier
 					$$
-						(\overline{\mu} \circ \overline{\mu'}) \circ \mu = \overline{\mu} \circ \underset{= \mu'}{\underbrace{(\overline{\mu'} \circ \mu)}} \overset{(1)}{=} \overline{\mu} \circ \mu' = \mu
+						(\overline{\mu} \circ \overline{\mu'}) \circ \mu = \overline{\mu} \circ \underset{= \mu'}{\underbrace{(\overline{\mu'} \circ \mu)}} \overset{(1)}{=} \overline{\mu} \circ \mu' \overset{(2)}{=} \mu
 					$$
 					Or $\mathrm{id}_{V} \circ \mu = \mu$. \\
 					A nouveau, par la propriété universelle de $\mu$, on conclue avec l'unicité que $\overline{\mu} \circ \overline{\mu'} = \mathrm{id}_{V}$.
 					De même, on a
 					$$
-						(\overline{\mu'} \circ \overline{\mu} \circ \mu') = \overline{\mu'} \circ \underset{= \mu}{\underbrace{(\overline{\mu} \circ \mu')}} \overset{(2)}{=} \overline{\mu'} \circ \mu = \mu'
+						(\overline{\mu'} \circ \overline{\mu} \circ \mu') = \overline{\mu'} \circ \underset{= \mu}{\underbrace{(\overline{\mu} \circ \mu')}} \overset{(2)}{=} \overline{\mu'} \circ \mu \overset{(1)}{=} \mu'
 					$$
 					avec $\mathrm{id}_{V'} \circ \mu' = \mu'$. \\
 					Donc par la relation universelle de $\mu'$, on conclue également que $\overline{\mu'} \circ \overline{\mu} = \mathrm{id}_{V'}$. \\
@@ -412,7 +412,7 @@
 			définie un produit tensoriel de $V_{1} \times \cdots \times V_{k}$ et que tous les autres produits tensoriels lui sont isomorphes.
 		}
 
-		Ce théorème nous permet donc par son résultat d'unicité de définir la notation suivante
+		Ce théorème nous permet donc de par son résultat d'unicité de définir la notation suivante
 		
 		\mathblock{definition}{Notation $V_{1} \otimes \cdots \otimes V_{k}$}{
 			Soit $V$ un produit tensoriel de $V_{1} \times \cdots \times V_{k}$. \bigskip \\
@@ -604,6 +604,7 @@
 				\item $W_{j} := V_{m_{j-1}+1} \otimes \cdots \otimes V_{m_{j}}$.
 				\item $\mu_{W_{j}}$ l'application $(m_{j} - m_{j - 1})$-linéaire.
 			\end{mathlist}
+			Soit $\mu \in \mathcal{L}^{k}(V_{1} \times V_{k}, V_{1} \otimes \cdots \otimes V_{k})$. \\
 			Soit enfin $\mu_{W} \in \mathcal{L}^{\ell}(W_{1} \times \cdots \times W_{\ell}, W_{1} \otimes \cdots \otimes W_{\ell})$. \bigskip \\
 			Alors il existe un unique isomorphisme
 			$$
@@ -859,18 +860,60 @@
 		Nous voyons maintenant que la notation \flqq{} $a \otimes b$ \frqq{} possède un lien très fort avec $\mu(a, b)$ où $\mu$ satisfait la définition de l'espace produit tensoriel.
 
 		\mathblock{corollary}{Lien $a \otimes b$ avec $\mu(a, b)$}{
-			Soient $V$ $\mathbb{R}$-espaces vectoriel. \\
+			Soit $V$ un $\mathbb{R}$-espace vectoriel. \\
 			Soit $(v_{1}, \cdots, v_{k}) \in V^{k}$. \bigskip \\
 			Alors
 			$$
-				v_{1} \otimes \cdots \otimes v_{k} = \mu(v_{1}, \cdots, v_{k})
+				\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{k}) = \mu_{k}(v_{1}, \cdots, v_{k})
 			$$
 		}
 
 		\mathblock{proof}{}{
 			On raisonne par récurrence simple sur $k$ avec la proposition suivante
+			\begin{center}
+				$\mathcal{P}(k)$ : \flqq{} $\forall v_{1}, \cdots, v_{k} \in V, v_{1} \otimes \cdots \otimes v_{k} = \mu_{k}(v_{1}, \cdots, v_{k}) $ \frqq{}
+			\end{center}
+			
+			\begin{itemize}
+				\item[$\bullet$] \textsc{Initialisation} : Pour $k = 2$. \\
+					Soient $v_{1}, v_{2} \in V$. \\
+					Alors
+					$$
+						\begin{aligned}
+							\mu_{1}(v_{1}) \otimes \mu_{1}(v_{2}) & := \mu_{1}(v_{1}) \otimes_{1, 1} \mu_{1}(v_{2}) \\
+							& = \Phi_{1, 1}^{-1}(\mu_{1, 1}(\mu_{1}(v_{1}), \mu_{1}(v_{2}))) \\
+							& = \mu_{2}(v_{1}, v_{2})
+						\end{aligned}
+					$$
+					Et $\mathcal{P}(2)$ est vraie.
+
+				\item[$\bullet$] \textsc{Hérédité} : Pour $k \geq 2$, supposons $\mathcal{P}(k)$. \\
+					Soient $v_{1}, \cdots, v_{k+1} \in V$. \\
+					Alors par associativité de $\otimes$
+					$$
+						\begin{aligned}
+							\mu_{1}(v_{1}) \otimes & \cdots \otimes \mu_{1}(v_{k+1}) \\
+							& = (\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{k})) \otimes \mu_{1}(v_{k+1}) \\
+							& := (\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{k})) \otimes_{k, 1} \mu_{1}(v_{k+1})
+						\end{aligned}
+					$$
+					Par hypothèse de récurrence, on a
+					$$
+						\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{k}) = \mu_{k}(v_{1}, \cdots, v_{k})
+					$$
+					Et
+					$$
+						\begin{aligned}
+							\mu_{k}(v_{1}, \cdots, v_{k}) & \otimes_{k, 1} \mu_{1}(v_{k+1}) \\
+							& = \Phi_{k, 1}^{-1}(\mu_{k, 1}(\mu_{k}(v_{1}, \cdots, v_{k}), \mu_{1}(v_{k+1}))) \\
+							& = \mu_{k + 1}(v_{1}, \cdots, v_{k}, v_{k + 1})
+						\end{aligned}
+					$$
+					Ce qui est $\mathcal{P}(k+1)$.
+				\item[$\bullet$] \textsc{Conclusion} : Par le principe de récurrence simple, on a donc montré la propriété pour tout $k \geq 2$.
+			\end{itemize}
 		}
 
-		On considèrera à présent la notation suivante pour les $k$-tenseurs simples de $\bigotimes_{k} V$.
+		Pour conclure cette section sur le produit tensoriel \flqq{} $\otimes$ \frqq{}, on rappelle que les égalités énoncées dans toutes les propositions découlent d'un choix arbitraire d'espace produit tensoriels et d'applications multilinéaires. Comme montré dans le premier théorème sur les espaces produit tensoriels, tous couples $(V, \mu)$ d'espace produit tensoriel sont uniques à un isomorphisme près. Cela signifie que ni un tel $V$ ni un tel $\mu$ pour $V$ n'est unique. Dans le cas général, les égalités deviennet donc des identifications par isomorphismes.
 	}
 \end{document}
