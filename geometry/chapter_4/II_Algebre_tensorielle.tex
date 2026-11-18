@@ -683,6 +683,20 @@
 		}
 
 		On termine cette partie en parlant du produit tensoriel de vecteurs.
+
+		Mais juste avant, nous prenons le temps d'introduire des notations que nous serons amenés à utiliser par soucis de place sur les pages. On notera généralement
+		$$
+			\mu_{k} \in \mathcal{L}^{k} \! \left( V^{k}, \bigotimes_{k} V \right)
+		$$
+		l'application $k$-linéaire satisfaisant la définition de l'espace produit tensoriel. Pour $k_{1}, \cdots, k_{m} \in \mathbb{N}$, on emploira la notation suivante
+		$$
+			\mu_{k_{1}, \cdots, k_{m}} \in \mathcal{L}^{m} \! \left(\bigotimes_{k_{1}} V \times \cdots \times \bigotimes_{k_{m}} V, \bigotimes_{k_{1}} V \otimes \cdots \otimes \bigotimes_{k_{m}} V\right)
+		$$
+		dans ce cas très particulier. Pour ces applications multilinéaires, on assumera l'abus de notations ci-dessus puisque rien ne garantit l'unicité d'une telle application pour les espaces produit tensoriel. Enfin, nous noterons également
+		$$
+			\Phi_{k_{1}, \cdots, k_{m}} : \bigotimes_{k_{1} + \cdots + b_{m}} V \longrightarrow \bigotimes_{k_{1}} V \otimes \cdots \otimes \bigotimes_{k_{m}} V
+		$$
+		l'unique tel isomorphisme introduit dans le théorème précédent.
 	}
 
 	\subsection{Produit tensoriel de vecteurs}{
@@ -696,8 +710,6 @@
 		Le théorème précédent sur \flqq{} l'associativité \frqq{} de l'espace produit tensoriel nous permettra d'arriver à ce résultat. Nous montrons dans un premier temps ce résultat intermédiaire.
 
 		\mathblock{lemma}{Application bilinéaire $\otimes_{k, h}$}{
-			Soit $\Phi_{k, h} : \bigotimes_{k + h} V \longrightarrow \bigotimes_{k} V \otimes \bigotimes_{h} V$ du théorème précédent. \\
-			Soit $\mu_{k, h} \in \mathcal{L}^{2}(\bigotimes_{k} V \times \bigotimes_{h} V, \bigotimes_{k} V \otimes \bigotimes_{h} V)$ de la définition de l'espace produit tensoriel. \\
 			Soit l'application $\otimes_{k, h}$ définie par
 			$$
 				\otimes_{k, h} :
@@ -763,9 +775,76 @@
 					(a, b, c) & \longmapsto & a \otimes_{k, h + \ell} (b \otimes_{h, \ell} c)
 				\end{array}
 			$$
-			Montrons que ces deux applications coïncident sur une base de $\bigotimes_{k} V \times \bigotimes_{h} V \times \bigotimes_{\ell} V$.
+			Montrons que ces deux applications coïncident sur une base de $\bigotimes_{k} V \times \bigotimes_{h} V \times \bigotimes_{\ell} V$. \\
+			Pour des question d'espaces, nous considérons les notations suivantes. \\
+			Soit $\mathcal{B}$ une base de $V$. \\
+			Alors on sait que
+			$$
+				\mathcal{B}_{k} := \{ \mu_{k}(b_{1}, \cdots, b_{k}), \forall i \in [\![1, k]\!], b_{i} \in \mathcal{B} \}
+			$$
+			que
+			$$
+				\mathcal{B}_{h} := \{ \mu_{h}(c_{1}, \cdots, c_{h}), \forall i \in [\![1, h]\!], c_{i} \in \mathcal{B} \}
+			$$
+			et enfin que
+			$$
+				\mathcal{B}_{\ell} := \{ \mu_{\ell}(d_{1}, \cdots, d_{\ell}), \forall i \in [\![1, \ell]\!], d_{i} \in \mathcal{B} \}
+			$$
+			sont des bases respectives de $\bigotimes_{k} V$, $\bigotimes_{h} V$ et $\bigotimes_{\ell} V$. \\
+			Par conséquent, on a
+			$$
+				\mathcal{B}_{k} \times \mathcal{B}_{h} \times \mathcal{B}_{\ell}
+			$$
+			qui est une base de $\bigotimes_{k} V \times \bigotimes_{h} V \times \bigotimes_{\ell} V$. \\
+			Soient $b_{1}, \cdots, b_{k + h + \ell} \in \mathcal{B}$. \\
+			Pour des questions d'espace, on adoptera la notation suivante
+			$$
+				\forall e_{1}, \cdots, e_{m} \in \mathcal{B}, \forall i < j \in [\![1, m]\!], e_{i \to j} := (e_{i}, e_{i + 1}, \cdots, e_{j})
+			$$
+			Soient $b_{1}, \cdots, b_{k}, c_{1}, \cdots, c_{h}, d_{1}, \cdots, d_{\ell} \in \mathcal{B}$. \\
+			Alors
+			$$
+				\begin{aligned}
+					& f(\mu_{k}(b_{1 \to k}), \mu_{h}(c_{1 \to h}), \mu_{\ell}(d_{1 \to \ell})) \\
+					& \quad := (\mu_{k}(b_{1 \to k}) \otimes_{k, h} \mu_{h}(c_{1 \to h})) \otimes_{k + h, \ell} \mu_{\ell}(d_{1 \to \ell})
+				\end{aligned}
+			$$
+			Or par définition de $\otimes_{k, h}$, ainsi que de $\Phi_{k, h}$, il vient que
+			$$
+				\begin{aligned}
+					\mu_{k}(b_{1 \to k}) \otimes_{k, h} \mu_{h}(c_{1 \to h}) & = \Phi_{k, h}^{-1}(\mu_{k, h}(\mu_{k}(b_{1 \to k}), \mu_{h}(c_{1 \to h}))) \\
+					& = \mu_{k + h}(b_{1 \to k}, c_{1 \to h})
+				\end{aligned}
+			$$
+			De même, par définition de $\otimes_{k + h, \ell}$ et de $\Phi_{k + h, \ell}$, on trouve
+			$$
+				\begin{aligned}
+					& \mu_{k + h}(b_{1 \to k}, c_{1 \to h}) \otimes_{k + h, \ell} \mu_{\ell}(d_{1 \to \ell}) \\
+					& \quad = \Phi_{k + h, \ell}^{-1}(\mu_{k + h, \ell}(\mu_{k + h}(b_{1 \to k}, c_{1 \to h}), \mu_{\ell}(d_{1 \to \ell}))) \\
+					& \quad = \mu_{k + h + \ell}(b_{1 \to k}, c_{1 \to h}, d_{1 \to \ell})
+))
+				\end{aligned}
+			$$
+			D'où
+			$$
+				\begin{aligned}
+					& f(\mu_{k}(b_{1 \to k}), \mu_{h}(c_{1 \to h}), \mu_{\ell}(d_{1 \to \ell})) \\
+					& \quad = \mu_{k + h + \ell}(b_{1 \to k}, c_{1 \to h}, d_{1 \to \ell})
+				\end{aligned}
+			$$
+			Par un raisonnement similaire, on montre de même que
+			$$
+				\begin{aligned}
+					& g(\mu_{k}(b_{1 \to k}), \mu_{h}(c_{1 \to h}), \mu_{\ell}(d_{1 \to \ell})) \\
+					& \quad = \mu_{k + h + \ell}(b_{1 \to k}, c_{1 \to h}, d_{1 \to \ell})
+				\end{aligned}
+			$$
+			Ainsi, $f$ et $g$ qui sont deux applications trilinéaires définies sur les mêmes espaces coïncident sur la base $\mathcal{B}_{k} \times \mathcal{B}_{h} \times \mathcal{B}_{\ell}$. \\
+			On a finalement $f = g$ et l'associativité de \flqq{} $\otimes_{k, h}$ \frqq{}.
 		}
+	}
 
+	\subsection{Notation \texorpdfstring{$\otimes$}{} pour le produit tensoriel}{
 		Le théorème précédent permet donc d'affirmer que le parenthésage n'est plus indispensable. Cela en est de même pour la notation $\otimes_{k, h}$ qui n'est plus utile à préciser. Nous opterons dans toute la suite pour la notation suivante
 
 		\mathblock{definition}{Notation $\otimes$ pour les $k$-tenseurs}{
@@ -777,9 +856,7 @@
 			$$
 		}
 
-
-
-		Nous voyons dans la suite que la notation \flqq{} $a \otimes b$ \frqq{} possède un lien très fort avec $\mu(a, b)$ où $\mu$ satisfait la définition de l'espace produit tensoriel.
+		Nous voyons maintenant que la notation \flqq{} $a \otimes b$ \frqq{} possède un lien très fort avec $\mu(a, b)$ où $\mu$ satisfait la définition de l'espace produit tensoriel.
 
 		\mathblock{corollary}{Lien $a \otimes b$ avec $\mu(a, b)$}{
 			Soient $V$ $\mathbb{R}$-espaces vectoriel. \\
@@ -790,6 +867,10 @@
 			$$
 		}
 
-		(A vérifier : Il s'agit bien ici d'une égalité et non d'une identification canonique).
+		\mathblock{proof}{}{
+			On raisonne par récurrence simple sur $k$ avec la proposition suivante
+		}
+
+		On considèrera à présent la notation suivante pour les $k$-tenseurs simples de $\bigotimes_{k} V$.
 	}
 \end{document}
