@@ -593,16 +593,18 @@
 
 		\mathblock{theorem}{Associativité de $\otimes$}{
 			Soit $\ell \in \mathbb{N}^{\star}$. \\
+			Soient $h_{1}, \cdots, h_{\ell} \in \mathbb{N}^{\star}$. \\
 			Soit $m_{0} := 0$. \\
-			Soient $m_{1}, \cdots, m_{\ell} \in \mathbb{N}^{\star}$ tels que
-			$$
-				\sum_{j = 1}^{\ell} m_{j} = k
-			$$
 			Pour $j \in [\![1, \ell]\!]$, on pose
 			\begin{mathlist}
+				\item Les entiers suivants
+					$$
+						m_{j} := \sum_{i = 1}^{j} h_{i}
+					$$
 				\item $W_{j} := V_{m_{j-1}+1} \otimes \cdots \otimes V_{m_{j}}$.
 				\item $\mu_{W_{j}}$ l'application $(m_{j} - m_{j - 1})$-linéaire.
-			\end{mathlist} \bigskip
+			\end{mathlist}
+			Soit enfin $\mu_{W} \in \mathcal{L}^{\ell}(W_{1} \times \cdots \times W_{\ell}, W_{1} \otimes \cdots \otimes W_{\ell})$. \bigskip \\
 			Alors il existe un unique isomorphisme
 			$$
 				\Phi : V_{1} \otimes \cdots \otimes V_{k} \longrightarrow W_{1} \otimes \cdots \otimes W_{\ell}
@@ -616,6 +618,70 @@
 			$$
 		}
 
+		\mathblock{proof}{}{
+			Pour $i \in [\![1, k]\!]$, on note $\mathcal{B}_{i}$ une base de $V_{i}$. \\
+			On notera $\mathfrak{B} := \mathcal{B}_{1} \times \cdots \mathcal{B}_{k}$.
+
+			\begin{itemize}
+				\item[$\bullet$] Montrons que $\Phi$ est linéaire. \\
+					Par définition, $\Phi$ est construite pour être linéaire mais nous le montrons quand-même. \\
+					Soient $v, w \in V_{1} \otimes \cdots \otimes V_{k}$. \\
+					Soit $\alpha \in \mathbb{R}$. \\
+					Soient les uniques familles presque nulles $(\lambda_{b})_{b \in \mathfrak{B}}, (\mu_{b})_{b \in \mathfrak{B}}$ indexées sur $\mathfrak{B}$ telles que
+					$$
+						v = \sum_{b \in \mathfrak{B}} \lambda_{b} \times \mu(b), \quad w = \sum_{b \in \mathfrak{B}} \mu_{b} \times \mu(b)
+					$$
+					Ces deux sommes étant presques nulles, on obtient alors
+					$$
+						\begin{aligned}
+							\Phi(\alpha \lambda + \mu) & = \Phi \! \left( \alpha \sum_{b \in \mathfrak{B}} \lambda_{b} \times \mu(b) + \sum_{b \in \mathfrak{B}} \mu_{b} \times \mu(b) \right) \\
+							& = \Phi \! \left( \sum_{b \in \mathfrak{B}} (\alpha \lambda_{b} + \mu_{b}) \times \mu(b) \right) \\
+							& = \sum_{b \in \mathfrak{B}} (\alpha \lambda_{b} + \mu_{b}) \times \Phi(\mu(b)) \\
+							& = \alpha \sum_{b \in \mathfrak{B}} \lambda_{b} \times \mu(b) + \sum_{b \in \mathfrak{B}} \mu_{b} \times \mu(b) \\
+							& = \alpha \Phi(v) + \Phi(w)
+						\end{aligned}
+					$$
+				\item[$\bullet$] Montrons que $\Phi$ réalise un isomorphisme. \\
+					Par le théorème sur une base de l'espace produit tensoriel, pour $j \in [\![1, \ell]\!]$, on a
+					$$
+						\{ \mu_{W_{j}}(b_{m_{j - 1} + 1}, \cdots, b_{m_{j}}), \forall i \in [\![m_{j - 1} + 1, m_{j}]\!], b_{i} \in \mathcal{B}_{i} \}
+					$$
+					qui est une base de $W_{j}$. \\
+					On notera cette base $\mathfrak{B}_{j}$. \\
+					Par le même argument, on obtient le fait que
+					$$
+						\begin{aligned}
+							\{ & \mu_{W}(\mu_{W_{1}}(b_{1}, \cdots, b_{m_{1}}), \cdots, \mu_{W_{\ell}}(b_{m_{\ell - 1} + 1}, \cdots,  b_{m_{\ell}})), \\
+							& \forall j \in [\![1, \ell]\!], \mu_{W_{j}}(b_{m_{j - 1} + 1}, \cdots, b_{m_{j}}) \in \mathfrak{B}_{j} \}
+						\end{aligned}
+					$$
+					est une base de $W$. \\
+					Autrement dit que
+					$$
+						\begin{aligned}
+							\Phi(\mu(\mathcal{B}_{1} \times & \cdots \times \mathcal{B}_{k})) \\
+							& = \{ \Phi(\mu(b_{1}, \cdots, b_{k})), \forall i \in [\![ 1, k ]\!], b_{i} \in \mathcal{B}_ {i} \}
+						\end{aligned}
+					$$
+					est une base de $W$. \\
+					Or,
+					$$
+						\mu(\mathcal{B}_{1} \times \cdots \times \mathcal{B}_{k})
+					$$
+					est une base de $V_{1} \otimes \cdots \otimes V_{k}$. \\
+					Autrement dit, $\Phi$ est une application linéaire qui envoie une base de $V_{1} \otimes \cdots \otimes V_{k}$ vers une base de $W_{1} \otimes \cdots \otimes W_{\ell}$. \\
+					On a donc $\Phi$ qui est un isomorphisme entre ces deux espaces.
+				\item[$\bullet$] Montrons qu'un tel $\Phi$ est unique. \\
+					Supposons $\Psi \in \mathcal{L}(V_{1} \otimes \cdots \otimes V_{k}, W_{1} \otimes \cdots W_{\ell})$ satisfaisant la même propriété que $\Phi$. \\
+					Alors en particulier, pour $(b_{1}, \cdots, b_{k}) \in \mathfrak{B}$,
+					$$
+						\Psi(\mu(b_{1}, \cdots, b_{k})) = \Phi(\mu(b_{1}, \cdots, b_{k}))
+					$$
+					Donc $\Phi$ et $\Psi$ coïncident sur une base de $V_{1} \otimes \cdots \otimes V_{k}$. \\
+					On a donc $\Phi = \Psi$ et l'unicité.
+			\end{itemize}
+		}
+
 		On termine cette partie en parlant du produit tensoriel de vecteurs.
 	}
 
@@ -625,24 +691,41 @@
 
 		\vspace{1em}
 
-		La question qu'on pourrait se poser c'est celle de l'existence d'un produit liant des $k$-tenseurs de $\bigotimes_{k} V$ et des $h$-tenseurs de $\bigotimes_{h} V$. Pour pouvoir définir un tel produit, on souhaiterez pouvoir multiplier un $k$-tenseur par un $h$-tenseur et obtenir un $(k+h)$-tenseur. Le théorème précédent sur \flqq{} l'associativité \frqq{} de l'espace produit tensoriel nous permettra d'arriver à ce résultat. Nous montrons dans un premier temps ce résultat intermédiaire.
+		La question qu'on pourrait se poser c'est celle de l'existence d'un produit liant des $k$-tenseurs de $\bigotimes_{k} V$ et des $h$-tenseurs de $\bigotimes_{h} V$. Pour pouvoir définir un tel produit, on souhaiterez pouvoir multiplier un $k$-tenseur par un $h$-tenseur et obtenir un $(k+h)$-tenseur.
+
+		Le théorème précédent sur \flqq{} l'associativité \frqq{} de l'espace produit tensoriel nous permettra d'arriver à ce résultat. Nous montrons dans un premier temps ce résultat intermédiaire.
 
 		\mathblock{lemma}{Application bilinéaire $\otimes_{k, h}$}{
-			Soit $\Phi : \bigotimes_{k} V \otimes \bigotimes_{h} V \longrightarrow \bigotimes_{k + h} V$ du théorème précédent. \\
+			Soit $\Phi_{k, h} : \bigotimes_{k + h} V \longrightarrow \bigotimes_{k} V \otimes \bigotimes_{h} V$ du théorème précédent. \\
 			Soit $\mu_{k, h} \in \mathcal{L}^{2}(\bigotimes_{k} V \times \bigotimes_{h} V, \bigotimes_{k} V \otimes \bigotimes_{h} V)$ de la définition de l'espace produit tensoriel. \\
-			Soit l'application $\cdot_{\otimes}$ définie par
+			Soit l'application $\otimes_{k, h}$ définie par
 			$$
 				\otimes_{k, h} :
 				\begin{array}{rcl}
 					\bigotimes_{k} V \times \bigotimes_{h} V & \longrightarrow & \bigotimes_{k + h} V \\
-					(a, b) & \longmapsto & a \otimes_{k, h} b := (\Phi \circ \mu_{k, h})(a, b)
+					(a, b) & \longmapsto & a \otimes_{k, h} b := (\Phi_{k, h}^{-1} \circ \mu_{k, h})(a, b)
 				\end{array}
 			$$
 			Alors $\otimes_{k, h}$ est bien définie, est bilinéaire et est unique.
 		}
 
 		\mathblock{proof}{}{
-			L'existence et l'unicité ainsi que le caractère bilinéaire découlent du théorème d'existence du produit tensoriel. On utilise ensuite le théorème d'associativité pour arriver au résultat souhaité.
+			\begin{itemize}
+				\item[$\bullet$] D'une part, $\otimes_{k, h}$ est bien définie puisque $\Phi_{k, h}^{-1}$ et $\mu_{k, h}$ existent et sont bien définies
+				\item[$\bullet$] Montrons que $\otimes_{k, h}$ est une application bilinéaire. \\
+					Soient $a, b \in \bigotimes_{k} V$ et soit $c \in \bigotimes_{h} V$. \\
+					Soit $\lambda \in \mathbb{R}$. \\
+					Alors par bilinéarité de $\mu_{k, h}$ et linéarité de $\Phi_{k, h}^{-1}$
+					$$
+						\begin{aligned}
+							(\lambda a + b) \otimes_{k, h} c & := \Phi_{k, h}^{-1}(\mu_{k, h}(\lambda a + b, c)) \\
+							& = \Phi(\lambda \mu_{k, h}(a, c) + \mu_{k, h}(b, c)) \\
+							& = \lambda \Phi_{k, h}^{-1}(\mu_{k, h}(a, c)) + \Phi_{k, h}^{-1}(\mu_{k, h}(b, c)) \\
+							& = \lambda (a \otimes_{k, h} c) + (b \otimes_{k, h} c)
+						\end{aligned}
+					$$
+				\item[$\bullet$] Par définition de $\otimes_{k, h}$, on obtient l'unicité puisqu'un tel $\Phi_{k, h}$ est unique.
+			\end{itemize}
 		}
 
 		On notera que dans le cas où $k = 0$ ou $h = 0$, on retrouve la multiplication externe de l'espace produit tensoriel de la somme $V$. Par exemple, dans le cas où $k = 0$,
@@ -663,6 +746,26 @@
 			$$
 		}
 
+		\mathblock{proof}{}{
+			On pose
+			$$
+				f :
+				\begin{array}{rcl}
+					\bigotimes_{k} V \times \bigotimes_{h} V \times \bigotimes_{\ell} V & \longrightarrow & \bigotimes_{k + h + \ell} V \\
+					(a, b, c) & \longmapsto & (a \otimes_{k, h} b) \otimes_{k + h, \ell} c
+				\end{array}
+			$$
+			et
+			$$
+				g :
+				\begin{array}{rcl}
+					\bigotimes_{k} V \times \bigotimes_{h} V \times \bigotimes_{\ell} V & \longrightarrow & \bigotimes_{k + h + \ell} V \\
+					(a, b, c) & \longmapsto & a \otimes_{k, h + \ell} (b \otimes_{h, \ell} c)
+				\end{array}
+			$$
+			Montrons que ces deux applications coïncident sur une base de $\bigotimes_{k} V \times \bigotimes_{h} V \times \bigotimes_{\ell} V$.
+		}
+
 		Le théorème précédent permet donc d'affirmer que le parenthésage n'est plus indispensable. Cela en est de même pour la notation $\otimes_{k, h}$ qui n'est plus utile à préciser. Nous opterons dans toute la suite pour la notation suivante
 
 		\mathblock{definition}{Notation $\otimes$ pour les $k$-tenseurs}{
@@ -673,6 +776,8 @@
 				a \otimes b := a \otimes_{k, h} b
 			$$
 		}
+
+
 
 		Nous voyons dans la suite que la notation \flqq{} $a \otimes b$ \frqq{} possède un lien très fort avec $\mu(a, b)$ où $\mu$ satisfait la définition de l'espace produit tensoriel.
 
