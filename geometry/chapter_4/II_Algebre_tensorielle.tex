@@ -415,14 +415,14 @@
 		Ce théorème nous permet donc de par son résultat d'unicité de définir la notation suivante
 		
 		\mathblock{definition}{Notation $V_{1} \otimes \cdots \otimes V_{k}$}{
-			Soit $V$ un produit tensoriel de $V_{1} \times \cdots \times V_{k}$. \bigskip \\
+			Soit $T$ le produit tensoriel de $V_{1} \times \cdots \times V_{k}$ construit dans la preuve précédente. \bigskip \\
 			On adoptera la notation suivante
 			$$
-				V_{1} \otimes \cdots \otimes V_{k} := V
+				V_{1} \otimes \cdots \otimes V_{k} := T = \frac{\mathscr{F}(V_{1} \times \cdots \times V_{k})}{R}
 			$$
 		}
 
-		Dans le cas particulier où on ne s'intéresse qu'à un seul espace vectoriel, on adoptera la notation suivante
+		Dans cette présentation, cette notation ne sera utilisée que pour parler de cet espace produit tensoriel particulier. Mais il faut garder en tête qu'il n'est unique qu'à un isomorphisme près. Dans le cas particulier où on ne s'intéresse qu'à un seul espace vectoriel, on adoptera la notation suivante
 
 		\mathblock{definition}{Notation $\bigotimes_{k} V$}{
 			Soit $V$ un $\mathbb{R}$-espace vectoriel. \bigskip \\
@@ -444,12 +444,23 @@
 			\end{mathlist}
 		}
 
-		On cherche maintenant à mieux comprendre les propriétés de $V_{1} \otimes \cdots \otimes V_{k}$.
+		Pour ce qui est des applications multilinéaires satisfaisant la propriété universelle, nous adopterons les notations (non conventionnelles) suivantes. On notera généralement
+		$$
+			\mu_{k} \in \mathcal{L}^{k} \! \left( V^{k}, \bigotimes_{k} V \right)
+		$$
+		l'application $k$-linéaire satisfaisant la définition de l'espace produit tensoriel $\bigotimes_{k} V$ construite dans la preuve du théorème précédent. Pour $k_{1}, \cdots, k_{m} \in \mathbb{N}$, on emploira la notation suivante
+		$$
+			\mu_{k_{1}, \cdots, k_{m}} \in \mathcal{L}^{m} \! \left(\bigotimes_{k_{1}} V \times \cdots \times \bigotimes_{k_{m}} V, \bigotimes_{k_{1}} V \otimes \cdots \otimes \bigotimes_{k_{m}} V\right)
+		$$
+		pour la telle application $m$-linéaire construite dans le théorème précédent dans ce cas très particulier.
+
+		On cherche maintenant à mieux comprendre les propriétés de l'espace produit tensoriel spécifique $V_{1} \otimes \cdots \otimes V_{k}$. Nous parlerons des autres espaces produit tensoriels à la toute fin de cette partie.
 	}
 
 	\subsection{Base de \texorpdfstring{$V_{1} \otimes \cdots \otimes V_{k}$}{V1 tenseur ... tenseur Vk}}{
 		\noindent Soit $k \in \mathbb{N}^{\star}$. \\
-		\noindent Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel.
+		\noindent Soient $V_{1}, \cdots, V_{k}$ $k$ $\mathbb{R}$-espaces vectoriel. \\
+		\noindent Soit $\mu \in \mathcal{L}^{k}(V_{1} \times \cdots \times V_{k}, V_{1} \otimes \cdots \otimes V_{k})$ une applicatioon $k$-linéaire satisfaisant la propriété universelle.
 
 		\vspace{1em}
 
@@ -589,7 +600,7 @@
 			Finalement, $\mathcal{B}$ est bien une base de $V_{1} \otimes \cdots \otimes V_{k}$.
 		}
 
-		Pour terminer cette section, on montre un résultat fondamental des espaces produit tensoriel, à savoir \flqq{} l'associativité de $\otimes$ \frqq{}. Autrement dit que d'une certaine manière, $V_{1} \otimes (V_{2} \otimes V_{3})$ et $(V_{1} \otimes V_{2}) \otimes V_{3}$ sont similaires (à un isomorphisme près).
+		Pour terminer cette section, on montre un résultat fondamental des espaces produit tensoriel, à savoir \flqq{} l'associativité de $\otimes$ \frqq{}. Autrement dit que d'une certaine manière, $V_{1} \otimes (V_{2} \otimes V_{3})$ et $(V_{1} \otimes V_{2}) \otimes V_{3}$ sont similaires (à un isomorphisme près). Dans le cas spécifique de ces espaces produit tensoriel (ceux dont la notation découle de la preuve sur l'existence), l'isomorphisme près en question dépend également du choix des applications multilinéaires.
 
 		\mathblock{theorem}{Associativité de $\otimes$}{
 			Soit $\ell \in \mathbb{N}^{\star}$. \\
@@ -602,10 +613,10 @@
 						m_{j} := \sum_{i = 1}^{j} h_{i}
 					$$
 				\item $W_{j} := V_{m_{j-1}+1} \otimes \cdots \otimes V_{m_{j}}$.
-				\item $\mu_{W_{j}}$ l'application $(m_{j} - m_{j - 1})$-linéaire.
+				\item $\mu_{W_{j}} \in \mathcal{L}^{m_{j} - m_{j - 1}}(V_{m_{j-1}+1} \otimes \cdots \otimes V_{m_{j}}, W_{j})$ une application $(m_{j} - m_{j - 1})$-linéaire satisfaisant la propriété universelle.
 			\end{mathlist}
-			Soit $\mu \in \mathcal{L}^{k}(V_{1} \times V_{k}, V_{1} \otimes \cdots \otimes V_{k})$. \\
-			Soit enfin $\mu_{W} \in \mathcal{L}^{\ell}(W_{1} \times \cdots \times W_{\ell}, W_{1} \otimes \cdots \otimes W_{\ell})$. \bigskip \\
+			Soit $\mu \in \mathcal{L}^{k}(V_{1} \times V_{k}, V_{1} \otimes \cdots \otimes V_{k})$ une telle autre application \\
+			Soit enfin $\mu_{W} \in \mathcal{L}^{\ell}(W_{1} \times \cdots \times W_{\ell}, W_{1} \otimes \cdots \otimes W_{\ell})$ une telle autre application. \bigskip \\
 			Alors il existe un unique isomorphisme
 			$$
 				\Phi : V_{1} \otimes \cdots \otimes V_{k} \longrightarrow W_{1} \otimes \cdots \otimes W_{\ell}
@@ -618,6 +629,8 @@
 				\end{aligned}
 			$$
 		}
+
+		Comme dit plus haut, cet unique isomorphisme dépend donc de $\mu, \mu_{W}, \mu_{W_{1}}, \cdots, \mu_{W_{\ell}}$.
 
 		\mathblock{proof}{}{
 			Pour $i \in [\![1, k]\!]$, on note $\mathcal{B}_{i}$ une base de $V_{i}$. \\
@@ -683,21 +696,13 @@
 			\end{itemize}
 		}
 
-		On termine cette partie en parlant du produit tensoriel de vecteurs.
-
-		Mais juste avant, nous prenons le temps d'introduire des notations que nous serons amenés à utiliser par soucis de place sur les pages. On notera généralement
-		$$
-			\mu_{k} \in \mathcal{L}^{k} \! \left( V^{k}, \bigotimes_{k} V \right)
-		$$
-		l'application $k$-linéaire satisfaisant la définition de l'espace produit tensoriel. Pour $k_{1}, \cdots, k_{m} \in \mathbb{N}$, on emploira la notation suivante
-		$$
-			\mu_{k_{1}, \cdots, k_{m}} \in \mathcal{L}^{m} \! \left(\bigotimes_{k_{1}} V \times \cdots \times \bigotimes_{k_{m}} V, \bigotimes_{k_{1}} V \otimes \cdots \otimes \bigotimes_{k_{m}} V\right)
-		$$
-		dans ce cas très particulier. Pour ces applications multilinéaires, on assumera l'abus de notations ci-dessus puisque rien ne garantit l'unicité d'une telle application pour les espaces produit tensoriel. Enfin, nous noterons également
+		Enfin, nous noterons également
 		$$
 			\Phi_{k_{1}, \cdots, k_{m}} : \bigotimes_{k_{1} + \cdots + b_{m}} V \longrightarrow \bigotimes_{k_{1}} V \otimes \cdots \otimes \bigotimes_{k_{m}} V
 		$$
 		l'unique tel isomorphisme introduit dans le théorème précédent.
+
+		On termine cette partie en parlant du produit tensoriel de vecteurs.
 	}
 
 	\subsection{Produit tensoriel de vecteurs}{
