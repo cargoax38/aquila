@@ -15,7 +15,7 @@
 			$$
 		}
 
-		Cet ensemble correspond au $\mathbb{R}$-sous-espace de $\bigotimes_{m} V$ tel que les $m$-tenseurs simples possèdent au moins deux composantes identiques.
+		Cet ensemble correspond au $\mathbb{R}$-sous-espace de $\bigotimes_{m} V$ engendré par les $m$-tenseurs simples qui possèdent au moins deux composantes identiques.
 
 		\mathblock{definition}{Espace des $m$-vecteurs $\wedge_{m} V$}{
 			On appelle \textit{espace produit extérieur d'ordre $m$} ou ($m$-fold extension product) l'ensemble noté $\wedge_{m} V$ et définie par
@@ -49,13 +49,43 @@
 			$$
 		}
 
-		Les tels $m$-tenseurs simples $b_{1} \otimes \cdots \otimes b_{m}$ formant une base de $\otimes_{m} V$. \\
+		Les tels $m$-tenseurs simples $b_{1} \otimes \cdots \otimes b_{m}$ formant une base de $\otimes_{m} V$.
+
+		\mathblock{proof}{}{
+			On notera $W := \mathrm{Vect}(\{ \pi_{m}(b_{1} \otimes \cdots \otimes b_{m}), \forall (b_{1}, \cdots, b_{m}) \in \mathcal{B}^{m} \}). \\
+$
+			Pour montrer que cette famille génère bien $\wedge_{m} V$, nous allons utiliser le fait que
+			$$
+				\bigotimes_{m} V = \mathrm{Vect}(\mathrm{Im} \ \mu_{m})
+			$$
+			Et utiliser la surjection canonique $\pi_{m}$ de $\wedge_{m} V$. \\
+			Soit $\xi \in \wedge_{m} V$. \\
+			Soit alors $a \in \bigotimes_{m} V$ tel que $\xi = \pi_{m}(a)$. \\
+			Soit alors $(\lambda_{(b_{1}, \cdots, b_{m})}) \in \mathbb{R}^{\mathcal{B}^{m}}$ presque nulle telle que
+			$$
+				a = \sum_{(b_{1}, \cdots, b_{m}) \in \mathcal{B}^{m}} \lambda_{(b_{1}, \cdots, b_{m})} \times b_{1} \otimes \cdots \otimes b_{m}
+			$$
+			La somme étant finie, on obtient par linéarité de $\pi_{m}$
+			$$
+				\xi = \pi_{m}(a) = \sum_{(b_{1}, \cdots, b_{m}) \in \mathcal{B}^{m}} \lambda_{(b_{1}, \cdots, b_{m})} \times \pi_{m}(b_{1} \otimes \cdots \otimes b_{m})
+			$$
+			D'où $\xi \in W$ et l'inclusion $\wedge_{m} V \subset W$. \\
+			Inversement, on remarque que $\forall (b_{1}, \cdots, b_{m}) \in \mathcal{B}^{m}$, on a
+			$$
+				\pi_{m}(b_{1} \otimes \cdots \otimes b_{m}) \in \wedge_{m} V
+			$$
+			D'où $W \subset \wedge_{m} V$ et l'égalité.
+		}
+
 		La question qu'on se pose à présent est de savoir si comme pour le produit tensoriel entre $m$-tenseurs $\otimes$, il est possible de définir un \flqq{} produit extérieur \frqq{} entre des $m$-vecteurs.
 	}
 
 	\subsection{Produit extérieur}{
 		\noindent Soient $h, k, \ell \in \mathbb{N}$. \\
-		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel. \\
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel.
+
+		\vspace{1em}
+
 		En exploitant les propriétés de $\pi_{m}$, nous construisons un \flqq{} produit extérieur \frqq{}
 
 		\mathblock{theorem}{Application bilinéaire $\wedge_{k, h}$}{
@@ -133,7 +163,7 @@
 			Soit $\eta \in \wedge_{h} V$. \bigskip \\
 			Alors
 			$$
-				\xi \wedge \eta = (-1)^{k h} \eta \wedge \xi
+				\xi \wedge \eta = (-1)^{k h} \times \eta \wedge \xi
 			$$
 		}
 	}
@@ -157,6 +187,90 @@
 				\{ e_{\lambda(1)} \wedge \cdots \wedge e_{\lambda(m)}, \lambda \in I_{m} \}
 			$$
 			est une base de $\wedge_{m} V$.
+		}
+
+		On prend le temps de s'intéresser à ce qu'il se passe en dimension finie. Ce sera notamment utile pour la section suivante qui traîtera du déterminant.
+
+		\mathblock{corollary}{Dimension de $\wedge_{m} V$}{
+			Soit $V$ un $\mathbb{R}$-ev de dimension finie $n$. \\
+			On a
+			\begin{mathlist}
+				\item Si $m < n$, alors
+					$$
+						\dim \wedge_{m} V = \binom{n}{m}
+					$$
+				\item En particulier, si $m = n$, on a
+					$$
+						\dim \wedge_{n} V = 1
+					$$
+				\item Si $m > n$, alors
+					$$
+						\dim \wedge_{m} V = 0
+					$$
+			\end{mathlist}
+		}
+
+		On essaye à présent de définir une \flqq{} extension \frqq{} d'une application linéaire à l'espace des $m$-vecteurs pour pouvoir bénéficier de l'opération $\wedge$.
+
+		\mathblock{proposition}{Extension d'applications linéaires}{
+			Soient $V, V'$ deux $\mathbb{R}$-espace vectoriels quelconques. \\
+			Soit $f \in \mathcal{L}(V, V')$. \bigskip \\
+			Alors il existe une unique application $F \in \mathcal{L}(\wedge_{m} V, \wedge_{m} V')$ telle que
+			$$
+				\forall v_{1}, \cdots, v_{m} \in V, F(v_{1} \wedge \cdots \wedge v_{m}) = f(v_{1}) \wedge \cdots \wedge f(v_{m})
+			$$
+		}
+
+		On notera cette fonction $\wedge_{m} f := F$.
+	}
+
+	\subsection{Déterminant}{
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel de dimension $n$.
+
+		\vspace{1em}
+
+		On terminer cette section en donnant une définition très générale du déterminant en dimension finie. On montrera ensuite que cette définition coïncide avec le déterminant déjà connu. La principale propriété qui nous permet de définir le déterminant est que
+		$$
+			\dim \wedge_{n} V = 1
+		$$
+		Ce qui permet d'identifier (à un unique isomorphisme près) cet espace avec $\mathbb{R}$
+		$$
+			\wedge_{n} V \cong \mathbb{R}
+		$$
+		Autrement dit qu'à un vecteur de $\wedge_{n} V$ il est possible d'associer un et un seul réel.
+
+		\mathblock{lemma}{Existence du déterminant}{
+			Soit $f \in \mathcal{L}(V)$. \\
+			Soit $\wedge_{n} f \in \mathcal{L}(\wedge_{n} V)$ l'unique extension de $f$ à $\wedge_{n} V$. \bigskip \\
+			Alors $\exists ! a_{f} \in \mathbb{R}$ telle que
+			$$
+				\forall \xi \in \wedge_{n} V, \wedge_{n} f(\xi) = a_{f} \xi
+			$$
+		}
+
+		\mathblock{definition}{Déterminant d'un endomorphisme}{
+			Soit $f \in \mathcal{L}(V)$. \\
+			Soit $a_{f}$ l'unique réel par le lemme précédent. \bigskip \\
+			On appelle \textit{déterminant de $f$} le réel noté $\det f$ définie par
+			$$
+				\det f := a_{f}
+			$$
+		}
+
+		On montre a présent que ce déterminant correspond au déterminant \flqq{} des matrices \frqq{}.
+
+		\mathblock{proposition}{Cohérence des notations}{
+			Soit $(e_{1}, \cdots, e_{n})$ une base de $V$. \\
+			Soit $A = (a_{i, j}) \in \mathscr{M}_{n, n}(\mathbb{R})$. \\
+			Soit $f \in \mathcal{L}(V)$ canoniquement associé à $A$
+			$$
+				\mathrm{Mat}_{\mathcal{B}_{\text{can}}}(f) = A
+			$$
+			Soit $a_{f}$ le déterminant de $f$. \\
+			Alors
+			$$
+				a_{f} = \det A (= \det f)
+			$$
 		}
 	}
 \end{document}
