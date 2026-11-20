@@ -1,6 +1,8 @@
 \documentclass[../geometrie.tex]{subfiles}
 
 \begin{document}
+	Dans cette partie, on ne s'intéressera qu'aux espaces produits tensoriels que décrit la notation avec $\otimes$. Ainsi, les deux ensembles que nous définirons dans la première partie sont liés à un espace produit tensoriel précis. Mais il faut toujours garder en tête qu'il est possible de définir de tels espaces avec les autres produit tensoriels. Les résultats seront similaires modulo un isomorphisme.
+
 	\subsection{Espace des \texorpdfstring{$m$-vecteurs}{m-vecteurs}}{
 		\noindent Soit $m \in \mathbb{N}$. \\
 		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel.
@@ -116,7 +118,76 @@ $
 		$$
 
 		\mathblock{proof}{}{
-			Le principe de la preuve est surtout de montrer que la fonction est bien définie. Autrement dit que deux représentant d'une même classe donnent le même résultat.
+			\begin{itemize}
+				\item[$\bullet$] Montrons que $\wedge_{k, h}$ est une application bien définie. Le caractère de \flqq{} bien définie \frqq{} permettra de justifier de l'existence d'une telle fonction. \\
+					Soit $\xi \in \wedge_{k} V$. \\
+					Soit $\eta \in \wedge_{h} V$. \\
+					Soient $a, a' \in \bigotimes_{k} V$ tels que $\xi = \pi_{k}(a) = \pi_{k}(a')$. \\
+					Soient $b, b' \in \bigotimes_{h} V$ tels que $\eta = \pi_{h}(b) = \pi_{h}(b')$. \\
+					Montrer que $\wedge_{k, h}$ est bien définie revient à montrer que
+					$$
+						\pi_{k + h}(a \otimes b) = \pi_{k + h}(a' \otimes b')
+					$$
+					Pour cela, on remarque par bilinéarité de $\otimes$ que
+					$$
+						\begin{aligned}
+							a \otimes b - a' \otimes b' & = a \otimes (b - b' + b') - a' \otimes b' \\
+							& = a \otimes (b - b') + a \otimes b' - a' \otimes b' \\
+							& = a \otimes (b - b') + (a - a') \otimes b'
+						\end{aligned}
+					$$
+					Or $\pi_{k}(a) = \pi_{k}(a')$. \\
+					Donc $\pi_{k}(a - a') = 0_{\wedge_{k} V} := \mathcal{U}_{k} V$. \\
+					Donc $a - a' \in \mathcal{U}_{k} V$. \\
+					Donc $b \otimes (a - a') \in \mathcal{U}_{k + h} V$. \\
+					En effet, par définition, soient $I$ un ensemble fini, une famille $(\alpha_{i})_{i \in I}$ de réels et une famille $((v_{i, 1}, \cdots, v_{i, k}))_{i \in I} \in (V^{k})^{I}$ satisfaisant
+					$$
+						\forall i \in I, \exists i_{0} < i_{1} \in [\![1, k]\!], v_{i, i_{0}} = v_{i, i_{1}}
+					$$
+					tels que
+					$$
+						b = \sum_{i \in I} \alpha_{i} \times (v_{i, 1} \otimes \cdots \otimes v_{i, k})
+					$$
+					Soient de même $J$ un ensemble fini, une famille $(\beta_{j})_{j \in J}$ de réels et une famille $((w_{j, 1}, \cdots, w_{j, k}))_{j \in J} \in (V^{k})^{J}$ comportant deux éléments identiques pour tout $j \in J$ tels que
+					$$
+						a - a' = \sum_{j \in J} \beta_{j} \times (w_{j, 1} \otimes \cdots \otimes w_{j, k})
+					$$
+					Alors par bilinéarité de $\otimes$ (les deux sommes sont finies), il vient
+					$$
+						\begin{aligned}
+							& b \otimes (a - a') = \left( \sum_{i \in I} \alpha_{i} \times v_{i, 1} \otimes \cdots \otimes v_{i, k} \right) \\
+							& \hspace{7em} \otimes \left( \sum_{j \in J} \beta_{j} \times w_{j, 1} \otimes \cdots \otimes w_{j, k} \right) \\
+							& \quad = \sum_{i \in I} \sum_{j \in J} \alpha_{i} \beta_{j} \times ((v_{i, 1} \otimes \cdots \otimes v_{i, k}) \otimes (w_{j, 1}, \cdots, w_{j, k}))
+						\end{aligned}
+					$$
+					Enfin, par associativité de $\otimes$, on conclue que
+					$$
+						\begin{aligned}
+							& b \otimes (a - a') \\
+							& \hspace{2em} = \sum_{i \in I} \sum_{j \in J} \alpha_{i} \beta_{j} \times (v_{i, 1} \otimes \cdots \otimes v_{i, k} \otimes w_{j, 1}, \cdots, w_{j, k})
+						\end{aligned}
+					$$
+					Or pour tout $(i, j) \in I \times J, \exists i_{0}, i_{1} \in [\![1, k]\!]$ tels que $i_{0} < i_{1}$ et $v_{i, i_{0}} = v_{i, i_{1}}$. \\
+					D'où $b \otimes (a - a') \in \mathcal{U}_{k + h} V$. \\
+					On raisonne de la même manière pour montrer que
+					$$
+						a \otimes (b - b') \in \mathcal{U}_{k + h} V
+					$$
+					Par conséquent, on a bien par linéarité de $\pi_{k + h}$ que
+					$$
+						\begin{aligned}
+							\pi_{k + h}(a \otimes b & - a' \otimes b') \\
+							& = \pi_{k + h}(a \otimes (b - b')) + \pi_{k + h}((a - a') \otimes b) \\
+							& = 0_{\wedge_{k + h} V} + 0_{\wedge_{k + h} V} \\
+							& = 0_{\wedge_{k + h} V}
+						\end{aligned}
+					$$
+					Et donc que $\pi_{k + h}(a \otimes b) = \pi_{k + h}(a' \otimes b')$. \\
+					Finalement, $\wedge_{k, h}$ est bien définie.
+				
+				\item[$\bullet$] L'unicité de $\wedge_{k, h}$ découle de sa construction.
+				\item[$\bullet$] La bilinéarité de $\wedge_{k, h}$ découle également de sa construction puisque $\pi_{k + h}$ est linéaire et $\otimes$ est bilinéaire.
+			\end{itemize}
 		}
 
 		On étudie à présent les propriétés relatives à $\wedge_{k, h}$.
@@ -132,7 +203,21 @@ $
 		}
 
 		\mathblock{proof}{}{
-			On se ramène à la commutativité de $\otimes_{k, h}$.
+			Soit $a \in \bigotimes_{k} V$ tel que $\xi = \pi_{k}(a)$. \\
+			Soit $b \in \bigotimes_{h} V$ tel que $\mu = \pi_{h}(b)$. \\
+			Soit $c \in \bigotimes_{\ell} V$ tel que $\zeta = \pi_{\ell}(c)$. \\
+			On a alors par associativité de $\otimes$
+			$$
+				\begin{aligned}
+					(\xi \wedge_{k, h} \eta) \wedge_{k + h, \ell} \zeta & = (\pi_{k}(a) \wedge_{k, h} \pi_{h}(b)) \wedge_{k + h, \ell} \pi_{\ell}(c) \\
+					& = \pi_{k + h}(a \otimes b) \wedge_{k + h, \ell} \pi_{\ell}(c) \\
+					& = \pi_{k + h + \ell}((a \otimes b) \otimes c) \\
+					& = \pi_{k + h + \ell}(a \otimes (b \otimes c)) \\
+					& = \pi_{k}(a) \wedge_{k, h + \ell} \pi_{h + \ell}(b \otimes c) \\
+					& = \pi_{k}(a) \wedge_{k, h + \ell} (\pi_{h}(b) \wedge_{h, \ell} \pi_{\ell}(c)) \\
+					& = \xi \wedge_{k, h + \ell} (\eta \wedge_{h, \ell} \zeta)
+				\end{aligned}
+			$$
 		}
 
 		Ainsi, comme pour le produit tensoriel entre vecteurs, le parenthésage des expressions n'importe plus. De même à nouveau pour les indices $\wedge_{k, h}$. Nous opterons alors pour la notations suivante
