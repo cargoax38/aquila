@@ -433,16 +433,14 @@
 					$$
 						\bigotimes_{k} V := \underset{k \ \text{fois}}{\underbrace{V \otimes \cdots \otimes V}}
 					$$
-				\item Si $k = 1$, on notera
-					$$
-						\bigotimes_{1} V := V
-					$$
 				\item Dans le cas où $k = 0$, on adoptera la convention suivante
 					$$
 						\bigotimes_{0} V := \mathbb{R}
 					$$
 			\end{mathlist}
 		}
+
+		Nous reviendrons plus tard sur la notation pour traîter plus en détail la situation où $k = 1$. Nous verrons qu'il sera possible d'identifier canoniquement $\bigotimes_{1} V$ et $V$ par un unique isomorphisme (dépendant du choix de $\mu$).
 
 		Pour ce qui est des applications multilinéaires satisfaisant la propriété universelle, nous adopterons les notations (non conventionnelles) suivantes. On notera généralement
 		$$
@@ -599,6 +597,40 @@
 
 			Finalement, $\mathcal{B}$ est bien une base de $V_{1} \otimes \cdots \otimes V_{k}$.
 		}
+
+		Nous montrons à présent le résultat suivant qui nous permettra d'alléger les notations à l'avenir.
+
+		\mathblock{corollary}{$\bigotimes_{1} V \cong V$}{
+			En considérant $\mu_{1}$, il existe un unique isomorphisme entre $\bigotimes_{1} V$ et $V$.
+		}
+
+		\mathblock{proof}{}{
+			On utilise la propriété universelle de $\mu_{1}$ avec l'application $f = \mathrm{id}_{V} \in \mathcal{L}(V, V)$. \\
+			Soit alors l'unique application linéaire $\overline{\mathrm{id}}_{V} \in \mathcal{L}(\bigotimes_{1} V, V)$ qui satisfait le diagramme commutatif suivant
+			$$
+				\begin{tikzcd}[ampersand replacement=\&]
+					{V} \&\& V \\
+					\\
+					\bigotimes_{1} V
+					\arrow["\mathrm{id}_{V}", from=1-1, to=1-3]
+					\arrow["\mu_{1}"', from=1-1, to=3-1]
+					\arrow["{\overline{\mathrm{id}}_{V}}"', from=3-1, to=1-3]
+				\end{tikzcd}
+			$$
+			Soit $\mathcal{B}$ une base de $V$. \\
+			Par le théorème précédent, on a $\mu_{1}(\mathcal{B})$ qui est une base de $\bigotimes_{1} V$. \\
+			Donc
+			$$
+				\forall b \in \mathcal{B}, \overline{\mathrm{id}}_{V}(\mu_{1}(b)) = \mathrm{id}_{V}(b) = b
+			$$
+			Autrement dit, $\overline{\mathrm{id}}_{V}$ envoie une base de $\bigotimes_{1} V$ vers $\mathcal{B}$ une base de $V$. \\
+			Donc $\overline{\mathrm{id}}_{V}$ est un isomorphisme entre $\bigotimes_{1} V$ et $V$ et est unique modulo $\mu_{1}$ par la propriété universelle.
+		}
+
+		Dans cette configuration très précise, on a également montré que $\mu_{1} \in \mathcal{L}(V, \bigotimes_{1} V)$ est un isomorphisme dont l'inverse est $\overline{\mathrm{id}}_{V}$ puisque $\overline{\mathrm{id}}_{V} \circ \mu_{1} = \mathrm{id}_{V}$, on a donc bien
+		$$
+			\mu_{1} = \overline{\mathrm{id}}_{V}^{-1}
+		$$
 
 		Pour terminer cette section, on montre un résultat fondamental des espaces produit tensoriel, à savoir \flqq{} l'associativité de $\otimes$ \frqq{}. Autrement dit que d'une certaine manière, $V_{1} \otimes (V_{2} \otimes V_{3})$ et $(V_{1} \otimes V_{2}) \otimes V_{3}$ sont similaires (à un isomorphisme près). Dans le cas spécifique de ces espaces produit tensoriel (ceux dont la notation découle de la preuve sur l'existence), l'isomorphisme près en question dépend également du choix des applications multilinéaires.
 
@@ -918,6 +950,23 @@
 				\item[$\bullet$] \textsc{Conclusion} : Par le principe de récurrence simple, on a donc montré la propriété pour tout $k \geq 2$.
 			\end{itemize}
 		}
+
+		On termine cette section en allégeant encore plus les notations. On avait remarqué qu'il existe un unique isomorphisme à $\mu_{1}$ près entre $\bigotimes_{1} V$ et $V$. En reprenant les notations de la preuve, nous avons donc le fait que
+		$$
+			\forall v \in V, v = \overline{\mathrm{id}}_{V}(\mu_{1}(v))
+		$$
+		Dans ce cas très précis, nous pourrons confondre ces deux espaces en adoptant l'identification suivante
+		$$
+			\forall v \in V, v \overset{\mathrm{id.}}{=} \mu_{1}(v)
+		$$
+		L'intérêt de cet identification sera de pouvoir noter pour $v_{1}, \cdots, v_{k} \in V$
+		$$
+			v_{1} \otimes \cdots \otimes v_{k} \overset{\mathrm{id.}}{=} \mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{k})
+		$$
+		En utilisant l'égalité
+		$$
+			\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{k}) = \overline{\mathrm{id}}_{V}^{-1}(v_{1}) \otimes \cdots \otimes \overline{\mathrm{id}}_{V}^{-1}(v_{k})
+		$$
 
 		Pour conclure cette section sur le produit tensoriel \flqq{} $\otimes$ \frqq{}, on rappelle que les égalités énoncées dans toutes les propositions découlent d'un choix arbitraire d'espace produit tensoriels et d'applications multilinéaires. Comme montré dans le premier théorème sur les espaces produit tensoriels, tous couples $(V, \mu)$ d'espace produit tensoriel sont uniques à un isomorphisme près. Cela signifie que ni un tel $V$ ni un tel $\mu$ pour $V$ n'est unique. Dans le cas général, les égalités deviennet donc des identifications par isomorphismes.
 	}
