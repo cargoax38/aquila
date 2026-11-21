@@ -17,7 +17,27 @@
 			$$
 		}
 
-		Cet ensemble correspond au $\mathbb{R}$-sous-espace de $\bigotimes_{m} V$ engendré par les $m$-tenseurs simples qui possèdent au moins deux composantes identiques.
+		Cet ensemble correspond au $\mathbb{R}$-sous-espace de $\bigotimes_{m} V$ engendré par les $m$-tenseurs simples qui possèdent au moins deux composantes identiques. Avant de continuer, on prend le temps de caractériser cet ensemble dans le cas où $m = 1$.
+
+		\mathblock{proposition}{Espace $\mathcal{U}_{1} V$}{
+			On a
+			$$
+				\mathcal{U}_{1} V = \{ 0_{V} \}
+			$$
+		}
+
+		\mathblock{proof}{}{
+			Par définition,
+			$$
+				\mathcal{U}_{1} V := \mathrm{Vect}(\mu_{1}(v_{1}), v_{1} \in V, \exists i < j \in [\![1, 1]\!], v_{i} = v_{j})
+			$$
+			Puisque la condition \flqq{} $\exists i < j \in [\![1, 1]\!]$ \frqq{} n'est jamais vérifiée, on a alors
+			$$
+				\mathcal{U}_{1} V = \mathrm{Vect}(\emptyset) = \{ 0_{V} \}
+			$$
+		}
+
+		On définie à présent $\wedge_{m} V$.
 
 		\mathblock{definition}{Espace des $m$-vecteurs $\wedge_{m} V$}{
 			On appelle \textit{espace produit extérieur d'ordre $m$} ou ($m$-fold extension product) l'ensemble noté $\wedge_{m} V$ et définie par
@@ -25,6 +45,33 @@
 				\wedge_{m} V := \frac{\bigotimes_{m} V}{\mathcal{U}_{m} V}
 			$$
 		}
+
+		A nouveau, on prend le temps de caractériser $\wedge_{1} V$.
+
+		\mathblock{proposition}{Espace $\wedge_{1} V$}{
+			En fonction de $\mu_{1}$, ll existe un unique isomorphisme \flqq{} canonique \frqq{} entre $\wedge_{1} V$ et $V$.
+		}
+
+		\mathblock{proof}{}{
+			Par définition, on a
+			$$
+				\wedge_{1} V := \frac{\bigotimes_{1} V}{\mathcal{U}_{1} V}
+			$$
+			Par la caractérisation de $\mathcal{U}_{1} V$, on a
+			$$
+				\wedge_{1} V = \frac{\bigotimes_{1} V}{\{ 0_{V} \}}
+			$$
+			Or dans cette configuration, on a $\pi_{1} \in \mathcal{L}(\bigotimes_{1}, \wedge_{1} V)$ la surjection canonique qui est également injective. En effet, pour $a \in \mathrm{Ker} \ \pi_{1}$, on a $\pi_{1}(a) = 0_{\wedge_{1}}$. \\
+			Donc $a \in \{ 0_{V} \}$. \\
+			Donc $a = 0_{V}$. \\
+			On avait également montré que $\mu_{1} \in \mathcal{L}(V, \bigotimes_{1} V)$ est un isomorphisme. \\
+			Donc $\pi_{1} \circ \mu_{1}$ définie bien un isomorphisme entre $V$ et $\wedge_{1} V$.
+		}
+
+		Cette identification canonique à $\mu_{1}$ près nous permettra d'identifier un vecteur $v$ avec $\pi_{1}(\mu_{1}(v))$
+		$$
+			v \overset{\mathrm{id.}}{=} \pi_{1}(\mu_{1}(v))
+		$$
 
 		\mathblock{definition}{$m$-vecteur}{
 			On appelle \textit{$m$-vecteur} tout élément de $\wedge_{m} V$.
@@ -190,7 +237,7 @@ $
 			\end{itemize}
 		}
 
-		On étudie à présent les propriétés relatives à $\wedge_{k, h}$.
+		On étudie à présent les propriétés relatives à $\wedge_{k, h}$. Nous verrons en particuliers deux propriétés fondamentales, à savoir l'associativité de $\wedge_{k, h}$, qui permettra de d'affranchir des notations en indice comme pour le produit tensoriel $\otimes$ ainsi que de l'antisymétrie.
 
 		\mathblock{theorem}{Associativité de $\wedge_{k, h}$}{
 			Soit $\xi \in \wedge_{k} V$. \\
@@ -237,11 +284,121 @@ $
 			Soit $(v_{1}, \cdots, v_{m}) \in V$. \bigskip \\
 			Alors
 			$$
-				v_{1} \wedge \cdots \wedge v_{m} = \pi_{m}(v_{1} \otimes \cdots v_{m}) \in \wedge_{m} V
+				v_{1} \wedge \cdots \wedge v_{m} \overset{\mathrm{id.}}{=} \pi_{m}(v_{1} \otimes \cdots \otimes v_{m}) \in \wedge_{m} V
 			$$
 		}
 
-		On montre à présent que le $\wedge$ est antisymétrique.
+		On a employé ici l'identification montré dans la partie précédente avec $\bigotimes_{1} V$ et $V$. Pour être exacte, on a l'égalité suivante
+		$$
+			\begin{aligned}
+				\pi_{1}(\mu_{1}(v_{1})) \wedge & \cdots \wedge \pi_{1}(\mu_{1}(v_{m})) \\
+				& = \pi_{m}(\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{m})) \in \wedge_{m} V
+			\end{aligned}
+		$$
+
+		\mathblock{proof}{}{
+			On raisonne par récurrence simple sur $m$.
+
+			\begin{itemize}
+				\item[$\bullet$] \textsc{Initialisation} : Si $m = 2$. \\
+					Soient $v_{1}, v_{2} \in V$. \\
+					Alors par définition de $\wedge$
+					$$
+						\begin{aligned}
+							\pi_{1}(\mu_{1}(v_{1})) \wedge \pi_{1}(\mu_{1}(v_{2})) & := \pi_{1}(\mu_{1}) \wedge_{1, 1} \pi_{1}(\mu_{1}(v_{2})) \\
+							& = \pi_{2}(\mu_{1}(v_{1}) \otimes \mu_{1}(v_{2}))
+						\end{aligned}
+					$$
+					Et la propriété est vraie pour $m = 2$.
+				\item[$\bullet$] \textsc{Hérédité} : Soit $m \geq 2$, supposons la propriété vraie au rang $m$. \\
+					Soient $v_{1}, \cdots, v_{m+1} \in V$. \\
+					Alors par associativité de $\wedge$
+					$$
+						\begin{aligned}
+							& \pi_{1}(\mu_{1}(v_{1})) \wedge \cdots \wedge \pi_{1}(\mu_{1}(v_{m+1})) \\
+							& = (\pi_{1}(\mu_{1}(v_{1})) \wedge \cdots \wedge \pi_{1}(\mu_{1}(v_{m}))) \wedge_{m, 1} \pi_{1}(\mu_{1}(v_{m+1}))
+						\end{aligned}
+					$$
+					Par hypothèse de récurrence, on a
+					$$
+						\begin{aligned}
+							& \pi_{1}(\mu_{1}(v_{1})) \wedge \cdots \wedge \pi_{1}(\mu_{1}(v_{m})) \\
+							& = \pi_{m}(\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{1}(v_{m})))
+						\end{aligned}
+					$$
+					A nouveau, par définition de $\wedge_{m, 1}$ et associativité de $\otimes$ il vient
+					$$
+						\begin{aligned}
+							& (\pi_{m}(\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{1}(v_{m}))) \wedge_{m, 1} \pi_{1}(\mu_{1}(v_{m+1}) \\
+							& = \pi_{m + 1}((\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{1}(v_{m}))) \otimes \pi_{1}(\mu_{1}(v_{m+1}))) \\
+							& = \pi_{m + 1}(\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{m+1}))
+						\end{aligned}
+					$$
+					D'où la propriété vérifiée au rang $m+1$.
+				\item[$\bullet$] \textsc{Conclusion} : Par le principe de récurrence simple, on a bien montré la propriété.
+			\end{itemize}
+		}
+
+		On montre à présent que le $\wedge$ est antisymétrique. Mais avant cela, nous avons besoin de deux lemmes essentiels pour prouver cette assertion.
+
+		\mathblock{lemma}{Echange des extrema}{
+			Soit $\mathcal{B}$ une base de $V$. \bigskip \\
+			Alors pour tout $b_{1}, \cdots, b_{m} \in \mathcal{B}$.
+			$$
+				b_{m} \wedge b_{2} \wedge \cdots \wedge \cdots b_{m - 1} \wedge b_{m} = (-1) \times (b_{1} \wedge b_{2} \wedge \cdots \wedge b_{m})
+			$$
+		}
+
+		\mathblock{proof}{}{
+			On raisonne par récurrence simple sur $m$.
+
+			\begin{itemize}
+				\item[$\bullet$] \textsc{Initialisation} : Pour $m = 2$. \\
+					Soient $b_{1}, b_{2} \in \mathcal{B}$. \\
+					Alors on remarque que $b_{1} \otimes b_{1} \in \mathcal{U}_{2} V$. \\
+					De même pour $b_{1} \otimes b_{1} \in \mathcal{U}_{2} V$. \\
+					Et enfin de même pour $(b_{1} + b_{2}) \otimes (b_{1} + b_{2}) \in \mathcal{U}_{2} V$. \\
+					Alors par bilinéarité de $\otimes$, on trouve
+					$$
+						\begin{aligned}
+							(b_{1} + b_{2}) \otimes (b_{1} + b_{2}) & = b_{1} \otimes b_{1} \\
+							& + b_{1} \otimes b_{2} \\
+							& + b_{2} \otimes b_{1} \\
+							& + b_{2} \otimes b_{2}
+						\end{aligned}
+					$$
+					Alors par linéarité de $\pi_{2}$, il vient
+					$$
+						\begin{aligned}
+							0_{\wedge_{2} V} & = \pi_{2}((b_{1} + b_{2}) \otimes (b_{1} + b_{2})) \\
+							& = \underset{= 0_{\wedge_{2} V}}{\underbrace{\pi_{2}(b_{1} \otimes b_{1})}} + \pi_{2}(b_{1} \otimes b_{2}) \\
+							& + \pi_{2}(b_{2} \otimes b_{1}) + \underset{= 0_{\wedge_{2} V}}{\underbrace{\pi_{2}(b_{2} \otimes b_{2})}}
+						\end{aligned}
+					$$
+					D'où
+					$$
+						\pi_{2}(b_{1} \otimes b_{2}) = -\pi_{2}(b_{1})
+					$$
+					Par la proposition précédente, on conclue enfin que
+					$$
+						b_{1} \wedge b_{2} = - b_{2} \wedge b_{1} = (-1)^{m-1} b_{2} \wedge b_{1}
+					$$
+					et la propriété est vérifiée pour $m = 2$.
+				\item[$\bullet$] \textsc{Hérédité} : Soit $m \geq 2$. Supposons la propriété vraie au rang $m$. \\
+					Soient $b_{1}, \cdots, b_{m+1} \in \mathcal{B}$. \\
+					Alors par associativité de $\wedge$, on a
+					$$
+						\begin{aligned}
+							& b_{m+1} \wedge b_{2} \wedge \cdots \wedge b_{m} \wedge b_{1} \\
+							& = (b_{m + 1} \wedge b_{2} \wedge \cdots \wedge b_{m}) \wedge b_{1} \\
+						\end{aligned}
+					$$
+					Par hypothèse de récurrence, on a
+					$$
+						b_{m + 1} \wedge b_{2} \wedge \cdots \wedge b_{m} = -
+					$$
+			\end{itemize}
+		}
 
 		\mathblock{theorem}{Antisymétrie de $\wedge$}{
 			Soit $\xi \in \wedge_{k} V$. \\
