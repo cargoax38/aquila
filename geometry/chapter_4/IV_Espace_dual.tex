@@ -1,0 +1,155 @@
+\documentclass[../geometrie.tex]{subfiles}
+
+\begin{document}
+	Dans cette section, nous nous intéressons à présent aux espaces duaux des deux ensembles introduits dans les sections précédents, à savoir $\otimes_{m} V$ et $\wedge_{m} V$. L'étude de des duaux sera particulièrement utile lorsqu'il sera question de traiter des applications \flqq{} $k$-formes \frqq{} définies sur des variétés topologiques.
+
+	\subsection{Espace dual de \texorpdfstring{$\otimes_{m} V$}{l'espace produit tensoriel}}{
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel. \\
+		\noindent Soit $m \in \mathbb{N}$.
+
+		\mathblock{definition}{Dual de $\otimes_{m} V$}{
+			On appellera \textit{dual algébrique} de $\otimes_{m} V$ l'ensemble noté $\otimes^{m} V$ définie par
+			$$
+				\otimes^{m} V := \mathcal{L}^{m}(V^{m}, \mathbb{R})
+			$$
+			C'est donc l'ensembles des formes $m$-linéaires de $V^{m}$.
+		}
+
+		On remarquera en particulier que $\otimes^{m} V$ possède bien une structure de $\mathbb{R}$-espace vectoriel. Ainsi pour tout $\alpha, \beta \in \bigotimes^{m} V$ et pour tout $s \in \mathbb{R}$, on a pout tout $v_{1}, \cdots, v_{m} \in V$
+		$$
+			(s \alpha + \beta)(v_{1}, \cdots, v_{m}) = s \alpha(v_{1}, \cdots v_{m}) + \beta(v_{1}, \cdots, v_{m})
+		$$
+		Comme pour l'espace $\bigotimes_{m} V$, on cherche à présent à définir des opérations se comportant comme des produits sur $\otimes^{m} V$. Pour commencer, on commence par s'intéresser à une fonction en particulier, qui selon certaines condition permet d'établir une correspondances (isomorphisme) entre l'espace produit tensoriel des formes linéaires de $V$ ($\otimes_{m} V^{*}$) et le dual de l'espace produit tensoriel ($\otimes^{m} V$).
+
+		Autrement dit, sous certaines conditions, l'espace produit tensoriel du dual est le dual de l'espace produit tensoriel.
+
+		\mathblock{theorem}{Application $C_{m}$}{
+			Soit $m \in \mathbb{N}^{\star}$. \\
+			Soit l'application
+			$$
+				C_{m} : \otimes_{m} V^{*} \longrightarrow \otimes^{m} V
+			$$
+			telle que pour tout $(\lambda_{1}, \cdots, \lambda_{m}) \in (V^{*})^{m}$, on a $\forall (v_{1}, \cdots, v_{m}) \in V^{m}$
+			$$
+				C_{m}(\lambda_{1} \otimes \cdots \otimes \lambda_{m})(v_{1}, \cdots, v_{m}) = \prod_{i = 1}^{m} \lambda_{i}(v_{i})
+			$$
+			Alors
+			\begin{mathlist}
+				\item $C_{m}$ est injective.
+				\item Si $\dim V < +\infty$, on a même $C_{m}$ qui est surjective.
+			\end{mathlist}
+		}
+
+		Lorsque $\dim V = +\infty$, la surjectivité de $C_{m}$ n'est pas toujours garantie. On peut par exemple considérer $V := \mathbb{R}^{\mathbb{N}}$ l'espace des suites numériques et l'application bilinéaire $\beta$ définie par
+		$$
+			\forall u, v \in V, \beta(u, v) = u(0) v(0) + u(1) v(1)
+		$$
+
+		A partir de maintenant, nous considèrerons $\dim V < +\infty$. On aura alors $C_{m} : \otimes_{m} V^{*} \longrightarrow \otimes^{m} V$ qui est un isomorphisme. On cherche à présent à définir un produit
+		$$
+			\otimes^{k} V \times \otimes^{h} V \longrightarrow \otimes^{k + h} V
+		$$
+
+		\mathblock{theorem}{Produit $\otimes^{k, h}$}{
+			On considère l'application
+			$$
+				\otimes^{k, h} :
+				\begin{array}{rcl}
+					\otimes^{k} V \times \otimes^{h} V & \longrightarrow & \otimes^{k + h} V \\
+					(\alpha, \beta) & \longmapsto & C_{k + h}(C_{k}^{-1}(\alpha) \otimes_{k, h} C_{h}^{-1}(\beta))
+				\end{array}
+			$$
+			Alors $\otimes^{k, h}$ est bien définie telle que
+			\begin{mathlist}
+				\item $\otimes^{k, h}$ est bilinéaire.
+				\item $\otimes^{k, h}$ est associative.
+			\end{mathlist}
+		}
+	}
+
+	\section{Espace dual \texorpdfstring{de $\wedge_{m} V$}{des m-vecteurs}}{
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel. \\
+		\noindent Soit $m \in \mathbb{N}^{\star}$.
+
+		\mathblock{definition}{Dual de $\wedge_{m} V$}{
+			On appellera \textit{dual algébrique} de $\wedge_{m} V$ l'ensemble noté $\wedge_{m} V$ définie par
+			$$
+				\wedge^{m} V := \{ \alpha \in \otimes^{m} V \ | \ \alpha \ \text{alternée} \}
+			$$
+		}
+
+		En particulier, on notera que par définition, $\wedge^{m} V \subset \otimes^{m} V$. Toutefois, il n'est pas vrai qu'en général pour $\alpha \in \wedge^{k} V$ et $\beta \in \wedge^{h} V$, on possède $\alpha \otimes^{k, h} \beta \in \wedge^{k + h} V$.
+
+		Comme pour le premier espace dual, on cherche à définition une opération de type \flqq{} produit \frqq{}
+		$$
+			\wedge^{k} V \times \wedge^{h} V \longrightarrow \wedge^{k + h} V
+		$$
+		Pour commencer, nous définissons un autre produit, appelé produit alterné.
+
+		\mathblock{definition}{Produit alterné $\mathfrak{A}_{m}$}{
+			On appelle \textit{produit alterné} l'application notée $\mathfrak{A}_{m}$ définie par
+			$$
+				\mathfrak{A}_{m} :
+				\begin{array}{rcl}
+					\otimes^{m} V & \longrightarrow & \otimes^{m} V \\
+					\alpha & \longmapsto & \mathfrak{A}_{m}(\alpha)
+				\end{array}
+			$$
+			et telle que pour tout $\alpha \in \otimes^{m} V$ et tout $v_{1 \to m} \in V^{m}$
+			$$
+				\mathfrak{A}_{m}(\alpha)(v_{1 \to m}) = \frac{1}{m} \sum_{\sigma \in \mathfrak{S}_{m}} \varepsilon(\sigma) \alpha(v_{\sigma(1)} \otimes \cdots \otimes v_{\sigma(m)})
+			$$
+		}
+
+		On montre ensuite que $\mathfrak{A}_{m}$ vérifie les propriétés suivantes
+
+		\mathblock{proposition}{Propriétés de $\mathfrak{A}_{m}$}{
+			Soit $\alpha \in \otimes^{m} V$. \bigskip \\
+			On a
+			\begin{mathlist}
+				\item $\mathfrak{A}_{m}(\alpha) \in \wedge^{m} V$.
+				\item $\mathfrak{A}_{m}(\mathfrak{A}_{m}(\alpha)) = \mathfrak{A}_{m}(\alpha)$.
+				\item $\mathrm{Im}(\mathfrak{A}_{m}) = \wedge^{m} V$.
+			\end{mathlist}
+		}
+
+		On définie à présent l'opération $\wedge^{k, h}$ entre les espaces duaux.
+
+		\mathblock{theorem}{Opération $\wedge^{k, h}$}{
+			On considère l'application
+			$$
+				\wedge^{k, h} :
+				\begin{array}{rcl}
+					\wedge^{k} V \times \wedge^{h} V & \longrightarrow & \wedge^{k + h} V \\
+					(\alpha, \beta) & \longmapsto & \mathfrak{A}{k + h}(\alpha \otimes^{k, h} \beta)
+				\end{array}
+			$$
+			Alors $\wedge^{k, h}$ est bien définie telle que
+			\begin{mathlist}
+				\item $\wedge^{k, h}$ est bilinéaire.
+				\item $\wedge^{k, h}$ est associative.
+				\item $\wedge^{k, h}$ est antisymétrique.
+			\end{mathlist}
+		}
+	}
+
+	\section{Formule du mélange}{
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel. \\
+		\noindent Soit $m \in \mathbb{N}^{\star}$.
+
+		\vspace{1em}
+
+		Dans cette partie, on s'intéresse à une formule très importante et très utile pour effectuer des preuves, la formule du mélange. Mais avant, on définie l'ensemble $\mathrm{sh}(m, n)$.
+
+		\mathblock{definition}{Ensemble $\mathrm{sh}(m, n)$}{
+			Soient $m, n \geq 1$. \bigskip \\
+			On appelle \textit{mélange} de $m$ par $n$ l'ensemble notée $\mathrm{sh}(m, n)$ et définie par
+			$$
+				\begin{aligned}
+					\mathrm{sh}(m, n) := \{ & \lambda \in \mathfrak{S}_{m + n} \ | \ \lambda_{| [\![1, n]\!]}, \lambda_{| [\![m + 1, m + n]\!]} \\
+					& \text{strictement croissantes}\}
+				\end{aligned}
+			$$
+		}
+	}
+\end{document}
