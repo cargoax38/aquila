@@ -908,45 +908,44 @@ $
 		}
 
 		\mathblock{proof}{}{
-			Soit $\xi \in \wedge_{n} V$. \\
-			Soit alors $a \in \bigotimes_{n} V$ tel que $\xi = \pi_{n}(a)$. \\
-			Soit alors l'unique famille presque nulle $(\alpha_{b_{1 \to n}})_{b_{1 \to n} \in \mathcal{B}^{n}}$ telle que
+			On cherche à calculer $\wedge_{n} f(e_{1} \wedge \cdots \wedge e_{n})$. \\
+			Par hypothèse, on sait que pour $j \in [\![1, n]\!]$,
 			$$
-				a = \sum_{b_{1 \to n} \in \mathcal{B}^{n}} \alpha_{b_{1 \to n}} \times b_{1} \otimes \cdots \otimes b_{n}
+				f(e_{j}) = \sum_{i = 1}^{n} a_{i, j} e_{i}
 			$$
-			Comme pour la preuve sur la détermination d'une base de $\wedge_{n} V$, on considère la famille $(\beta_{b_{1 \to n}})_{b_{1 \to n} \in \mathcal{B}^{n}}$ telle que pour tout $b_{1 \to n} \in \mathcal{B}^{n}$,
-			$$
-				\beta_{b_{1 \to n}} :=
-				\left\{
-					\begin{array}{lcl}
-						0 & \text{si} & \exists i < j \in [\![1, n]\!], b_{i} = b_{j} \\
-						\alpha_{b_{1 \to n}} & \text{si} & \text{non}
-					\end{array}
-				\right.
-			$$
-			Autrement dit, les seuls coefficeints non nuls de $(\beta_{b_{1 \to n}})$ correspondent à ceux dont tous les indices sont différents. \\
-			On a alors par linéarité de $\pi_{n}$
+			On a alors par bilinéarité de $\wedge$
 			$$
 				\begin{aligned}
-					\xi & = \pi(a) \\
-					& = \sum_{b_{1 \to n} \in \mathcal{B}^{n}} \alpha(b_{1 \to n}) \times b_{1} \wedge \cdots \wedge b_{n} \\
-					& = \sum_{b_{1 \to n} \in \mathcal{B}^{n}} \beta_{b_{1 \to n}} \times b_{1} \wedge \cdots \wedge b_{n}
+					\wedge_{n} f(e_{1} \wedge & \cdots \wedge e_{n}) = f(e_{1}) \wedge \cdots \wedge f(e_{n}) \\
+					& = \sum_{i_{1} = 1}^{n} a_{i_{1}, 1} e_{i_{1}} \wedge \cdots \wedge \sum_{i_{n} = 1}^{n} a_{i_{n}, n} e_{i_{n}} \\
+					& = \sum_{1 \leq i_{1}, \cdots, i_{n} \leq n} a_{i_{1}, 1} \times \cdots \times a_{i_{n}, n} \times e_{i_{1}} \wedge \cdots \wedge e_{i_{n}}
 				\end{aligned}
 			$$
-			Pour $b_{1 \to n} \in \mathcal{B}$ ne possédant que des éléments distincts deux-à-deux, il existe $\sigma \in \mathfrak{S}_{n}$ telle que
+			Soit $(i_{1}, \cdots, i_{n}) \in [\![1, n]\!]^{n}$. \\
+			S'il existe $k < \ell \in [\![1, n]\!]$ tels que $i_{k} = i_{\ell}$, on a alors
 			$$
-				\forall i \in [\![1, n]\!], b_{i} = e_{\sigma(i)}
+				e_{i_{1}} \wedge \cdots e_{i_{n}} = 0_{\wedge_{n} V}
 			$$
-			On a ainsi par antisymétrie de $\wedge$
+			On peut donc conserver dans la somme que les $n$-uplets dont tous les éléments sont différents. \\
+			Autrement dit, nous pouvons conserver toutes les permutations de $[\![1, n]\!]$. \\
+			Ainsi par antisymétrie de $\wedge$
 			$$
 				\begin{aligned}
-					b_{1} \wedge \cdots \wedge b_{n} & = e_{\sigma(1)} \wedge \cdots \wedge e_{\sigma(n)} \\
-					& = \varepsilon(\sigma) \times e_{1} \wedge \cdots \wedge e_{n}
+					\wedge_{n} f(e_{1} \wedge & \cdots \wedge e_{n}) \\
+					& = \sum_{\sigma \in \mathfrak{S}_{n}} a_{\sigma(1), 1} \times \cdots \times a_{\sigma(n), n} \times e_{\sigma(1)} \wedge \cdots \wedge e_{\sigma(n)}  \\
+					& = \sum_{\sigma \in \mathfrak{S}_{n}} \varepsilon(\sigma) \prod_{i = 1}^{n} a_{\sigma(i), i} \times e_{1} \wedge \cdots \wedge e_{n}
 				\end{aligned}
 			$$
-			On a alors enfin
+			D'où finalement
 			$$
-				\xi = \sum_{\sigma \in \mathfrak{S}_{n}} \gamma_{\sigma} \times e_{1} \wedge \cdots \wedge e_{n}
+				\begin{aligned}
+					\wedge_{n} f(e_{1} \wedge \cdots \wedge e_{n}) & = \sum_{\sigma \in \mathfrak{S}_{n}} \varepsilon(\sigma) \prod_{i = 1}^{n} a_{\sigma(i), i} \\
+					& = (\det A) \times e_{1} \wedge \cdots \wedge e_{n}
+				\end{aligned}
+			$$
+			Par linéarité de $\wedge_{n} f$, on obtient bien le fait que pour tout $\xi \in \wedge_{n} f$,
+			$$
+				\wedge_{n} f(\xi) = (\det A) \times \xi
 			$$
 		}
 	}
