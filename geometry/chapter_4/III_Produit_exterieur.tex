@@ -791,7 +791,50 @@ $
 		On notera cette fonction $\wedge_{m} f := F$.
 
 		\mathblock{proof}{}{
-			
+			On notera $\pi_{m} \in \mathcal{L}(\bigotimes_{m} V, \wedge_{m} V)$ et $\pi'_{m} \in \mathcal{L}(\bigotimes_{m} V', \wedge_{m} V')$ les deux surjections canoniques. \\
+			On pose $g := \pi'_{m} \circ \bigotimes_{m} f$. \\
+			Montrons que $\mathcal{U}_{m} V \subset \mathrm{Ker} \ g$. \\
+			Soient $v_{1}, \cdots, v_{m} \in V$ tels $\exists i < j \in [\![1, m]\!], v_{i} = v_{j}$. \\
+			En particulier $f(v_{i}) = f(v_{j})$. \\
+			Donc $\bigotimes_{m} f(v_{1} \otimes \cdots \otimes v_{m}) = f(v_{1}) \otimes \cdots \otimes f(v_{m}) \in \mathcal{U}_{m} V'$.
+			Alors
+			$$
+				\begin{aligned}
+					g(v_{1} \otimes \cdots \otimes v_{m}) & = \pi'_{m} \! \left(\bigotimes_{m} f(v_{1} \otimes \cdots \otimes v_{m}) \right) \\
+					& = \pi'_{m}(f(v_{1}) \otimes \cdots \otimes f(v_{m})) \\
+					& = 0_{\wedge_{m} V'}
+	 			\end{aligned}
+			$$
+			Ainsi, par linéarité de $f$ et définition de $\mathcal{U}_{m} V$, il vient bien que
+			$$
+				\mathcal{U}_{m} V \subset \mathrm{Ker} \ g
+			$$
+			On applique ainsi la propriété universelle de $\pi_{m}$ pour $g$. \\
+			Soit alors l'unique application $\overline{g} \in \mathcal{L}(\wedge_{m} V, \wedge_{m} V')$ telle que
+			$$
+				\overline{g} \circ \pi_{m} = g = \pi'_{m} \circ \bigotimes_{m} f
+			$$
+			C'est-à-dire qui satisfait le diagramme commutatif suivant
+			$$
+				\begin{tikzcd}[ampersand replacement=\&]
+					{\bigotimes_{m} V} \&\& \wedge_{m} V' \\
+					\\
+					\wedge_{m} V
+					\arrow["\pi'_{m} \circ \bigotimes_{m} f", from=1-1, to=1-3]
+					\arrow["\pi_{m}"', from=1-1, to=3-1]
+					\arrow["{\overline{g}}"', from=3-1, to=1-3]
+				\end{tikzcd}
+			$$
+			On retrouve bien le fait que pour $v_{1}, \cdots, v_{m} \in V$
+			$$
+				\begin{aligned}
+					\overline{g}(v_{1} \wedge \cdots \wedge v_{m}) & = g(v_{1} \otimes \cdots v_{m}) \\
+					& = \pi'_{m}(\bigotimes_{m} f(v_{1} \otimes \cdots \otimes v_{m})) \\
+					& = \pi'_{m}(f(v_{1}) \otimes \cdots \otimes f(v_{m})) \\
+					& = f(v_{1}) \wedge \cdots \wedge f(v_{m})
+				\end{aligned}
+			$$
+			On a donc bien montré l'existence et l'unicité d'une telle fonction.
 		}
 	}
 
@@ -819,6 +862,26 @@ $
 			$$
 		}
 
+		\mathblock{proof}{}{
+			Soit $(e_{1}, \cdots, e_{n})$ une base de $V$.
+			Puisqu'on se trouve dans la configuration où $m = n$, on a $\dim \wedge_{n} V = 1$. \\
+			Par ce qui précède, on a $(e_{1} \wedge \cdots \wedge e_{n})$ qui forme une base de $\wedge_{n} V$. \\
+			Soit alors l'unique $a_{f} \in \mathbb{R}$ tel que
+			$$
+				\wedge_{m} f(e_{1} \wedge \cdots \wedge e_{n}) = a_{f} \times e_{1} \wedge \cdots \wedge e_{n}
+			$$
+			Ainsi pour $\xi \in \wedge_{n} V$, soit l'unique $\lambda \in \mathbb{R}$ tel que $\xi = \lambda \times e_{1} \wedge \cdots \wedge e_{n}$. \\
+			Ainsi par linéarité de $\wedge_{m} f$
+			$$
+				\begin{aligned}
+					\wedge_{n} f(\xi) & = \wedge_{n} f(\lambda \times e_{1} \wedge \cdots \wedge e_{n}) \\
+					& = \lambda \times \wedge_{n} f(e_{1} \wedge \cdots \wedge e_{n}) \\
+					& = \lambda \times a_{f} \times e_{1} \wedge \cdots \wedge e_{n} \\
+					& = a_{f} \times \xi
+				\end{aligned}
+			$$
+		}
+
 		\mathblock{definition}{Déterminant d'un endomorphisme}{
 			Soit $f \in \mathcal{L}(V)$. \\
 			Soit $a_{f}$ l'unique réel par le lemme précédent. \bigskip \\
@@ -831,7 +894,7 @@ $
 		On montre a présent que ce déterminant correspond au déterminant \flqq{} des matrices \frqq{}.
 
 		\mathblock{proposition}{Cohérence des notations}{
-			Soit $(e_{1}, \cdots, e_{n})$ une base de $V$. \\
+			Soit $\mathcal{B} := (e_{1}, \cdots, e_{n})$ une base de $V$. \\
 			Soit $A = (a_{i, j}) \in \mathscr{M}_{n, n}(\mathbb{R})$. \\
 			Soit $f \in \mathcal{L}(V)$ canoniquement associé à $A$
 			$$
@@ -840,7 +903,50 @@ $
 			Soit $a_{f}$ le déterminant de $f$. \\
 			Alors
 			$$
-				a_{f} = \det A (= \det f)
+				a_{f} = \det A \quad (= \det f)
+			$$
+		}
+
+		\mathblock{proof}{}{
+			Soit $\xi \in \wedge_{n} V$. \\
+			Soit alors $a \in \bigotimes_{n} V$ tel que $\xi = \pi_{n}(a)$. \\
+			Soit alors l'unique famille presque nulle $(\alpha_{b_{1 \to n}})_{b_{1 \to n} \in \mathcal{B}^{n}}$ telle que
+			$$
+				a = \sum_{b_{1 \to n} \in \mathcal{B}^{n}} \alpha_{b_{1 \to n}} \times b_{1} \otimes \cdots \otimes b_{n}
+			$$
+			Comme pour la preuve sur la détermination d'une base de $\wedge_{n} V$, on considère la famille $(\beta_{b_{1 \to n}})_{b_{1 \to n} \in \mathcal{B}^{n}}$ telle que pour tout $b_{1 \to n} \in \mathcal{B}^{n}$,
+			$$
+				\beta_{b_{1 \to n}} :=
+				\left\{
+					\begin{array}{lcl}
+						0 & \text{si} & \exists i < j \in [\![1, n]\!], b_{i} = b_{j} \\
+						\alpha_{b_{1 \to n}} & \text{si} & \text{non}
+					\end{array}
+				\right.
+			$$
+			Autrement dit, les seuls coefficeints non nuls de $(\beta_{b_{1 \to n}})$ correspondent à ceux dont tous les indices sont différents. \\
+			On a alors par linéarité de $\pi_{n}$
+			$$
+				\begin{aligned}
+					\xi & = \pi(a) \\
+					& = \sum_{b_{1 \to n} \in \mathcal{B}^{n}} \alpha(b_{1 \to n}) \times b_{1} \wedge \cdots \wedge b_{n} \\
+					& = \sum_{b_{1 \to n} \in \mathcal{B}^{n}} \beta_{b_{1 \to n}} \times b_{1} \wedge \cdots \wedge b_{n}
+				\end{aligned}
+			$$
+			Pour $b_{1 \to n} \in \mathcal{B}$ ne possédant que des éléments distincts deux-à-deux, il existe $\sigma \in \mathfrak{S}_{n}$ telle que
+			$$
+				\forall i \in [\![1, n]\!], b_{i} = e_{\sigma(i)}
+			$$
+			On a ainsi par antisymétrie de $\wedge$
+			$$
+				\begin{aligned}
+					b_{1} \wedge \cdots \wedge b_{n} & = e_{\sigma(1)} \wedge \cdots \wedge e_{\sigma(n)} \\
+					& = \varepsilon(\sigma) \times e_{1} \wedge \cdots \wedge e_{n}
+				\end{aligned}
+			$$
+			On a alors enfin
+			$$
+				\xi = \sum_{\sigma \in \mathfrak{S}_{n}} \gamma_{\sigma} \times e_{1} \wedge \cdots \wedge e_{n}
 			$$
 		}
 	}
