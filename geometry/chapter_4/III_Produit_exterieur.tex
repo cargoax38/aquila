@@ -305,7 +305,7 @@ $
 					Alors par définition de $\wedge$
 					$$
 						\begin{aligned}
-							\pi_{1}(\mu_{1}(v_{1})) \wedge \pi_{1}(\mu_{1}(v_{2})) & := \pi_{1}(\mu_{1}) \wedge_{1, 1} \pi_{1}(\mu_{1}(v_{2})) \\
+							\pi_{1}(\mu_{1}(v_{1})) \wedge \pi_{1}(\mu_{1}(v_{2})) & := \pi_{1}(\mu_{1}(v_{1})) \wedge_{1, 1} \pi_{1}(\mu_{1}(v_{2})) \\
 							& = \pi_{2}(\mu_{1}(v_{1}) \otimes \mu_{1}(v_{2}))
 						\end{aligned}
 					$$
@@ -350,7 +350,7 @@ $
 		}
 
 		\mathblock{proof}{}{
-			On raisonne par récurrence simple sur $m$.
+			On raisonne par récurrence forte sur $m$.
 
 			\begin{itemize}
 				\item[$\bullet$] \textsc{Initialisation} : Pour $m = 2$. \\
@@ -377,26 +377,192 @@ $
 					$$
 					D'où
 					$$
-						\pi_{2}(b_{1} \otimes b_{2}) = -\pi_{2}(b_{1})
+						\pi_{2}(b_{1} \otimes b_{2}) = -\pi_{2}(b_{2} \otimes b_{1})
 					$$
 					Par la proposition précédente, on conclue enfin que
 					$$
-						b_{1} \wedge b_{2} = - b_{2} \wedge b_{1} = (-1)^{m-1} b_{2} \wedge b_{1}
+						b_{1} \wedge b_{2} = - b_{2} \wedge b_{1}
 					$$
 					et la propriété est vérifiée pour $m = 2$.
-				\item[$\bullet$] \textsc{Hérédité} : Soit $m \geq 2$. Supposons la propriété vraie au rang $m$. \\
+				\item[$\bullet$] \textsc{Hérédité} : Soit $m \geq 2$. Supposons la propriété vraie pour tous les rangs $k \leq m$. \\
 					Soient $b_{1}, \cdots, b_{m+1} \in \mathcal{B}$. \\
 					Alors par associativité de $\wedge$, on a
 					$$
 						\begin{aligned}
 							& b_{m+1} \wedge b_{2} \wedge \cdots \wedge b_{m} \wedge b_{1} \\
-							& = (b_{m + 1} \wedge b_{2} \wedge \cdots \wedge b_{m}) \wedge b_{1} \\
+							& = (b_{m + 1} \wedge b_{2} \wedge \cdots \wedge b_{m}) \wedge b_{1}
 						\end{aligned}
 					$$
-					Par hypothèse de récurrence, on a
+					Par hypothèse de récurrence pour $k = m$, on a
 					$$
-						b_{m + 1} \wedge b_{2} \wedge \cdots \wedge b_{m} = -
+						b_{m + 1} \wedge b_{2} \wedge \cdots \wedge b_{m} = -b_{m} \wedge b_{2} \wedge \cdots \wedge b_{m + 1}
 					$$
+					A nouveau par associativité de $\wedge$, on a
+					$$
+						\begin{aligned}
+							& b_{m+1} \wedge b_{2} \wedge \cdots \wedge b_{m} \wedge b_{1} \\
+							& = - (b_{m} \wedge b_{2} \wedge \cdots \wedge b_{m + 1}) \wedge b_{1} \\
+							& = - b_{m} \wedge b_{2} \wedge \cdots \wedge (b_{m + 1} \wedge b_{1})
+						\end{aligned}
+					$$
+					Par hypothèse de récurrence pour $k = 2$, on a
+					$$
+						b_{m + 1} \wedge b_{1} = - b_{1} \wedge b_{m + 1}
+					$$
+					D'où
+					$$
+						\begin{aligned}
+							& b_{m+1} \wedge b_{2} \wedge \cdots \wedge b_{m} \wedge b_{1} \\
+							& = (-1)^{2} \times b_{m} \wedge b_{2} \wedge \cdots \wedge (b_{1} \wedge b_{m + 1})
+						\end{aligned}
+					$$
+					On utilise à nouveau le même argument pour les $m$ premiers facteurs. \\
+					On obtient finalement
+					$$
+						\begin{aligned}
+							& b_{m+1} \wedge b_{2} \wedge \cdots \wedge b_{m} \wedge b_{1} \\
+							& = (-1)^{3} \times b_{1} \wedge b_{2} \wedge \cdots \wedge b_{m} \wedge b_{m + 1}
+						\end{aligned}
+					$$
+					On a donc bien la propriété vérifiée au rang $m + 1$. \\
+					D'une manière plus visuelle, nous venons donc d'effectuer la \flqq{} chaîne d'implications \frqq{} suivante
+					$$
+						\begin{array}{c}
+							b_{m + 1} \wedge b_{2} \wedge \cdots \wedge b_{m} \wedge b_{1} \\
+							\Downarrow \\
+							(b_{m + 1} \wedge b_{2} \wedge \cdots \wedge b_{m}) \wedge b_{1} \\
+							\Downarrow \\
+							(-b_{m} \wedge b_{2} \wedge \cdots \wedge b_{m + 1}) \wedge b_{1} \\
+							\Downarrow \\
+							-b_{m} \wedge b_{2} \wedge \cdots \wedge (b_{m + 1} \wedge b_{1}) \\
+							\Downarrow \\
+							-b_{m} \wedge b_{2} \wedge \cdots \wedge (-1 \times b_{1} \wedge b_{m + 1}) \\
+							\Downarrow \\
+							(b_{m} \wedge b_{2} \wedge \cdots \wedge b_{1}) \wedge b_{m+1} \\
+							\Downarrow \\
+							(-1 \times b_{1} \wedge b_{2} \wedge \cdots \wedge b_{m}) \wedge b_{m+1} \\
+							\Downarrow \\
+							-1 \times b_{1} \wedge b_{2} \wedge \cdots \wedge b_{m} \wedge b_{m+1}
+						\end{array}
+					$$
+				\item[$\bullet$] \textsc{Conclusion} : Par le principe de récurrence forte, on a bien montré la propriété.
+			\end{itemize}
+		}
+
+		\mathblock{lemma}{Produit extérieur et transposition}{
+			Soit $\mathcal{B}$ une base de $V$. \\
+			Soit $\tau \in \mathfrak{S}_{m}$ une transposition. \bigskip \\
+			Alors pour tout $b_{1}, \cdots, b_{m} \in \mathcal{B}$
+			$$
+				b_{\tau(1)} \wedge \cdots \wedge b_{\tau(m)} = - b_{1} \wedge \cdots \wedge b_{m}
+			$$
+		}
+
+		\mathblock{proof}{}{
+			Soient $b_{1}, \cdots, b_{m} \in \mathcal{B}$. \\
+			Soient $i < j \in [\![1, m]\!]$ tels que
+			$$
+				\tau = (i \ j)
+			$$
+			Autrement dit tels que $\tau(i) = j$ et $\tau(j) = i$. \\
+			On applique alors le lemme précédent en exploitant l'associativité de $\wedge$. \\
+			On obtient alors la \flqq{} chaîne d'implications \frqq{} suivante
+			$$
+				\begin{array}{c}
+					b_{\tau(1)} \wedge \cdots \wedge b_{\tau(i)} \wedge \cdots \wedge b_{\tau(j)} \wedge \cdots \wedge b_{\tau(m)} \\
+					\Downarrow \\
+					b_{1} \wedge \cdots \wedge b_{j} \wedge \cdots \wedge b_{i} \wedge \cdots \wedge b_{m} \\
+					\Downarrow \\
+					(b_{1} \wedge \cdots \wedge b_{j}) \wedge \cdots \wedge b_{i} \wedge \cdots \wedge b_{m} \\
+					\Downarrow \\
+					(-1 \times b_{j} \wedge \cdots \wedge b_{1}) \wedge \cdots \wedge b_{i} \wedge \cdots \wedge b_{m} \\
+					\Downarrow \\
+					(-1 \times b_{j} \wedge \cdots \wedge b_{1} \wedge \cdots \wedge b_{i}) \wedge \cdots \wedge b_{m} \\
+					\Downarrow \\
+					(b_{i} \wedge \cdots \wedge b_{1} \wedge \cdots \wedge b_{j}) \wedge \cdots \wedge b_{m} \\
+					\Downarrow \\
+					(b_{i} \wedge \cdots \wedge b_{1}) \wedge \cdots \wedge b_{j} \wedge \cdots \wedge b_{m} \\
+					\Downarrow \\
+					(-1 \times b_{1} \wedge \cdots \wedge b_{i}) \wedge \cdots \wedge b_{j} \wedge \cdots \wedge b_{m} \\
+					\Downarrow \\
+					-1 \times b_{1} \wedge \cdots \wedge b_{i} \wedge \cdots \wedge b_{j} \wedge \cdots \wedge b_{m}
+				\end{array}
+			$$
+			Ce qui prouve bien la proposition.
+		}
+
+		On termine enfin cette section de lemmmes on énonçant la propriété générale liant le produit extérieur $\wedge$ et les permutations de $\mathfrak{S}_{m}$.
+
+		\mathblock{lemma}{Produit extérieur et permutation}{
+			Soit $\mathcal{B}$ une base de $V$. \\
+			Soit $\sigma \in \mathfrak{S}_{m}$. \bigskip \\
+			Alors pour tout $b_{1}, \cdots, b_{m} \in \mathcal{B}$
+			$$
+				b_{\sigma(1)} \wedge \cdots \wedge b_{\sigma(m)} = \varepsilon(\sigma) \times b_{1} \wedge \cdots \wedge b_{m}
+			$$
+		}
+
+		\mathblock{proof}{}{
+			On raisonne par récurrence simple sur $m$.
+			\begin{itemize}
+				\item[$\bullet$] \textsc{Initialisation} : Pour $m = 2$. \\
+					Soient $b_{1}, b_{2} \in \mathcal{B}$. \\
+					On remarque que
+					$$
+						\mathfrak{S}_{2} = \{ \mathrm{id}_{[\![1, 2]\!]}, (1 \ 2) \}
+					$$
+					Autrement dit, $\mathfrak{S}_{2}$ ne condient que l'identité et une transpotition, par le lemme précédent, on a la propriété vérifiée au rang $m = 2$ puisque $\varepsilon((1 \ 2)) = -1$.
+				\item[$\bullet$] \textsc{Hérédité} : Pour $m \geq 2$, supposons la propriété vraie au rang $m$. \\
+					Soient $b_{1}, \cdots, b_{m + 1} \in \mathcal{B}$. \\
+					Soit $\sigma \in \mathfrak{S}_{m+1}$ une permutation. \\
+					On raisonne par disjonction de cas
+					\begin{mathlist}
+						\item Si $\sigma(m + 1) = m + 1$. \\
+							Alors on considère $\tilde{\sigma} := \sigma_{| [\![1, m]\!]} \in \mathfrak{S}_{m}$. \\
+							Alors par hypothèse de récurrence, il vient que
+							$$
+								b_{\tilde{\sigma}(1)} \wedge \cdots \wedge b_{\tilde{\sigma}(m)} = \varepsilon(\tilde{\sigma}) \times b_{1} \wedge \cdots \wedge b_{m}
+							$$
+							Or $\varepsilon(\sigma) = \varepsilon(\tilde{\sigma})$. \\
+							D'où enfin par associativité de $\wedge$, on conclue que
+							$$
+								b_{\sigma(1)} \wedge \cdots \wedge b_{\sigma(m + 1)} = \varepsilon(\sigma) \times b_{1} \wedge \cdots \wedge b_{m}
+							$$
+						\item Si $\sigma(m + 1) = i < m + 1$. \\
+							On pose $\tau := (i \ m + 1)$. \\
+							On considère donc
+							$$
+								\lambda := \tau \circ \sigma \in \mathfrak{S}_{m + 1}
+							$$
+							De plus, on remarque que
+							$$
+								\begin{aligned}
+									\lambda(m + 1) & = \tau(\sigma(m + 1)) \\
+									& = \sigma(i) \\
+									& = m + 1
+								\end{aligned}
+							$$
+							On applique alors le cas précédent avec $\lambda$ et on trouve que
+							$$
+								b_{\lambda(1)} \wedge \cdots \wedge b_{\lambda(m + 1)} = \varepsilon(\lambda) \times b_{1} \wedge \cdots \wedge b_{m + 1}
+							$$
+							Or $\lambda = \tau \circ \sigma$. \\
+							Par le lemme précédent sur les transposition, on a
+							$$
+									b_{\tau(\sigma(1))} \wedge \cdots \wedge b_{\tau(\sigma(m + 1))} = - b_{\sigma(1)} \wedge \cdots \wedge b_{\sigma(m + 1)}
+							$$
+							En combinant les deux expressions, on trouve donc que
+							$$
+								b_{\sigma(1)} \wedge \cdots \wedge b_{\sigma(m + 1)} = - \varepsilon{\lambda} \times b_{1} \wedge \cdots \wedge b_{m + 1}
+							$$
+							Or $\varepsilon(\lambda) = \varepsilon(\tau \circ \sigma) = \varepsilon(\tau) \times \varepsilon(\sigma) = -\varepsilon(\sigma)$. \\
+							D'où le fait qu'on trouve bien
+							$$
+								b_{\sigma(1)} \wedge \cdots \wedge b_{\sigma(m + 1)} = \varepsilon(\sigma) \times b_{1} \wedge \cdots \wedge b_{m + 1}
+							$$
+					\end{mathlist}
+					Et la propriété montrée au rang $m + 1$.
+				\item[$\bullet$] \textsc{Conclusion} : Par principe de récurrence simple, on a bien montré la propriété.
 			\end{itemize}
 		}
 
@@ -406,6 +572,35 @@ $
 			Alors
 			$$
 				\xi \wedge \eta = (-1)^{k h} \times \eta \wedge \xi
+			$$
+		}
+
+		\mathblock{proof}{}{
+			Soit $\mathcal{B}$ une base de $V$. \\
+			Soit $a \in \bigotimes_{k} V$ tel que $\xi = \pi_{k}(a)$. \\
+			Soit $b \in \bigotimes_{h} V$ tel que $\eta = \pi_{h}(b)$. \\
+			Soit alors l'unique famille $(\alpha_{b_{1 \to k}})_{b_{1 \to k} \in \mathcal{B}^{k}}$ presque nulle telle que
+			$$
+				a = \sum_{b_{1 \to k} \in \mathcal{B}^{k}} \alpha_{b_{1 \to k}} \times b_{1} \otimes \cdots \otimes b_{k}
+			$$
+			Soit de même l'unique famille $(\beta_{c_{1 \to h}})_{c_{1 \to h} \in \mathcal{B}^{h}}$ presque nulle telle que
+			$$
+				b = \sum_{c_{1 \to h} \in \mathcal{B}^{h}} \beta_{c_{1 \to h}} \times c_{1} \otimes \cdots \otimes c_{h}
+			$$
+			On a alors par associativité et bilinéarité de $\otimes$
+			$$
+				a \otimes b = \sum_{\substack{b_{1 \to k} \in \mathcal{B}^{k} \\ c_{1 \to h} \in \mathcal{B}^{h}}} \alpha_{b_{1 \to k}} \beta_{c_{1 \to h}} \times b_{1} \otimes \cdots \otimes b_{k} \otimes c_{1} \otimes \cdots \otimes c_{h}
+			$$
+			Et donc par linéarité de $\pi_{k + h}$
+			$$
+				\begin{aligned}
+					\xi \wedge \eta & = \pi_{k + h}(a \otimes b) \\
+					& = \sum_{\substack{b_{1 \to k} \in \mathcal{B}^{k} \\ c_{1 \to h} \in \mathcal{B}^{h}}} \alpha_{b_{1 \to k}} \beta_{c_{1 \to h}} \times b_{1} \wedge \cdots \wedge b_{k} \wedge c_{1} \wedge \cdots \wedge c_{h}
+				\end{aligned}
+			$$
+			(On notera ici qu'on utilise les notations par identification sans le mentionner). On fait de même pour $\eta \wedge \xi$
+			$$
+				\eta \wedge \xi = \sum_{\substack{b_{1 \to k} \in \mathcal{B}^{k} \\ c_{1 \to h} \in \mathcal{B}^{h}}} \alpha_{b_{1 \to k}} \beta_{c_{1 \to h}} \times c_{1} \wedge \cdots \wedge c_{h} \wedge b_{1} \wedge \cdots \wedge b_{k}
 			$$
 		}
 	}
@@ -426,9 +621,116 @@ $
 			$$
 			Alors
 			$$
-				\{ e_{\lambda(1)} \wedge \cdots \wedge e_{\lambda(m)}, \lambda \in I_{m} \}
+				\mathfrak{B} := \{ e_{\lambda(1)} \wedge \cdots \wedge e_{\lambda(m)}, \lambda \in I_{m} \}
 			$$
 			est une base de $\wedge_{m} V$.
+		}
+
+		\mathblock{proof}{}{
+			\begin{mathlist}
+				\item Montrons que $\mathfrak{B}$ génère $\wedge_{m} V$. \\
+					Soit $\xi \in \wedge_{m} V$. \\
+					Soit alors $a \in \bigotimes_{m} V$ tel que $\xi = \pi_{m}(a)$. \\
+					Soit alors la famille presque nulle $(\alpha_{b_{1 \to m}})_{b_{1 \to m} \in \mathcal{B}^{m}}$ telle que
+					$$
+						a = \sum_{b_{1 \to m} \in \mathcal{B}^{m}} \alpha_{b_{1 \to m}} \times b_{1} \otimes \cdots \otimes b_{m}
+					$$
+					Alors par linéarité de $\pi_{m}$, il vient
+					$$
+						\xi = \pi_{m}(a) = \sum_{b_{1 \to m} \in \mathcal{B}^{m}} \alpha_{b_{1 \to m}} \times b_{1} \wedge \cdots \wedge b_{m}
+					$$
+					Avant de continuer, notons que pour $b_{1 \to m} \in \mathcal{B}^{m}$, s'il existe $i < j \in [\![1, m]\!]$ tels que $b_{i} = b_{j}$, on a alors $b_{1} \wedge \cdots \wedge b_{m} = 0_{\wedge_{m} V}$. \\
+					Donc sans pertes de généralités, nous pouvons considérer la famille $(\beta_{b_{1 \to m}})_{b_{1 \to m} \in \mathcal{B}^{m}}$ suivante pour tout $\forall b_{1 \to m} \in \mathcal{B}^{m}$
+					$$
+						\beta_{b_{1 \to m}} = 
+						\left\{
+							\begin{array}{lcl}
+								0 & \text{si} & \exists i < j \in [\![1, m]\!], b_{i} = b_{j} \\
+								\alpha_{b_{1 \to m}} & \text{si} & \text{non}
+							\end{array}
+						\right.
+					$$
+					On aura donc
+					$$
+						\xi = \sum_{b_{1 \to m} \in \mathcal{B}^{m}} \beta_{b_{1 \to m}} \times b_{1} \wedge \cdots \wedge b_{m}
+					$$
+					Puisque $\mathcal{B}$ est dénombrable, soient $k_{1}, \cdots, k_{m} \in \mathbb{N}^{\star}$ tels que
+					$$
+						\forall i \in [\![1, m]\!], b_{i} = e_{k_{b_{i}}}
+					$$
+					Soit alors une permutation $\sigma_{b_{1 \to m}} \in \mathfrak{S}_{m}$ telle que
+					$$
+						\forall i, j \in [\![1, m]\!], i < j \implies \sigma_{b_{1 \to m}}(k_{b_{i}}) < \sigma_{b_{1 \to m}}(k_{b_{j}})
+					$$
+					On a donc
+					$$
+						\begin{aligned}
+							& \xi = \sum_{b_{1 \to m} \in \mathcal{B}^{m}} \beta_{b_{1 \to m}} \times e_{k_{1}} \wedge \cdots \wedge e_{k_{m}} \\
+							& = \sum_{b_{1 \to m} \in \mathcal{B}^{m}} \gamma_{b_{1 \to m}} \times e_{\sigma_{b_{1 \to m}}(k_{b_{1}})} \wedge \cdots \wedge e_{\sigma_{b_{1 \to m}}(k_{b_{m}})} \\
+							& = \sum_{\sigma_{b_{1 \to m}} \in I_{m}} \gamma_{b_{1 \to m}} \times e_{\sigma_{b_{1 \to m}}(k_{b_{1}})} \wedge \cdots \wedge e_{\sigma_{b_{1 \to m}}(k_{b_{m}})}
+						\end{aligned}
+					$$
+					avec pour tout $b_{1 \to m} \in \mathcal{B}^{m}$
+					$$
+						\gamma_{b_{1 \to m}} = \beta_{b_{1 \to m}} \times \varepsilon(\sigma_{b_{1 \to m}})
+					$$
+					Par construction, on a bien pour tout $b_{1 \to m} \in \mathcal{B}^{m}$ le fait que $\sigma_{b_{1 \to m}} \in I_{m}$. \\
+					Donc $\xi \in \mathrm{Vect}(\mathfrak{B})$ et l'inclusion
+					$$
+						\wedge_{m} V \subset \mathrm{Vect}(\mathfrak{B})
+					$$
+					Inversement, on a directement le fait que $\forall \lambda \in I_{m}$
+					$$
+						e_{\lambda(1)} \wedge \cdots \wedge e_{\lambda(m)} \in \wedge_{m} V
+					$$
+					D'où l'inclusion réciproque
+					$$
+						\mathrm{Vect}(\mathfrak{B}) \subset \wedge_{m} V
+					$$
+					et l'égalité
+				\item Montrons à présent la liberté de $\mathfrak{B}$. \\
+					Soit $(\alpha_{\lambda})_{\lambda \in I_{m}}$ une famille presque nulle telle que
+					$$
+						\sum_{\lambda \in I_{m}} \alpha_{\lambda} \times e_{\lambda(1)} \wedge \cdots \wedge e_{\lambda(m)} = 0_{\wedge_{m} V}
+					$$
+					Soient $b_{1}, \cdots, b_{m} \in \mathcal{B}$. \\
+					On considère l'application suivante
+					$$
+						L_{(b_{1}, \cdots, b_{m})} :
+						\begin{array}{rcl}
+							V^{m} & \longrightarrow & \mathbb{R} \\
+							(c_{1}, \cdots, c_{m}) & \longmapsto & \displaystyle \prod_{i = 1}^{m} \delta_{b_{i}, c_{i}}
+						\end{array}
+					$$
+					Alors par définition, on a $L_{(b_{1}, \cdots, b_{m})} \in \mathcal{L}^{m}(V^{m}, \mathbb{R})$. \\
+					Par la propriété universelle de $\mu_{m}$, soit alors l'unique application linéaire
+					$$
+						L_{b_{1} \otimes \cdots \otimes b_{m}} \in \mathcal{L} \! \left(\bigotimes_{m} V, \mathbb{R}\right)
+					$$
+					telle que $L_{b_{1} \otimes \cdots \otimes b_{m}} \circ \mu_{m} = L_{(b_{1}, \cdots, b_{m})}$. \\
+					A nouveau par la propriété universelle de $\pi_{m}$, soit l'unique application linéaire
+					$$
+						L_{b_{1} \wedge \cdots \wedge b_{m}} \in \mathcal{L}(\wedge_{m} V, \mathbb{R})
+					$$
+					telle que $L_{b_{1} \wedge \cdots \wedge b_{m}} \circ \pi_{m} = L_{b_{1} \otimes \cdots \otimes b_{m}}$. \\
+					On note $\lambda_{(b_{1}, \cdots, b_{m})} \in I_{m}$ l'application telle que
+					$$
+						\forall i \in [\![1, m]\!], e_{\lambda_{(b_{1}, \cdots, b_{m})}(i)} = b_{i}
+					$$
+					On a alors par linéarité en notant
+					$$
+						\begin{aligned}
+							0 & = \sum_{\lambda \in I_{m}} \alpha_{\lambda} \times L_{b_{1} \wedge \cdots \wedge b_{m}}(e_{\lambda(1)} \wedge \cdots e_{\lambda(m)}) \\
+							& = \sum_{\lambda \in I_{m}} \alpha_{\lambda} \times L_{(b_{1}, \cdots, b_{m})}(e_{\lambda(1)}, \cdots, e_{\lambda(m)}) \\
+							& = \alpha_{\lambda_{(b_{1}, \cdots, b_{m})}}
+						\end{aligned}
+					$$
+					Ceci étant valable pour tout $b_{1}, \cdots, b_{m} \in \mathcal{B}$, on a bien montré que
+					$$
+						\forall \lambda \in I_{m}, \alpha_{\lambda} = 0
+					$$
+					Et la liberté de $\mathfrak{B}$.
+			\end{mathlist}
 		}
 
 		On prend le temps de s'intéresser à ce qu'il se passe en dimension finie. Ce sera notamment utile pour la section suivante qui traîtera du déterminant.
@@ -452,6 +754,29 @@ $
 			\end{mathlist}
 		}
 
+		\mathblock{proof}{}{
+			\begin{mathlist}
+				\item Si $m < n$, on a alors par construction
+					$$
+						\mathrm{Card} \ I_{m} = \binom{n}{m}
+					$$
+					D'où par le théorème précédent
+					$$
+						\dim \wedge_{m} V = \binom{n}{m}
+					$$
+				\item Si $m = n$, le raisonnement précédent s'applique également et
+					$$
+						\dim \wedge_{n} V = \binom{n}{n} = 1
+					$$
+				\item Si $m > n$, alors $I_{m} = \emptyset$. \\
+					En effet, il n'existe pas d'injections de $[\![1, m]\!]$ vers $[\![1, n]\!]$ par le principe des tiroirs de \textsc{Dirichlet}.
+					D'où
+					$$
+						\dim \wedge_{m} V = 0
+					$$
+			\end{mathlist}
+		}
+
 		On essaye à présent de définir une \flqq{} extension \frqq{} d'une application linéaire à l'espace des $m$-vecteurs pour pouvoir bénéficier de l'opération $\wedge$.
 
 		\mathblock{proposition}{Extension d'applications linéaires}{
@@ -464,6 +789,10 @@ $
 		}
 
 		On notera cette fonction $\wedge_{m} f := F$.
+
+		\mathblock{proof}{}{
+			
+		}
 	}
 
 	\subsection{Déterminant}{
