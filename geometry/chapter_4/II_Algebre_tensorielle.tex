@@ -968,6 +968,58 @@
 			\mu_{1}(v_{1}) \otimes \cdots \otimes \mu_{1}(v_{k}) = \overline{\mathrm{id}}_{V}^{-1}(v_{1}) \otimes \cdots \otimes \overline{\mathrm{id}}_{V}^{-1}(v_{k})
 		$$
 
+		On montre enfin ce dernier résultat permettant d'étendre \flqq{} naturellement \frqq{} une application linéaire vers les espaces produit tensoriels.
+
+		\mathblock{proposition}{Extension vers $\bigotimes_{k} V$}{
+			Soient $V, V'$ deux $\mathbb{R}$-espaces vectoriels. \\
+			Soit $f \in \mathcal{L}(V, V')$. \bigskip \\
+			Alors il existe une unique application $F \in \mathcal{L}(\bigotimes_{k} V, \bigotimes_{k} V')$ telle que
+			$$
+				\forall v_{1}, \cdots, v_{k} \in V, F(v_{1} \otimes \cdots \otimes v_{k}) \overset{\mathrm{id.}}{=} f(v_{1}) \otimes \cdots \otimes f(v_{k})
+			$$
+		}
+
+		On notera cette telle application $\bigotimes_{k} f := F$. On utilise également la notation par identification ici pour alléger les notations.
+
+		\mathblock{proof}{}{
+			On notera $\mu_{k} \in \mathcal{L}^{k}(V^{k}, \bigotimes_{k} V)$ la forme $k$-linéaire telle décripte par les notations présentés plus haut. \\
+			On notera de même $\mu'_{k} \in \mathcal{L}^{k}((V')^{k}, \bigotimes_{k} V')$. \\
+			On pose l'application
+			$$
+				g :
+				\begin{array}{rcl}
+					V^{k} & \longrightarrow & \bigotimes_{k} V' \\
+					(v_{1}, \cdots, v_{k}) & \longmapsto & \mu'_{k}(f(v_{1}), \cdots, f(v_{k}))
+				\end{array}
+			$$
+			Alors définition, on a $g \in \mathcal{L}^{k}(V^{k}, \bigotimes_{k} V')$. \\
+			Par la propriété universelle vérifiée par $\mu_{k}$, soit l'unique application $\overline{g} \in \mathcal{L}(\bigotimes_{k} V, \bigotimes_{k} V')$ telle que
+			$$
+				\overline{g} \circ \mu_{k} = g
+			$$
+			Ce qu'on représente par le diagramme commutatif suivant
+			$$
+				\begin{tikzcd}[ampersand replacement=\&]
+					{V_{1} \times \cdots \times V_{k}} \&\& \bigotimes_{k} V' \\
+					\\
+					\bigotimes_{k} V
+					\arrow["g", from=1-1, to=1-3]
+					\arrow["\mu_{k}"', from=1-1, to=3-1]
+					\arrow["{\overline{g}}"', from=3-1, to=1-3]
+				\end{tikzcd}
+			$$
+			On remarque de plus que pour $v_{1}, \cdots, v_{k} \in V$
+			$$
+				\begin{aligned}
+					\overline{g}(v_{1} \otimes \cdots \otimes v_{k}) & \overset{\mathrm{id.}}{=} \overline{g}(\mu_{k}(v_{1}, \cdots, v_{k})) \\
+					& = g(v_{1}, \cdots, v_{k}) \\
+					& = \mu_{k}(f(v_{1}), \cdots, f(v_{k})) \\
+					& \overset{\mathrm{id.}}{=} f(v_{1}) \otimes \cdots \otimes f(v_{k})
+				\end{aligned}
+			$$
+			On a donc bien montré l'existence et l'unicité d'une telle fonction.
+		}
+
 		Pour conclure cette section sur le produit tensoriel \flqq{} $\otimes$ \frqq{}, on rappelle que les égalités énoncées dans toutes les propositions découlent d'un choix arbitraire d'espace produit tensoriels et d'applications multilinéaires. Comme montré dans le premier théorème sur les espaces produit tensoriels, tous couples $(V, \mu)$ d'espace produit tensoriel sont uniques à un isomorphisme près. Cela signifie que ni un tel $V$ ni un tel $\mu$ pour $V$ n'est unique. Dans le cas général, les égalités deviennet donc des identifications par isomorphismes.
 	}
 \end{document}
