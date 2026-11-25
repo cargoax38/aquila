@@ -1,0 +1,32 @@
+\documentclass[../distribution.tex]{subfiles}
+
+\begin{document}
+	\noindent Soit $U \subset \mathbb{R}^{n}$ un ouvert borné, tel que $\partial U$ est $\mathscr{C}^{1}$. \\
+	\noindent Soit $p \in [1, +\infty[$.
+
+	\mathblock{theorem}{de la trace}{
+		Alors il existe un opérateur linéaire
+		$$
+			T : W^{1, p}(U) \longrightarrow \mathrm{L}^{p}(\partial U)
+		$$
+		telle que
+		\begin{mathlist}
+			\item $\forall u \in W^{1, p}(U) \cap \mathscr{C}(\overline{U}), T u = u_{| \partial U}$.
+			\item $\exists C > 0$
+		\end{mathlist}
+	}
+
+	\mathblock{definition}{La trace d'une fonction}{
+		Soit $T$ un telle opérateur linéaire. \bigskip \\
+		On appelle $T u$ \textit{la trace} de $u$ sur $\partial U$.
+	}
+
+	\mathblock{theorem}{Critère de trace nulle sur $W^{1, p}(U)$}{
+		Soit $T : W^{1, p}(U) \longrightarrow \mathrm{L}^{p}(\partial U)$ de trace. \\
+		Soit $u \in W^{1, p}(U)$. \bigskip \\
+		Alors
+		$$
+			u \in W_{0}^{1, p}(U) \iff T u = 0_{\mathcal{F}(\partial U, \mathbb{R})}
+		$$
+	}
+\end{document}

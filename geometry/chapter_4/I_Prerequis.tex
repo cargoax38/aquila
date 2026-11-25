@@ -1,0 +1,50 @@
+\documentclass[../geometrie.tex]{subfiles}
+
+\begin{document}
+	\subsection{Espace vectoriel quotient}{
+		A compléter plus tard.
+	}
+
+	\subsection{Dual topologique}{
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel normé. \\
+		\noindent Soit $\mathcal{B}$ une base de $V$.
+
+		\vspace{1em}
+
+		On s'intéresse ici au dual topologique de $V'$ qui s'avèrera utile par la suite, en particulier lors de preuve de liberté de certaines familles.
+
+		\mathblock{definition}{Dual topologique}{
+			On appelle \textit{dual topologique} de $V$ l'ensemble noté $V'$ définie par
+			$$
+				V' := \mathcal{L}^{c}(V, \mathbb{R})
+			$$
+			qui correspond à l'ensemble des formes linéaires continues de $V$.
+		}
+
+		On s'intéresse à présent à certaines formes linéaires particulière de $V'$, à savoir celle \flqq{} engendrées \frqq{} à partir d'éléments d'une base de $V$.
+
+		\mathblock{definition}{Application $b^{*}$}{
+			Soit $b_{0} \in \mathcal{B}$. \bigskip \\
+			On notera $b_{0}^{*}$ l'application définie par
+			$$
+				\forall b \in \mathcal{B}, b_{0}^{*}(b) := \delta_{b_{0}, b} =
+				\left\{
+					\begin{array}{lcl}
+						1 & \text{si} & b = b_{0} \\
+						0 & \text{si} & b \neq b_{0}
+					\end{array}
+				\right.
+			$$
+		}
+
+		Pour préciser le comportement de $b_{0}^{*}$, on aura donc pour $v \in V$ l'expression suivante de $b_{0}^{*}(v)$. \\
+		Soit l'unique famille presque nulle $(\lambda_{b})_{b \in \mathcal{B}} \in \mathbb{R}^{\mathcal{B}}$ telle que
+		$$
+			v = \sum_{b \in \mathcal{B}} \lambda_{b} \times b
+		$$
+		Alors
+		$$
+			b_{0}^{*}(v) = \lambda_{b_{0}}
+		$$
+	}
+\end{document}

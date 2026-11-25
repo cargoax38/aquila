@@ -1,0 +1,105 @@
+\documentclass[../mesure.tex]{subfiles}
+
+\begin{document}
+	\section{Notation multi-indicielle}
+
+	\mathblock{definition}{Multi-indice $\alpha$}{
+		Soit $d \in \mathbb{N}$. \\
+		Soit $\alpha := (\alpha_{1}, \cdots, \alpha_{d}) \in \mathbb{N}^{d}$. \bigskip \\
+		On dit que $\alpha$ est un \textit{multi-indice}.
+	}
+
+	\mathblock{definition}{Longueur d'un multi-indice}{
+		Soit $\alpha := (\alpha_{1}, \cdots, \alpha_{d}) \in \mathbb{N}^{d}$ un multi-indixe. \bigskip \\
+		On appelle \textit{longueur} de $\alpha$ l'entier noté $|\alpha|$ définie par
+		$$
+			|\alpha| := \sum_{i = 1}^{d} \alpha_{i}
+		$$
+	}
+
+	\mathblock{definition}{Factorielle d'un multi-indice}{
+		Soit $\alpha := (\alpha_{1}, \cdots, \alpha_{d}) \in \mathbb{N}^{d}$ un multi-indixe. \bigskip \\
+		On appelle \textit{factorielle} de $\alpha$ le multi-indice noté $\alpha !$ définie par
+		$$
+			\alpha ! := (\alpha_{1} !, \cdots, \alpha_{d} !)
+		$$
+	}
+
+	\mathblock{definition}{Puissance d'un multi-indice}{
+		Soit $\alpha := (\alpha_{1}, \cdots, \alpha_{d}) \in \mathbb{N}^{d}$ un multi-indixe. \\
+		Soit $k \in \mathbb{N}$. \bigskip \\
+		On appelle \textit{puissance par $k$} de $\alpha$ le multi-indice noté $\alpha^{k}$ définie par
+		$$
+			\alpha^{k} := (\alpha_{1}^{k}, \cdots, \alpha_{d}^{k})
+		$$
+	}
+
+	\mathblock{definition}{Relation d'ordre sur les multi-indices}{
+		Soit $\alpha := (\alpha_{1}, \cdots, \alpha_{d}) \in \mathbb{N}^{d}$ un multi-indixe. \\
+		Soit $\beta := (\beta_{1}, \cdots, \beta_{d}) \in \mathbb{N}^{d}$ un multi-indixe. \bigskip \\
+		On définie alors la relation binaire suivante notée $\leq$
+		$$
+			\alpha \leq \beta \iff \forall i \in [\![1, d]\!], \alpha_{i} \leq \beta_{i}
+		$$
+	}
+
+	\mathblock{definition}{Combinatoire avec des multi-indices}{
+		Soit $\alpha := (\alpha_{1}, \cdots, \alpha_{d}) \in \mathbb{N}^{d}$ un multi-indixe. \\
+		Soit $\beta := (\beta_{1}, \cdots, \beta_{d}) \in \mathbb{N}^{d}$ un multi-indixe. \\
+		On suppose $\alpha \leq \beta$. \bigskip \\
+		On appelle \textit{multi-combinaison} $\beta$ parmi $\alpha$ le multi-indice notée par $\displaystyle \binom{\alpha}{\beta}$ définie par
+		$$
+			\binom{\alpha}{\beta} := \left( \binom{\alpha_{1}}{\beta_{1}}, \cdots, \binom{\alpha_{d}}{\beta_{d}} \right)
+		$$
+	}
+
+	\mathblock{definition}{Différentielle d'ordre un multi-indice}{
+		Soit $\alpha := (\alpha_{1}, \cdots, \alpha_{d}) \in \mathbb{N}^{d}$ un multi-indixe. \bigskip \\
+		On appelle \textit{opérateur multi-différentiel} la différentielle d'ordre $|\alpha|$ notée $\partial^{\alpha}$ définie par
+		$$
+			\partial^{\alpha} := \frac{\partial^{\alpha_{1}}}{\partial x_{1}^{\alpha_{1}}} \circ \cdots \circ \frac{\partial^{\alpha_{d}}}{\partial x_{d}^{\alpha_{d}}}
+		$$
+	}
+
+	\mathblock{proposition}{Formule de \textsc{Leibniz}}{
+		Soit $\Omega \subset \mathbb{R}^{d}$ un ouvert. \\
+		Soit $k \in \mathbb{N}^{\star}$. \\
+		Soient $\varphi, \psi \in \mathscr{C}^{k}(\Omega, \mathbb{R})$. \\
+		Soit $\alpha \in \mathbb{N}^{d}$ un multi-indice. \\
+		On suppose $|\alpha| \leq k$. \bigskip \\
+		Alors
+		$$
+			\partial^{\alpha}(\varphi \times \psi) = \sum_{\beta \leq \alpha} \binom{\alpha}{\beta} \partial^{\beta} \varphi \times \partial^{\alpha - \beta} \psi
+		$$
+	}
+
+	\section{Formule de \textsc{Taylor}}
+
+	\mathblock{theorem}{Formule de \textsc{Taylor} générale}{
+		Soit $\Omega \subset \mathbb{R}^{d}$ un ouvert. \\
+		Soit $n \in \mathbb{N}^{\star}$. \\
+		Soit $\varphi \in \mathscr{C}^{n}(\Omega, \mathbb{R})$. \\
+		Soient $x, y \in \Omega$. \\
+		On suppose $[x, y] \subset \Omega$. \bigskip \\
+		Alors
+		$$
+			\begin{aligned}
+				\varphi(x) & = \sum_{|\alpha| \leq n - 1} \frac{1}{\alpha !} \partial^{\alpha} \varphi(y)(x - y)^{\alpha} \\
+				& + \sum_{|\alpha| = n} \frac{n}{\alpha !}(x - y)^{\alpha} \int_{0}^{1} (1 - t)^{n - 1} \partial^{\alpha} \varphi(tx + (1 - t)y) \, \mathrm{d}t
+			\end{aligned}
+		$$
+	}
+
+	\section{Fonctions \texorpdfstring{$\boldsymbol{\mathscr{C}^{\infty}}$}{C-inf} à support compact}
+
+	\subsection{Support d'une fonction continue}
+
+	\mathblock{definition}{Support d'une fonction continue}{
+		Soit $\Omega \subset \mathbb{R}^{d}$ un ouvert. \\
+		Soit $\varphi \in \mathscr{C}^{0}(\Omega, \mathbb{R})$. \bigskip \\
+		On appelle \textit{support} de $\phi$ le sous-ensemble de $\mathbb{R}^{d}$ noté $\mathrm{Supp}(\varphi)$ définie par
+		$$
+			\mathrm{Supp}(\varphi) := \overline{\varphi^{-1}(\mathbb{R}^{\star})}
+		$$
+	}
+\end{document}

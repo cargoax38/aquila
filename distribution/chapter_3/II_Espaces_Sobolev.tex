@@ -1,0 +1,365 @@
+\documentclass[../distribution.tex]{subfiles}
+
+\begin{document}
+	\subsection{Espaces \texorpdfstring{$\mathrm{L}^{p}(U)$}{Lp(U)}}{
+		\noindent Soit $U \subset \mathbb{R}^{\infty}$ un ouvert. \\
+		\noindent Soit $p \in [1, +\infty]$.
+
+		\vspace{1em}
+
+		Dans tout le chapitre, nous ferons la distinction entre $\mathcal{L}^{p}(U)$ l'espace des fonction puissance $p$-fois intégrable au sens de \textsc{Lebesgue} sur $U$ et $\mathrm{L}^{p}(U)$ l'ensemble des classes d'équivalences de fonctions égales $\lambda$-presque partout.
+
+		\mathblock{proposition}{Relation d'équivalence $\sim_{p.p.}$}{
+			Soit $\sim_{p.p.}$ la relation binaire définie par
+			$$
+				\forall u, v \in \mathcal{L}^{p}(U), u \sim_{p.p.} v \iff u = v \ \lambda \text{-} p.p.
+			$$
+			Alors $\sim_{p.p.}$ décrit une relation d'équivalence sur $\mathcal{L}^{p}(U)$.
+		}
+
+		Nous définirons donc l'ensemble $\mathrm{L}^{p}(U)$ comme le quotient de $\mathcal{L}^{p}(U)$ par cette relation.
+
+		\mathblock{definition}{Espace $\mathrm{L}^{p}(U)$}{
+			On pose
+			$$
+				\mathrm{L}^{p}(U) := \frac{\mathcal{L}^{p}(U)}{\sim_{p.p.}}
+			$$
+		}
+
+		L'intérêt de considérer cet ensemble est de pouvoir s'affranchir de l'égalité $\lambda$-presque partout entre certaines fonctions et donc garantir l'unicité de certains résultats.
+
+		On montrerait que $\mathrm{L}^{p}(U)$ conserve toutes les propriétés de $\mathcal{L}^{p}$ modulo la relation $\sim_{p.p.}$.
+	}
+
+	\subsection{Dérivée faible}{
+		\noindent Soit $U \subset \mathbb{R}^{n}$ un ouvert.
+
+		\vspace{1em}
+
+		Le principal problème des espaces de \textsc{Hölder} est que ses fonctions restent \flqq{} trop régulières \frqq{} pour l'étude des solutions des équations différentielles. Le principale problème se trouve principalement dans la notion de dérivée, qui était trop faible pour les distributions et qui reste trop forte pour les fonction de $\mathscr{C}^{k, \gamma}(U)$. Les espaces de \textsc{Sobolev} permettent de trouver un compromis intéressant.
+
+		Pour commencer, on commence par introduire la notion de dérivée faible.
+
+		\mathblock{definition}{Dérivée faible}{
+			Soit $u \in \mathrm{L}_{\text{loc}}^{1}(U)$. \\
+			Soit $v \in \mathrm{L}_{\text{loc}}^{1}(U)$. \\
+			Soit $\alpha \in \mathbb{N}^{n}$ un multi-indice. \bigskip \\
+			On dit que $v$ est une $\alpha$-ième dérivée faible de $u$ sur $U$, que l'on note $\partial_{f}^{\alpha} u$ (ou $D^{\alpha} u$) si $v$ staisfait
+			$$
+				\forall \phi \in \mathscr{C}_{0}^{\infty}(U), \int_{U} v \partial^{\alpha} \phi \, \mathrm{d}x = (-1)^{|\alpha|} \int_{U} v \phi \, \mathrm{d}x
+			$$
+		}
+
+		On montre directement que si une telle dérivée faible existe, elle est unique (toujours au sens de $\mathrm{L}^{p}(U)$).
+
+		\mathblock{lemma}{Unicité de la dérivée faible}{
+			Soit $u \in \mathrm{L}_{\text{loc}}^{1}(U)$. \\
+			Soit $\alpha \in \mathbb{N}^{n}$. \bigskip \\
+			Si $u$ admet une $\alpha$-ième dérivée faible, alors est unique.
+		}
+
+		\mathblock{proof}{}{
+			Supposons $v, \tilde{v} \in \mathrm{L}_{\text{loc}}^{1}(U)$. \\
+			Soit $\phi \in \mathscr{C}_{0}^{\infty}(U)$. \\
+			Alors par linéarité de l'intégrale
+			$$
+				\int_{U} (v - \tilde{v}) \partial^{\alpha} \phi \, \mathrm{d}x = 0
+			$$
+			D'où $v = \tilde{v}$.
+		}
+	}
+
+	\subsection{Espaces de \texorpdfstring{\textsc{Sobolev}}{Sobolev}}{
+		\noindent Soit $U \subset \mathbb{R}^{n}$ un ouvert. \\
+		\noindent Soit $p \in [1, +\infty]$. \\
+		\noindent Soit $k \in \mathbb{N}$.
+
+		\mathblock{definition}{Espaces de \textsc{Sobolev}}{
+			On appelle \textit{$(k, p)$-espace de \textsc{Sobolev}} l'ensemble noté $W_{k, p}(U)$ contenant les fonctions $u : U \longrightarrow \mathbb{R}$ telle que
+			\begin{mathlist}
+				\item $\forall |\alpha| \leq k$, $u$ admet une $\alpha$-ième dérivée faible.
+				\item $\forall |\alpha| \leq k, D^{\alpha} u \in \mathrm{L}^{p}(U)$.
+			\end{mathlist}
+		}
+
+		Dans le cas où $p = 2$, on adoptera la notation suivante
+		$$
+			H^{k}(U) := W^{k, 2}(U)
+		$$
+
+		On définie à présent une norme sur $W^{k, p}(U)$.
+
+		\mathblock{definition}{Norme sur $W^{k, p}(U)$}{
+			Soit $u \in W^{k, p}(U)$. \bigskip \\
+			On définie la norme de $u$ sur $W^{k, p}(U)$ par
+			$$
+				\lVert u \rVert_{W^{k, p}(U)} :=
+				\left\{
+					\begin{array}{lcl}
+						\displaystyle \left( \sum_{|\alpha| \leq k} \int_{U} |D^{\alpha} u|^{p} \, \mathrm{d}x \right)^{1 / p} & \text{si} & p < +\infty \\
+						\displaystyle \sum_{|\alpha| \leq k} \lVert D^{\alpha} u \rVert_{\infty, U} & \text{si} & p = +\infty
+					\end{array}
+				\right.
+			$$
+		}
+
+		\mathblock{lemma}{$\lVert \cdot \rVert_{W^{k, p}(U)}$ est bien une norme}{
+			On a $\lVert \cdot \rVert_{W^{k, p}(U)}$ qui définie bien une norme sur $W^{k, p}(U)$.
+		}
+
+		\mathblock{proof}{}{
+			On distinguera les cas où $p \in [1, \infty[$ et $p = +\infty$.
+
+			\begin{itemize}
+				\item[$\bullet$] Si $p \in [1, +\infty[$. \\
+					Alors on remarque dans un premier temps qu'on peut écrire pour $u \in W^{1, p}(U)$,
+					$$
+						\lVert u \rVert_{W^{1, p}(U)} = \left( \sum_{|\alpha| \leq k} \lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p}
+					$$
+					D'où
+					\begin{mathlist}
+						\item Axiome de séparation. \\
+							Soit $u \in W^{1, p}(U)$ telle que $\lVert u \rVert_{W^{k, p}} = 0$. \\
+							Alors
+							$$
+								\left( \sum_{|\alpha| \leq k} \lVert D^{\alpha} \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} = 0
+							$$
+							En particulier,
+							$$
+								\sum_{|\alpha| \leq k} \lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} = 0
+							$$
+							Puisque tous les termes sont positifs, on a en particulier pour $\alpha = (0, \cdots, 0)$,
+							$$
+								\lVert u \rVert_{\mathrm{L}^{p}(U)}^{p} = 0 \,
+							$$
+							Donc par axiome de séparation de $\lVert \cdot \rVert_{\mathrm{L}^{p}(U)}$, il vient que $u = 0_{W^{1, p}(U)}$.
+
+						\item Homogénéité. \\
+							Soit $u \in W^{1, p}(U)$. \\
+							Soit $\lambda \in \mathbb{R}$. \\
+							Alors par homogénéité de $\lVert \cdot \rVert_{\mathrm{L}^{p}(U)}$
+							$$
+								\begin{aligned}
+									\lVert \lambda u \rVert_{W^{1, p}(U)} & = \left( \sum_{|\alpha| \leq k} \lVert D^{\alpha}(\lambda u) \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} \\
+									& = \left( \sum_{|\alpha| \leq k} \lVert \lambda D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} \\
+									& = \left( \sum_{|\alpha| \leq k} |\lambda|^{p} \lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} \\
+									& = \left( |\lambda|^{p} \sum_{|\alpha| \leq k} \lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} \\
+									& = |\lambda| \lVert u \rVert_{W^{1, p}}
+								\end{aligned}
+							$$
+
+						\item Inégalité triangulaire. \\
+							Soient $u, v \in W^{1, p}(U)$. \\
+							Alors par inégalité triangulaire de $\lVert \cdot \rVert_{\mathrm{L}^{p}(U)}$, il vient que
+							$$
+								\begin{aligned}
+									\lVert u + v \rVert_{W^{1, p}(U)}^{p} & = \sum_{|\alpha| \leq k} \lVert D^{\alpha}(u + v) \rVert_{\mathrm{L}^{p}(U)}^{p} \\
+									& = \sum_{|\alpha| \leq k} \lVert D^{\alpha} u + D^{\alpha} v \rVert_{\mathrm{L}^{p}(U)}^{p} \\
+									& \leq \sum_{|\alpha| \leq k} (\lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)} + \lVert D^{\alpha} v \rVert_{\mathrm{L}^{p}(U)})^{p}
+								\end{aligned}
+							$$
+							On utilise ensuite l'inégalité de \textsc{Minkowski} (pour les sommes), il vient que
+							$$
+								\begin{aligned}
+									& \left( \sum_{|\alpha| \leq k} (\lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)} + \lVert D^{\alpha} v \rVert_{\mathrm{L}^{p}(U)})^{p} \right)^{1 / p} \\
+									& \leq \left( \sum_{|\alpha| \leq k} \lVert D^{\alpha} u \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p} + \left( \sum_{|\alpha| \leq k} \lVert D^{\alpha} v \rVert_{\mathrm{L}^{p}(U)}^{p} \right)^{1 / p}
+								\end{aligned}
+							$$
+							D'où finalement
+							$$
+								\lVert u + v \rVert_{W^{1, p}(U)} \leq \lVert u \rVert_{W^{1, p}(U)} + \lVert v \rVert_{W^{1, p}(U)}
+							$$
+					\end{mathlist}
+			\end{itemize}
+		}
+
+		Nous pouvons à présent définir un mode de convergence dans $W^{k, p}(U)$.
+
+		\mathblock{definition}{Convergence séquentielle dans $W^{k, p}(U)$}{
+			Soit $(u_{m}) \in W^{k, p}(U)^{\mathbb{N}}$ une suite. \\
+			Soit $u \in W^{k, p}(U)$. \bigskip \\
+			On dit que $(u_{m})$ convergence vers $u$ dans $W^{k, p}(U)$ qu'on note
+			$$
+				u_{m} \overset{W^{k, p}(U)}{\underset{m \to +\infty}{\longrightarrow}} u
+			$$
+			si
+			$$
+				\lVert u_{m} - u \rVert_{W^{k, p}(U)} \underset{m \to +\infty}{\longrightarrow} 0
+			$$
+		}
+
+		\mathblock{definition}{Convergence séquentielle dans $W_{\text{loc}}^{k, p}(U)$}{
+			Soit $(u_{m}) \in W^{k, p}(U)^{\mathbb{N}}$ une suite. \\
+			Soit $u \in W^{k, p}(U)$. \bigskip \\
+			On dit que $(u_{m})$ convergence vers $u$ dans $W_{\text{loc}}^{k, p}(U)$ qu'on note
+			$$
+				u_{m} \overset{W_{\text{loc}}^{k, p}(U)}{\underset{m \to +\infty}{\longrightarrow}} u
+			$$
+			si
+			$$
+				\forall V \subset \subset U, u_{m} \overset{W^{k, p}(V)}{\underset{m \to +\infty}{\longrightarrow}} u
+			$$
+		}
+
+		On définit à présent l'espace des fonctions à support compact dans le contexte des espaces de \textsc{Sobolev}.
+
+		\mathblock{definition}{Espace $W_{0}^{k, p}(U)$}{
+			On notera $W_{0}^{k, p}(U)$ la clôture de $\mathscr{C}_{0}^{\infty}(U)$ dans $W^{k, p}(U)$. \\
+			Autrement dit
+			$$
+				u \in W_{0}^{k, p}(U) \iff \exists (u_{m}) \in \mathscr{C}_{0}^{\infty}(U)^{\mathbb{N}}, u_{m} \overset{W^{k, p}(U)}{\underset{m \to +\infty}{\longrightarrow}} u
+			$$
+		}
+
+		Les fonctions $u \in W_{0}^{k, p}(U)$ satisfont d'une certaine manière pour $|\alpha| < k$, $D^{\alpha} u = 0$ sur $\partial U$.
+	}
+
+	\subsection{Propriétés de la dérivée faible}{
+		\noindent Soit $U \subset \mathbb{R}^{n}$ un ouvert. \\
+		\noindent Soit $p \in [1, +\infty]$. \\
+		\noindent Soit $k \in \mathbb{N}$.
+
+		\mathblock{theorem}{Propriétés de la dérivée faible}{
+			Soient $u, v \in W^{k, p}(U)$. \\
+			Soient $\alpha, \beta \in \mathbb{N}^{n}$ tels que $|\alpha| + |\beta| \leq k$. \\
+			Soient $\lambda, \mu \in \mathbb{R}$. \bigskip \\
+			Alors
+			\begin{mathlist}
+				\item $D^{\alpha} (D^{\beta} u) = D^{\alpha + \beta} u$.
+				\item $D^{\alpha} u \in W^{k - |\alpha|, p}(U)$.
+				\item $\lambda u + \mu v \in W^{k, p}(U)$ et $D^{\alpha}(\lambda u + \mu v) = \lambda D^{\alpha} u + \mu D^{\alpha} v$.
+				\item Soit $V \subset U$ un ouvert. Alors $u \in W^{k, p}(V)$.
+				\item Soit $\zeta \in \mathscr{C}_{0}^{\infty}(U)$. Alors $\zeta u \in W^{k, p}(U)$ et
+					$$
+						D^{\alpha}(\zeta u) = \sum_{\beta \leq \alpha} \binom{\alpha}{\beta} D^{\beta} \zeta \times D^{\alpha - \beta} u
+					$$
+			\end{mathlist}
+		}
+
+		\mathblock{proof}{}{
+			\begin{mathlist}
+				\item Soit $\phi \in \mathscr{C}_{0}^{\infty}(U)$. \\
+					Alors
+					$$
+						\begin{aligned}
+							\int_{U} u \times \partial^{\alpha + \beta} \phi \, \mathrm{d}x & = (-1)^{|\beta|} \int_{U} D^{\beta} u \times \partial^{\alpha} \phi \, \mathrm{d}x \\
+							& = \underset{= (-1)^{|\alpha + \beta|}}{\underbrace{(-1)^{|\beta|} \times (-1)^{|\alpha|}}} \int_{U} D^{\alpha}(D^{\beta} u) \times \phi \, \mathrm{d}x
+						\end{aligned}
+					$$
+					Par unicité de la dérivée faible, on conclue que
+					$$
+						D^{\alpha}(D^{\beta} u) = D^{\alpha + \beta} u
+					$$
+					Comme $\alpha$ et $\beta$ sont interchangeables, on a même que
+					$$
+						D^{\alpha}(D^{\beta} u) = D^{\alpha + \beta} u = D^{\beta + \alpha} u = D^{\beta}(D^{\alpha} u)
+					$$
+				\item Par le point précédent, on a $D^{\beta}(D^{\alpha} u) = D^{\alpha + \beta} u$. \\
+					Donc $D^{\alpha} u$ admet des dérivées faibles d'ordre $\beta$. \\
+					De plus, $D^{\alpha + \beta} \in \mathrm{L}^{p}(U)$ par hypothèse sur $u$. \\
+					Donc $D^{\alpha} u \in W^{k - |\alpha|, p}(U)$.
+
+				\item Par linéarité de l'intégrale, on obtient
+					$$
+						\begin{aligned}
+							\int_{U} (\lambda u + \mu v) \times \partial^{\alpha} \phi \, \mathrm{d}x & = \lambda \int_{U} u \times \partial^{\alpha} \phi \, \mathrm{d}x \\
+							& + \mu \int_{U} v \times \partial^{\alpha} \phi \, \mathrm{d}x
+						\end{aligned}
+					$$
+					Il est bien possible de séparer l'intégrale de gauche en deux par hypothèses sur $u$ et $v$. \\
+					De plus,
+					$$
+						\int_{U} u \times \partial^{\alpha} \phi \, \mathrm{d}x = (-1)^{|\alpha|} \int_{U} D^{\alpha} u \times \phi \, \mathrm{d}x
+					$$
+					et de même pour $v$,
+					$$
+						\int_{U} v \times \partial^{\alpha} \phi \, \mathrm{d}x = (-1)^{|\alpha|} \int_{U} D^{\alpha} v \times \phi \, \mathrm{d}x
+					$$
+					Soit alors
+					$$
+						\begin{aligned}
+							\int_{U} (\lambda u + \mu v) \times \partial^{\alpha} \phi \, \mathrm{d}x & = \lambda \times (-1)^{|\alpha|} \int_{U} D^{\alpha} u \times \phi \, \mathrm{d}x \\
+							& + \mu \times (-1)^{|\alpha|} \int_{U} D^{\alpha} u \times \phi \, \mathrm{d}x
+						\end{aligned}
+					$$
+					Et à nouveau par linéarité de l'intégrale
+					$$
+						\int_{U} (\lambda u + \mu v) \times \partial^{\alpha} \phi \, \mathrm{d}x = (-1)^{|\alpha|} \int_{U} (\lambda D^{\alpha} u + \mu D^{\alpha} v) \times \phi \, \mathrm{d}x
+					$$
+					Et finalement par unicité de la dérivée faible, on obtient bien
+					$$
+						D^{\alpha}(\lambda u + \mu v) = \lambda D^{\alpha} u + \mu D^{\alpha} v
+					$$
+				\item Soit $V \subset U$ un ouvert. \\
+					Soit $\phi \in \mathscr{C}_{0}^{\infty}(V)$. \\
+					On considère alors $\tilde{\phi}$ l'extension \flqq{} triviale \frqq{} de $\phi$ sur $U$ :
+					$$
+						\tilde{\phi} :
+						\begin{array}{rcl}
+							U & \longrightarrow & \mathbb{R} \\
+							x & \longmapsto &
+							\left\{
+								\begin{array}{rcl}
+									\phi(x) & \text{si} & x \in V \\
+									0 & \text{si} & x \notin V
+								\end{array}
+							\right.
+						\end{array}
+					$$
+					Alors par construction on a $\tilde{\phi} \in \mathscr{C}_{0}^{\infty}(U)$ puisque $\mathrm{Supp} \ \tilde{\phi} = \mathrm{Supp} \ \phi \subset V \subset U$. \\
+					Ainsi
+					$$
+						\begin{aligned}
+							\int_{V} u \partial^{\alpha} \phi \, \mathrm{d}x & = \int_{V} u \times \partial^{\alpha} \tilde{\phi} \, \mathrm{d}x \\
+							& = \int_{U} u \times \partial^{\alpha} \tilde{\phi} \, \mathrm{d}x \\
+							& = (-1)^{|\alpha|} \int_{U} D^{\alpha} u \times \tilde{\phi} \, \mathrm{d}x \\
+							& = (-1)^{|\alpha|} \int_{V} D^{\alpha} v \times \tilde{\phi} \, \mathrm{d}x \\
+							& = (-1)^{|\alpha|} \int_{V} D^{\alpha} v \times \phi \, \mathrm{d}x
+						\end{aligned}
+					$$
+					De plus, on a $D^{\alpha} u \in \mathrm{L}^{p}(V)$ car dans $\mathrm{L}^{p}(U)$. \\
+					Donc $u \in W^{1, p}(V)$.
+				\item Soit $\zeta \in \mathscr{0}^{\infty}(U)$.
+			\end{mathlist}
+		}
+
+		En plus de ces propriétés, on montre que muni de la norme $\lVert \cdot \rVert_{W^{k, p}(U)}$, l'espace de \textsc{Sobolev} $W^{k, p}(U)$ est un espace de \textsc{Banach}.
+
+		\mathblock{theorem}{$W^{k, p}(U)$ est un espace de \textsc{Banach}}{
+			On a $W^{k, p}(U)$ qui est un espace de \textsc{Banach}.
+		}
+	}
+
+	\subsection{Espaces de \texorpdfstring{\textsc{Sobolev}}{Sobolev} et distributions}{
+		\noindent $U \subset \mathbb{R}^{n}$ un ouvert. \\
+		\noindent Soit $k \in \mathbb{N}$. \\
+		\noindent Soit $p \in [1, +\infty]$.
+
+		\vspace{1em}
+
+		Dans cette section, on observe le fait que la dérivée faible est en réalité la dérivée au sens des distributions.
+
+		\mathblock{lemma}{$W^{k, p}(U)$ définie des distributions}{
+			On a
+			$$
+				W^{k, p}(U) \subset \mathrm{L}_{\text{loc}}^{1}(U)
+			$$
+		}
+
+		\mathblock{proof}{}{
+			On a
+			$$
+				W^{k, p}(U) \subset \mathrm{L}^{p}(U) \subset \mathrm{L}^{1}(U) \subset \mathrm{L}_{\text{loc}}^{1}(U)
+			$$
+		}
+
+		\mathblock{proposition}{Dérivée faible et dérivée des distributions}{
+			Soit $u \in W^{k, p}(U)$. \\
+			Soit $\alpha \in \mathbb{N}^{n}$. \bigskip \\
+			Alors
+			$$
+				\forall \phi \in \mathscr{C}_{0}^{\infty}(U), \langle \partial^{\alpha} T_{u}, \phi \rangle = (-1)^{|\alpha|} \int_{U} D^{\alpha} u \times \phi \, \mathrm{d}x
+			$$
+		}
+	}
+\end{document}

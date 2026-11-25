@@ -1,0 +1,86 @@
+\documentclass[../mesure.tex]{subfiles}
+
+\begin{document}
+	\subsection{Ensembles \texorpdfstring{$\mathscr{L}(A)$}{L(A)}}{
+		\noindent Soit $X$ un ensemble non nul. \\
+		\noindent Soit $\mathcal{R} \subset \mathcal{P}(X)$ un clan sur $X$.
+
+		\mathblock{definition}{Ensemble $\mathscr{L}(A)$ pour une partie de $X$}{
+			Soit $A \subset X$. \bigskip \\
+			On définie l'ensemble
+			$$
+				\begin{aligned}
+					\mathscr{L}(A) := \{ B \subset X & \ | \ A \cup B \in \mathscr{M}(\mathcal{R}) \\
+					& \wedge A \cap B^{c} \in \mathscr{M}(\mathcal{R}) \\
+					& \wedge A^{c} \cap B \in \mathscr{M}(\mathcal{R}) \}
+				\end{aligned}
+			$$
+		}
+
+		\mathblock{lemma}{$\mathscr{L}(A)$ est une classe monotone}{
+			Soit $A \subset X$. \bigskip \\
+			Alors $\mathscr{L}(A)$ est une classe monotone sur $X$.
+		}
+
+		\mathblock{lemma}{Relation avec $\mathscr{L}(A)$}{
+			Soient $A, B \subset X$. \bigskip \\
+			Alors
+			$$
+				B \in \mathscr{L}(A) \iff A \in \mathscr{L}(B)
+			$$
+		}
+	}
+
+	\subsection{Ensembles \texorpdfstring{$\mathscr{L}(\mathcal{C})$}{L(C)}}{
+		\mathblock{definition}{Ensemble $\mathscr{L}(\mathcal{C})$ pour une collection de $X$}{
+			Soit $\mathcal{C} \subset \mathcal{P}(X)$. \bigskip \\
+			On définie l'ensemble
+			$$
+				\mathscr{L}(\mathcal{C}) := \bigcap_{A \in \mathcal{C}} \mathscr{L}(A)
+			$$
+		}
+
+		\mathblock{lemma}{$\mathscr{L}(\mathcal{C})$ est une classe monotone}{
+			Soit $\mathcal{C} \subset \mathcal{P}(X)$. \\
+			On a $\mathscr{L}(\mathcal{C})$ qui est une classe monotone sur $X$.
+		}
+
+		\mathblock{lemma}{$\mathcal{R} \subset \mathscr{L}(\mathcal{R})$}{
+			On détient l'inclusion suivante
+			$$
+				\mathcal{R} \subset \mathscr{L}(\mathcal{R})
+			$$
+		}
+
+		\mathblock{lemma}{$\mathscr{M}(\mathcal{R}) \subset \mathscr{L}(\mathcal{R})$}{
+			On détient l'inclusion suivante
+			$$
+				\mathscr{M}(\mathcal{R}) \subset \mathscr{L}(\mathcal{R})
+			$$
+		}
+
+		\mathblock{lemma}{$\mathscr{M}(\mathcal{R}) \subset \mathscr{L}(\mathscr{M}(\mathcal{R}))$}{
+			On possède l'inclusion suivante
+			$$
+				\mathscr{M}(\mathcal{R}) \subset \mathscr{L}(\mathscr{M}(\mathcal{R}))
+			$$
+		}
+
+		\mathblock{lemma}{$\mathscr{M}(\mathcal{R})$ est un clan}{
+			Soit $X$ un ensemble non vide. \\
+			Soit $\mathcal{R} \subset \mathcal{P}(X)$ un clan sur $X$. \bigskip \\
+			Alors $\mathscr{M}(\mathcal{R})$ est un clan sur $X$.
+		}
+	}
+
+	\subsection{Théorème liant tribu et classe monotone engendrée}{
+		\mathblock{theorem}{Lien tribu et classe monotone}{
+			Soit $X$ un ensemble non vide. \\
+			Soit $\mathcal{R} \subset \mathcal{P}(X)$ un clan sur $X$. \bigskip \\
+			Alors
+			$$
+				\sigma(\mathcal{R}) = \mathscr{M}(\mathcal{R})
+			$$
+		}
+	}
+\end{document}
