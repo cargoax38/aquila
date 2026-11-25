@@ -1,0 +1,166 @@
+\documentclass{book}
+
+\usepackage{../themes/dark_theme}
+
+\begin{document}
+	
+	\pagenumbering{Roman}
+    \begin{titlepage}
+        %\tikz[remember picture,overlay] \node[opacity=0.5,inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{"arriere_plan.png"}};
+
+        \vspace*{9em}{\centering\Huge Algèbre\par}
+        \vspace{2em}
+        {\hfill\itshape Enzo S. Sanfilippo}
+
+        \clearpage
+	    \vspace*{\fill}
+    \end{titlepage}
+
+    \newpage
+    \pagenumbering{roman}
+
+    {
+		\hypersetup{linkcolor=magenta}
+		\tableofcontents
+	}
+
+    \newpage
+	\pagenumbering{arabic}
+
+	\chapter{Algèbre}{
+		\newpage
+
+		\section{Théorèmes de \texorpdfstring{\textsc{Sylow}}{Sylow}}{
+			\noindent Soit $p \in \mathbb{P}$. \\
+			\noindent Soit $n \in \mathbb{N}$. \\
+			\noindent Soit $k \in \mathbb{N}^{\star}$ tel que $p \wedge k = 1$. \\
+			\noindent Soit $G$ un groupe fini d'ordre $p^{n} \times k$.
+
+			\mathblock{theorem}{\textsc{Sylow} $1$}{
+				Alors $G$ possède un sous-groupe $S$ tel que $|S| = p^{n}$.
+			}
+
+			Un tel sous-groupe est appelé $p$-sous-groupe de \textsc{Sylow}.
+
+			\mathblock{definition}{Ensemble des $p$-sous-groupes de \textsc{Sylow}}{
+				\begin{mathlist}
+					\item On notera
+						$$
+							\mathrm{Syl}_{p}(G)
+						$$
+						l'ensemble des $p$-sous-groupes de \textsc{Sylow} de $G$.
+					\item On notera
+						$$
+							n_{p} := \mathrm{Card} \ \mathrm{Syl}_{p}(G)
+						$$
+				\end{mathlist}
+			}
+
+			\mathblock{theorem}{\textsc{Sylow} $2$}{
+				Soit $P \leqslant G$ un $p$-sous-groupe de $G$ ($p \ | \ |P|$). \\
+				Soit $S \in \mathrm{Syl}_{p}(G)$ un $p$-sous-groupe de \textsc{Sylow}. \bigskip \\
+				Alors pour tout $g \in G$,
+				$$
+					P^{g} \subset S
+				$$
+			}
+
+			\mathblock{corollary}{Lien entres les $p$-sous-groupes de \textsc{Sylow}}{
+				Soient $S, T \in \mathrm{Syl}_{p}(G)$. \bigskip \\
+				Alors il existe $g \in G$ tel que
+				$$
+					S^{g} = T
+				$$
+			}
+
+			\mathblock{theorem}{\textsc{Sylow} $3$}{
+				On a
+				$$
+					n_{p} \ | \ k
+				$$
+			}
+
+			\mathblock{theorem}{\textsc{Sylow} $4$}{
+				On a
+				$$
+					n_{p} \equiv 1[p]
+				$$
+			}
+		}
+		\section{Produit de groupes}{
+			\noindent Soit $G$ un groupe quelconque.
+
+			\mathblock{lemma}{Critère pour multiplier des groupes}{
+				Soient $A, B \leqslant G$ deux sous-groupes distingués. \bigskip \\
+				Alors
+				$$
+					AB \leqslant G \iff AB = BA
+				$$
+			}
+
+			On rappelle que
+			$$
+				AB := \{ a \times b, a \in A, b \in B \}
+			$$
+
+			\mathblock{corollary}{Critère plus faible}{
+				Soit $A \triangleleft G$. \\
+				Soit $B \leqslant G$. \bigskip \\
+				Alors
+				$$
+					AB \leqslant G
+				$$
+			}
+
+			\mathblock{theorem}{\textsc{Frottini}}{
+				Soit $N \triangleleft G$ fini. \\
+				Soient $p \in \mathbb{P}, k \in \mathbb{N}^{\star}$ et $n \in \mathbb{N}^{\star}$ tels que $|N| = p^{n} k$ avec $p \wedge k = 1$. \\
+				Soit $S \in \mathrm{Syl}_{p}(N)$. \bigskip \\
+				Alors
+				$$
+					G = N N_{G}(S)
+				$$
+			}
+		}
+
+		\section{Série de sous-groupes}{
+			\noindent Soit $G$ un groupe fini.
+
+			\mathblock{definition}{Chaîne de sous-groupes}{
+				Soit $n \in \mathbb{N}^{\star}$. \\
+				Soit $(H_{i})_{i \in I}$ une famille de sous-groupes de $G$. \bigskip \\
+				On dit que $(H_{i})_{0 \leq i \leq n}$ est une \textit{chaîne de sous-groupes} lorsque
+				$$
+					\forall i \in [\![0, n-1]\!], H_{i} \leqslant H_{i + 1}
+				$$
+			}
+
+			\mathblock{definition}{Série de sous-groupes}{
+				Soit $n \in \mathbb{N}^{\star}$. \\
+				Soit $(H_{i})_{i \in I}$ une famille de sous-groupes de $G$. \bigskip \\
+				On dit que $(H_{i})_{0 \leq i \leq n}$ est une \textit{série de sous-groupes} lorsque
+				\begin{mathlist}
+					\item $(H_{i})_{0 \leq i \leq n}$ est une chaîne de sous-groupes.
+					\item $H_{0} = \{ e \}$.
+					\item $H_{n} = G$.
+				\end{mathlist}
+			}
+
+			\mathblock{definition}{Série normale / sous-normale}{
+				Soit $n \in \mathbb{N}^{\star}$. \\
+				Soit $(H_{i})_{i \in I}$ une famille de sous-groupes de $G$. \bigskip \\
+				On dit que
+				\begin{mathlist}
+					\item $(H_{i})_{0 \leq i \leq n}$ est une \textit{série normale} lorsque
+						$$
+							\forall i \in [\![0, n]\!], H_{i} \triangleleft G
+						$$
+					\item $(H_{i})_{0 \leq i \leq n}$ est une \textit{série sous-normale} lorsque
+						$$
+							\forall i \in [\![0, n-1]\!], H_{i} \triangleleft H_{i+1}
+						$$
+				\end{mathlist}
+			}
+		}
+	}
+\end{document}
