@@ -144,6 +144,42 @@
 					$$
 						\xi = \sum_{\alpha_{1 \to m} \in \mathcal{B}_{V^{*}}} a_{\alpha_{1 \to m}} \times \alpha_{1} \otimes \cdots \otimes \alpha_{m}
 					$$
+					Pour $i \in [\![1, m]\!]$, soit $F_{i} \subset \mathcal{B}_{V^{*}}$ une famille finie de $\mathcal{B}_{V}^{*}$. \\
+					On pose également pour $i \in [\![1, m]\!]$
+					$$
+						W_{i} := \mathrm{Vect}(F_{i})
+					$$
+					On pose également pour $i \in [\![1, m]\!]$, l'application
+					$$
+						E_{i} :
+						\begin{array}{rcl}
+							V & \longrightarrow & W_{i}^{*} \\
+							v & \longmapsto &
+							\begin{array}{rcl}
+								W_{i} & \longrightarrow & \mathbb{R} \\
+								\lambda & \longmapsto & E_{i}(v)(\lambda) = \lambda(v)
+							\end{array}
+						\end{array}
+					$$
+					Montrons que $E_{i}$ est surjective. \\
+					On raisonne pour cela par l'absurde en supposant qu'il existe une fonction $L \in \mathcal{L}(W_{i}^{*}, \mathbb{R})$ non nulle telle que et $\mathrm{Im} \ E_{i} \subset \mathrm{Ker} \ L$. \\
+					Soit $\lambda \in W_{i}$ définie par
+					$$
+						\lambda := \sum_{\alpha \in F_{i}} L(\alpha^{*}) \times \alpha
+					$$
+					Par hypothèse sur $L$, on a donc $\lambda \neq 0_{W_{i}}$. \\
+					Soit $v \in V$. \\
+					Alors par linéarité de $E_{i}$ et $L$, il vient
+					$$
+						\begin{aligned}
+							E_{i}(v)(\lambda) & = \sum_{\alpha \in F_{i}} L(\alpha^{*}) E_{i}(v)(\alpha) \\
+							& = L \! \left( \sum_{\alpha \in F_{i}} \alpha^{*} E_{i}(v)(\alpha) \right)
+						\end{aligned}
+					$$
+					Or $\mathrm{Im} \ E_{i} \subset \mathrm{Ker} \ L$. \\
+					Donc $0 = E_{i}(v)(\lambda) = \lambda(v)$. \\
+					Donc $\lambda = 0_{W_{i}}$ ce qui n'est pas possible par construction. \\
+					Donc un tel $L$ n'existe pas et $E_{i}$ est surjective.
 			\end{itemize}
 		}
 
