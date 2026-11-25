@@ -3,6 +3,86 @@
 \begin{document}
 	Dans cette section, nous nous intéressons à présent aux espaces duaux des deux ensembles introduits dans les sections précédents, à savoir $\otimes_{m} V$ et $\wedge_{m} V$. L'étude de des duaux sera particulièrement utile lorsqu'il sera question de traiter des applications \flqq{} $k$-formes \frqq{} définies sur des variétés topologiques.
 
+	\subsection{Préliminaire}{
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel. \\
+		\noindent Soit $m \in \mathbb{N}^{\star}$.
+
+		\mathblock{definition}{Application $\omega_{m}$}{
+			On notera
+			$$
+				\omega_{m} := \pi_{m} \circ \mu_{m} \in \mathcal{L}^{m}(V^{m}, \wedge_{m} V)
+			$$
+		}
+
+		On montre que sous certaine condition, $\omega_{m}$ vérifie une sorte propriété universelle comme pour $\pi_{m}$ et $\mu_{m}$.
+
+		\mathblock{theorem}{Propriété universelle sur $\omega_{m}$}{
+			Soit $W$ un $\mathbb{R}$-espace vectoriel quelconque. \\
+			Soit $f \in \mathcal{L}^{m}(V^{m}, W)$ alternée. \bigskip \\
+			Alors il existe une unique application $\overline{f} \in \mathcal{L}(\wedge_{m} V, W)$ telle que $\overline{f} \circ \omega_{m} = f$.
+			Autrement dit, tel que le diagramme suivant commute
+			$$
+				\begin{tikzcd}[ampersand replacement=\&]
+					{V^{m}} \&\& W \\
+					\\
+					\wedge_{m} V
+					\arrow["f", from=1-1, to=1-3]
+					\arrow["\omega_{m}"', from=1-1, to=3-1]
+					\arrow["{\overline{f}}"', from=3-1, to=1-3]
+				\end{tikzcd}
+			$$
+		}
+
+		\mathblock{proof}{}{
+			Le principe de la preuve repose sur l'utilisation des propriétés universelles de $\mu_{m}$ et $\pi_{m}$.
+			\begin{mathlist}
+				\item Montrons l'existence. Par la propriété universelle de $\mu_{m}$, soit l'unique application $g \in \mathcal{L}(\otimes_{m} V, W)$ telle que
+					$$
+						g \circ \mu_{m} = f
+					$$
+					Pour utiliser la propriété universelle de $\pi_{m}$, nous devons montrer que $\mathcal{U}_{m} V \subset \mathrm{Ker} \ g$. \\
+					Soit donc $v_{1} \otimes \cdots \otimes v_{m} \in \mathcal{U}_{m} V$ un $m$-tenseur simple. \\
+					Alors par définition
+					$$
+						g(v_{1} \otimes \cdots \otimes v_{m}) = f(v_{1}, \cdots, v_{m}) = 0_{W}
+					$$
+					puisque $f$ est alternée et $\exists i < j \in [\![1, m]\!], v_{i} = v_{j}$. \\
+					Donc $v_{1} \otimes \cdots \otimes v_{m} \in \mathrm{Ker} \ g$. \\
+					Puisque de tels $m$-tenseurs simples génèrent $\mathcal{U}_{m} V$, il vient par linéarité de $g$ que
+					$$
+						\mathcal{U}_{m} V \subset \mathrm{Ker} \ g
+					$$
+					Ainsi, par la propriété universelle de $\pi_{m}$, soit l'unique $\overline{f} \in \mathcal{L}(\wedge_{m} V, W)$ telle que
+					$$
+						\overline{f} \circ \pi_{m} = g
+					$$
+					Par composition, on a donc $\overline{f} \circ \omega_{m} = \overline{f} \circ \pi_{m} \circ \mu_{m} = g \circ \mu_{m} = f$. \\
+					On peut résumer les étapes de construction comme suit
+					$$
+					% https://q.uiver.app/#q=WzAsNCxbMCwwLCJWXnttfSJdLFsyLDAsIlciXSxbMCwyLCJcXG90aW1lc197bX0gViJdLFsyLDIsIlxcd2VkZ2Vfe219IFYiXSxbMCwxLCJmIl0sWzAsMiwiXFxtdV97bX0iLDJdLFsyLDMsIlxccGlfe219IiwyXSxbMywxLCJcXG92ZXJsaW5le2Z9IiwyXSxbMiwxLCJnIl1d
+						\begin{tikzcd}[ampersand replacement=\&]
+							{V^{m}} \&\& W \\
+							\\
+							{\otimes_{m} V} \&\& {\wedge_{m} V}
+							\arrow["f", from=1-1, to=1-3]
+							\arrow["{\mu_{m}}"', from=1-1, to=3-1]
+							\arrow["g", from=3-1, to=1-3]
+							\arrow["{\pi_{m}}"', from=3-1, to=3-3]
+							\arrow["{\overline{f}}"', from=3-3, to=1-3]
+						\end{tikzcd}
+					$$
+				\item Montrons à présent l'unicité. \\
+					Supposons $h \in \mathcal{L}(\wedge_{m} V, W)$ telle que $h \circ \omega_{m} = f$. \\
+					Alors en particulier $(h \circ \pi_{m}) \circ \mu_{m} = f$. \\
+					Par la propriété universelle de $\mu_{m}$, on a alors
+					$$
+						h \circ \pi_{m} = g
+					$$
+					Et puisque $g$ vérifie également la propriété universelle de $\pi_{m}$, il vient que $h = \overline{f}$.
+			\end{mathlist}
+		}
+	}
+
 	\subsection{Espace dual de \texorpdfstring{$\otimes_{m} V$}{l'espace produit tensoriel}}{
 		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel. \\
 		\noindent Soit $m \in \mathbb{N}$.
@@ -44,6 +124,28 @@
 		$$
 			\forall u, v \in V, \beta(u, v) = u(0) v(0) + u(1) v(1)
 		$$
+
+		\mathblock{proof}{}{
+			Soit $\mathcal{B}^{V^{*}}$ une base de $V^{*}$. On notera que cette base ne correspond pas forcément à la famille des vecteurs duaux associés à une base de $V$). \\
+			On note $\mu_{m}^{*} \in \mathcal{L}^{m}((V^{*})^{m}, \otimes_{m} V^{*})$ la forme linéaire satisfaisant la propriété universelle suivant la construction de la preuve sur l'existence d'un espace produit tensoriel.
+			\begin{itemize}
+				\item[$\bullet$] Montrons dans un premier temps qu'une telle application $C_{m}$ est bien définie. \\
+					Soit l'application $D_{m} : (V^{*})^{m} \longrightarrow \otimes^{m} V$ définie telle que pour tout $\lambda_{1 \to m} \in V^{\star}$ et $v_{1 \to m} \in V^{m}$
+					$$
+						D_{m}(\lambda_{1 \to m})(v_{1 \to m}) = \prod_{i = 1}^{m} \lambda_{i}(v_{i})
+					$$
+					Cette application est bien définie. \\
+					De plus, $D_{m} \in \mathcal{L}^{m}((V^{*})^{m}, \otimes^{m} V)$. \\
+					Par la propriété universelle vérifiée par $\mu_{m}^{*}$, on obtient le fait que $C_{m} \in \mathcal{L}(\otimes_{m} V^{*}, \otimes^{m} V)$ est l'unique application telle que $C_{m} \circ \pi_{m}^{*} = D_{m}$. \\
+					Donc $C_{m}$ est bien définie.
+				\item[$\bullet$] Motrons que $C_{m}$ est injective. \\
+					Soit $\xi \in \mathrm{Ker} \ C_{m}$. Alors $C_{m}(\xi) = 0_{\otimes^{m} V}$. \\
+					Soit l'unique famille presque nulle $(a_{\alpha_{1 \to m}})_{\alpha_{1 \to m} \in \mathcal{B}_{V^{*}}}$ telle que
+					$$
+						\xi = \sum_{\alpha_{1 \to m} \in \mathcal{B}_{V^{*}}} a_{\alpha_{1 \to m}} \times \alpha_{1} \otimes \cdots \otimes \alpha_{m}
+					$$
+			\end{itemize}
+		}
 
 		A partir de maintenant, nous considèrerons $\dim V < +\infty$. On aura alors $C_{m} : \otimes_{m} V^{*} \longrightarrow \otimes^{m} V$ qui est un isomorphisme. On cherche à présent à définir un produit
 		$$
@@ -150,6 +252,56 @@
 					& \text{strictement croissantes}\}
 				\end{aligned}
 			$$
+		}
+
+		\mathblock{theorem}{Formule du mélange}{
+			Soit $\alpha \in \wedge^{k} V$. \\
+			Soit $\beta \in \wedge^{h} V$. \bigskip \\
+			Alors pour tout $v_{1 \to k + h} \in V^{k + h}$
+			$$
+				\begin{aligned}
+					& (\alpha \wedge^{k, h} \beta)(v_{1 \to k + h}) \\
+					& \quad = \sum_{\sigma \in \mathrm{sh}(k, h)} \varepsilon(\sigma) \times \alpha(v_{\sigma(1)}, \cdots, v_{\sigma(k)}) \beta(v_{\sigma(k+1)}, \cdots, v_{\sigma(k+h)})
+				\end{aligned}
+			$$
+		}
+
+		De cette formule du mélange découle le cas particulier suivant, lorsque $k = h = 1$ et qu'on considère plus de deux telles formes.
+
+		\mathblock{corollary}{Cas des formes linéaires de $V$}{
+			Soient $\lambda_{1}, \cdots, \lambda_{m} \in V^{*}$. \bigskip \\
+			Alors pour tout $v_{1 \to m} \in V^{m}$
+			$$
+				(\lambda_{1} \wedge \cdots \wedge \lambda_{m})(v_{1 \to m}) = \sum_{\sigma \in \mathfrak{S}_{m}} \varepsilon(\sigma) \prod_{i = 1}^{m} \lambda_{i}(v_{\sigma(i)})
+			$$
+		}
+	}
+
+	\subsection{Base de l'espace \texorpdfstring{$\wedge^{m} V$}{des formes linéaires}}{
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel de dimension $n$. \\
+		\noindent Soit $m \geq m$.
+
+		\vspace{1em}
+
+		Pour terminer ce chapitre, on cherche à caractériser une base de $\wedge^{m} V$. Mais avant, on définie l'ensemble $\Lambda(n, m)$.
+
+		\mathblock{definition}{Ensemble $\Lambda(n, m)$}{
+			On pose
+			$$
+				\begin{aligned}
+					\Lambda(n, m) := \{ & \lambda \in \mathcal{F}([\![1, m]\!], [\![1, n]\!]) \\
+					& \ | \ \lambda \ \text{strictement croissante} \}
+				\end{aligned}
+			$$
+		}
+
+		\mathblock{theorem}{Base de $\wedge^{m} V$}{
+			Soit $\mathcal{B} := (e_{1}, \cdots, b_{n})$ une base de $V$. \bigskip \\
+			Alors
+			$$
+				\{ e_{\lambda(1)}^{*} \wedge \cdots \wedge e_{\lambda(m)}^{*}, \lambda \in \Lambda(n, m) \}
+			$$
+			forme une base de $\wedge^{m} V$.
 		}
 	}
 \end{document}

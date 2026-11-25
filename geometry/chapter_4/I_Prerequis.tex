@@ -5,46 +5,166 @@
 		A compléter plus tard.
 	}
 
-	\subsection{Dual topologique}{
-		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel normé. \\
+	\subsection{Dual (algébrique)}{
+		\noindent Soit $V$ un $\mathbb{R}$-espace vectoriel. \\
 		\noindent Soit $\mathcal{B}$ une base de $V$.
 
-		\vspace{1em}
-
-		On s'intéresse ici au dual topologique de $V'$ qui s'avèrera utile par la suite, en particulier lors de preuve de liberté de certaines familles.
-
-		\mathblock{definition}{Dual topologique}{
-			On appelle \textit{dual topologique} de $V$ l'ensemble noté $V'$ définie par
+		\mathblock{definition}{Dual algébrique $V^{\star}$}{
+			On appelle \textit{dual algébrique} de $V$, l'ensemble noté $V^{*}$ définie par
 			$$
-				V' := \mathcal{L}^{c}(V, \mathbb{R})
+				V^{*} := \mathcal{L}(V, \mathbb{R})
 			$$
-			qui correspond à l'ensemble des formes linéaires continues de $V$.
+			Autrement dit, $V^{*}$ correspond à l'ensemble des formes linéaires de $V$.
 		}
 
-		On s'intéresse à présent à certaines formes linéaires particulière de $V'$, à savoir celle \flqq{} engendrées \frqq{} à partir d'éléments d'une base de $V$.
+		On cherche à présent à caractériser ce nouvel ensemble.
+
+		\mathblock{proposition}{$V^{*}$ est un $\mathbb{R}$-espace vectoriel}{
+			On a $(V^{*}, +, \cdot)$ qui forme un $\mathbb{R}$-espace vectoriel.
+		}
+
+		\mathblock{proof}{}{
+			On montre que $V^{*}$ est un $\mathbb{R}$-sous-espace vectoriel de $\mathcal{F}(V, \mathbb{R})$.
+			\begin{mathlist}
+				\item D'une part, $V^{*} \subset \mathcal{F}(V, \mathbb{R})$.
+				\item Soient $\lambda, \mu \in V^{*}$. \\
+					Soit $\alpha \in \mathbb{R}$. \\
+					Alors pour tout $v, w \in V$ et $\beta \in \mathbb{R}$
+					$$
+						\begin{aligned}
+							(\alpha \lambda + \mu)(\beta v + w) & = \alpha \lambda(\beta v + w) + \mu(\beta v + w) \\
+							& = \alpha \beta \lambda(v) + \alpha \lambda(w) + \beta \mu(v) + \mu(w) \\
+							& = \beta (\alpha \lambda(v) + \mu(v)) + \alpha \lambda(w) + \mu(w) \\
+							& = \beta (\alpha \lambda + \mu)(v) + (\alpha \lambda + \mu)(w)
+						\end{aligned}
+					$$
+					D'où $\alpha \lambda + \mu \in V^{*}$
+			\end{mathlist}
+			Et $V^{*}$ est bien un $\mathbb{R}$-sous-espace vectoriel de $\mathcal{F}(V, \mathbb{R})$.
+		}
+
+		On cherche à présent à caractériser une éventuelle base de $V^{*}$. Pour cela, on s'intéresse à une famille de formes linéaires construite à partir des vecteurs de $\mathcal{B}$
 
 		\mathblock{definition}{Application $b^{*}$}{
 			Soit $b_{0} \in \mathcal{B}$. \bigskip \\
-			On notera $b_{0}^{*}$ l'application définie par
+			On construit l'application suivante
 			$$
-				\forall b \in \mathcal{B}, b_{0}^{*}(b) := \delta_{b_{0}, b} =
-				\left\{
-					\begin{array}{lcl}
-						1 & \text{si} & b = b_{0} \\
-						0 & \text{si} & b \neq b_{0}
-					\end{array}
-				\right.
+				b_{0}^{*} :
+				\begin{array}{rcl}
+					V & \longrightarrow & \mathbb{R}
+				\end{array}
+			$$
+			telle que pour $v \in V$, on a pour l'unique famille $(\alpha_{b})_{b \in \mathcal{B}}$ presque nulle telle que
+			$$
+				v = \sum_{b \in \mathcal{B}} \alpha_{b} \times b
+			$$
+			on obtienne
+			$$
+				b_{0}^{*}(v) = \alpha_{b_{0}}
+			$$
+			Autrement dit, l'application $b_{0}^{*}$ correspond à l'application \flqq{} $b_{0}$-ième \frqq{} composante pour la base $\mathcal{B}$.
+		}
+
+		On montre tout de suite que ces telles applications se trouvent bien dans $V^{*}$.
+
+		\mathblock{lemma}{$b^{*} \in V^{*}$}{
+			Soit $b_{0} \in \mathcal{B}$. \bigskip \\
+			Alors
+			$$
+				b_{0}^{*} \in V^{*}
 			$$
 		}
 
-		Pour préciser le comportement de $b_{0}^{*}$, on aura donc pour $v \in V$ l'expression suivante de $b_{0}^{*}(v)$. \\
-		Soit l'unique famille presque nulle $(\lambda_{b})_{b \in \mathcal{B}} \in \mathbb{R}^{\mathcal{B}}$ telle que
+		\mathblock{proof}{}{
+			Soient $v, w \in V$. \\
+			Soit $\lambda \in \mathbb{R}$. \\
+			Soient alors les uniques familles presque nuls $(\alpha_{b})_{b \in \mathcal{B}}$ et $(\beta_{b})_{b \in \mathcal{B}}$ telles que
+			$$
+				v = \sum_{b \in \mathcal{B}} \alpha_{b} \times b, \quad w = \sum_{b \in \mathcal{B}} \beta_{b} \times b
+			$$
+			On a alors (les sommes sont finies)
+			$$
+				\lambda v + w = \sum_{b \in \mathcal{B}} (\lambda \alpha_{b} + \beta_{b}) \times b
+			$$
+			D'où
+			$$
+				b_{0}^{*}(\alpha v + w) = \lambda \alpha_{b_{0}} + \beta_{b_{0}} = \lambda b_{0}^{*}(v) + b_{0}^{*}(w)
+			$$
+			Et la linéarité de $b_{0}^{*}$. \\
+			D'où $b_{0}^{*} \in V^{*}$.
+		}
+
+		Avant de terminer cette section, on cherche à présent à déterminer une base de $V^{*}$. Pour cela, on s'intéresse aux formes $b^{*}$ définies plus haut. Nous obtiendrons satisfaction dans le cas où $V$ est de dimension finie. Cependant, en dimension infinie, pour perdrons le caractère générateur.
+
+		\mathblock{theorem}{Base de $V^{*}$}{
+			Soit $\mathcal{B}^{*} := \{ b^{*}, b \in \mathcal{B} \}$. \bigskip \\
+			Alors
+			\begin{mathlist}
+				\item $\mathcal{B}^{*}$ est une famille libre de $V^{*}$.
+				\item Si $\dim V < +\infty$, alors $\mathcal{B}^{*}$ est également une famille génératrice.
+			\end{mathlist}
+		}
+
+		\mathblock{proof}{}{
+			\begin{mathlist}
+				\item Soit $(\alpha_{b^{*}})_{b^{*} \in \mathcal{B}^{*}}$ une famille presque nulle telle que
+					$$
+						\sum_{b^{*} \in \mathcal{B}^{*}} \alpha_{b^{*}} \times b^{*} = 0_{V^{*}}
+					$$
+					Soit $b_{0} \in \mathcal{B}$. \\
+					Alors (la somme étant finie), on a
+					$$
+						\begin{aligned}
+							0 & = \left( \sum_{b^{*} \in \mathcal{B}^{*}} \alpha_{b^{*}} \times b^{*} \right) \! (b_{0}) \\
+							& = \sum_{b^{*} \in \mathcal{B}^{*}} \alpha_{b^{*}} \times \underset{= \delta_{b, b_{0}}}{\underbrace{b^{*}(b_{0})}} \\
+							& = \alpha_{b_{0}^{*}}
+						\end{aligned}
+					$$
+					On a donc $\forall b^{*} \in \mathcal{B}^{*}, \alpha_{b^{*}} = 0$ d'où la liberté de $\mathcal{B}^{*}$.
+				\item Supposons $\dim V < +\infty$. \\
+					Notons $n$ la dimension de $n$. \\
+					Alors $\mathcal{B}^{*}$ est une famille libre de $V^{*}$ qui contient $n$ éléments. C'est donc une famille génératrice de $V^{*}$.
+			\end{mathlist}
+		}
+
+		Dans le cas où $V$ est de dimension infinie, on perd le caractère générateur. En effet, pour cela on considère l'espace des polynômes à coefficients réels $V := \mathbb{R}[X]$ ainsi que l'application suivante
 		$$
-			v = \sum_{b \in \mathcal{B}} \lambda_{b} \times b
+			f :
+			\begin{array}{rcl}
+				\mathbb{R}[X] & \longrightarrow & \mathbb{R} \\
+				P & \longmapsto & P'(1)
+			\end{array}
 		$$
-		Alors
+		On a alors bien $f$ qui définie une forme linéaire puisque pour $P, Q \in \mathbb{R}[X]$ et $\alpha \in \mathbb{R}$, il vient
 		$$
-			b_{0}^{*}(v) = \lambda_{b_{0}}
+			f(\alpha P + Q) = (\alpha P + Q)'(1) = \alpha P'(1) + Q'(1) = \alpha f(P) + f(Q)
 		$$
+		Supposons par l'absurde qu'il existe $(\alpha_{i})_{i \in \mathbb{N}}$ une famille presque nulle telle que
+		$$
+			f = \sum_{i \in \mathbb{N}} \alpha_{i} \times (X^{i})^{*}
+		$$
+		On note alors $i_{0} := \max \{ i \in \mathbb{N} \ | \ \alpha_{i} \neq 0 \}$ le plus grand indice pour lequel le coefficient est non nul. Ainsi puisque $\alpha_{i_{0} + 1} = 0$ et $\forall i \neq i_{0} + 1, (X^{i})^{*}(X^{i_{0} + 1} = 0$
+		$$
+			\sum_{i \in \mathbb{N}} \alpha_{i} \times (X^{i})^{*}(X^{i_{0} + 1}) = 0
+		$$
+		Or $f(X^{i_{0} + 1}) = i_{0} + 1 > 0$. \\
+		Ce qui n'est pas possible. \\
+		Donc $\mathcal{B}^{*}$ ne génère par $\mathbb{R}[X]^{*}$.
+
+		On conclue donc cette partie en caractérisant la dimension de $V^{*}$ dans le cas où $V$ est de dimension finie.
+
+		\mathblock{corollary}{Dimension de $V^{*}$}{
+			Supposons $\dim V < +\infty$. \bigskip \\
+			Alors $\dim V^{*} < +\infty$ et on a même
+			$$
+				\dim V^{*} = \dim V
+			$$
+		}
+
+		\mathblock{proof}{}{
+			Puisque $\dim V < +\infty$, on a $\mathcal{B}^{*}$ qui forme une base de $V^{*}$. \\
+			Or $\mathrm{Card} \ \mathcal{B} = \mathrm{Card} \ \mathcal{B}^{*}$ par la la preuve du théorème précédent. \\
+			D'où $\dim V^{*} = \dim V$.
+		}
 	}
 \end{document}
