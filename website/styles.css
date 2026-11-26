@@ -9,8 +9,12 @@ h1#main-title {
 }
 
 div.internal-links {
-	display: grid;
+	display: flex;
 	justify-content: center;
+	span {
+		padding-left: 6px;
+		padding-right: 6px;
+	}
 }
 
 div.content {
