@@ -8,6 +8,11 @@ h1#main-title {
 	font-size: xxx-large;
 }
 
+div.internal-links {
+	display: grid;
+	justify-content: center;
+}
+
 div.content {
 	display: flex;
 	justify-content: center;
