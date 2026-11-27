@@ -126,11 +126,11 @@
 		$$
 
 		\mathblock{proof}{}{
-			Soit $\mathcal{B}^{V^{*}}$ une base de $V^{*}$. On notera que cette base ne correspond pas forcément à la famille des vecteurs duaux associés à une base de $V$). \\
+			Soit $\mathcal{B}_{V^{*}}$ une base de $V^{*}$. On notera que cette base ne correspond pas forcément à la famille des vecteurs duaux associés à une base de $V$). \\
 			On note $\mu_{m}^{*} \in \mathcal{L}^{m}((V^{*})^{m}, \otimes_{m} V^{*})$ la forme linéaire satisfaisant la propriété universelle suivant la construction de la preuve sur l'existence d'un espace produit tensoriel.
 			\begin{itemize}
 				\item[$\bullet$] Montrons dans un premier temps qu'une telle application $C_{m}$ est bien définie. \\
-					Soit l'application $D_{m} : (V^{*})^{m} \longrightarrow \otimes^{m} V$ définie telle que pour tout $\lambda_{1 \to m} \in V^{\star}$ et $v_{1 \to m} \in V^{m}$
+					Soit l'application $D_{m} : (V^{*})^{m} \longrightarrow \otimes^{m} V$ définie telle que pour tout $\lambda_{1 \to m} \in V^{*}$ et $v_{1 \to m} \in V^{m}$
 					$$
 						D_{m}(\lambda_{1 \to m})(v_{1 \to m}) = \prod_{i = 1}^{m} \lambda_{i}(v_{i})
 					$$
@@ -140,16 +140,30 @@
 					Donc $C_{m}$ est bien définie.
 				\item[$\bullet$] Motrons que $C_{m}$ est injective. \\
 					Soit $\xi \in \mathrm{Ker} \ C_{m}$. Alors $C_{m}(\xi) = 0_{\otimes^{m} V}$. \\
-					Soit l'unique famille presque nulle $(a_{\alpha_{1 \to m}})_{\alpha_{1 \to m} \in \mathcal{B}_{V^{*}}}$ telle que
+					Soit l'unique famille presque nulle $(a_{\alpha_{1 \to m}})_{\alpha_{1 \to m} \in (\mathcal{B}_{V^{*}})^{m}}$ telle que
 					$$
-						\xi = \sum_{\alpha_{1 \to m} \in \mathcal{B}_{V^{*}}} a_{\alpha_{1 \to m}} \times \alpha_{1} \otimes \cdots \otimes \alpha_{m}
+						\xi = \sum_{\alpha_{1 \to m} \in (\mathcal{B}_{V^{*}})^{m}} a_{\alpha_{1 \to m}} \times \alpha_{1} \otimes \cdots \otimes \alpha_{m}
 					$$
-					Pour $i \in [\![1, m]\!]$, soit $F_{i} \subset \mathcal{B}_{V^{*}}$ une famille finie de $\mathcal{B}_{V}^{*}$. \\
-					On pose également pour $i \in [\![1, m]\!]$
+					Pour $i \in [\![1, m]\!]$, soit $F_{i}$ définie comme suit
+					$$
+						\begin{aligned}
+							F_{i} := \{ & \alpha_{i} \in \mathcal{B}_{V^{*}} \ | \ \exists \alpha_{1}, \cdots, \alpha_{i-1}, \alpha_{i+1}, \cdots, \alpha_{m} \in \mathcal{B}_{V^{*}}, \\
+							& a_{\alpha_{1 \to m}} \neq 0 \}
+						\end{aligned}
+					$$
+					On a alors $F_{i} \subset \mathcal{B}_{V^{*}}$ qui est une sous-famille finie. \\
+					Ainsi
+					$$
+						\begin{aligned}
+							\xi & = \sum_{\alpha_{1} \in \mathcal{B}_{V^{*}}} \cdots \sum_{\alpha_{m} \in \mathcal{B}_{V^{*}}} a_{\alpha_{1 \to m}} \times \alpha_{1} \otimes \cdots \otimes \alpha_{m} \\
+							& = \sum_{\alpha_{1} \in F_{1}} \cdots \sum_{\alpha_{m} \in F_{m}} a_{\alpha_{1 \to m}} \times \alpha_{1} \otimes \cdots \otimes \alpha_{m}
+						\end{aligned}
+					$$
+					On considère également le $\mathbb{R}$-sous-espace vectoriel $i \in [\![1, m]\!]$ de dimension finie engendrée par $F_{i}$
 					$$
 						W_{i} := \mathrm{Vect}(F_{i})
 					$$
-					On pose également pour $i \in [\![1, m]\!]$, l'application
+					Et enfin l'application
 					$$
 						E_{i} :
 						\begin{array}{rcl}
@@ -162,24 +176,78 @@
 						\end{array}
 					$$
 					Montrons que $E_{i}$ est surjective. \\
-					On raisonne pour cela par l'absurde en supposant qu'il existe une fonction $L \in \mathcal{L}(W_{i}^{*}, \mathbb{R})$ non nulle telle que et $\mathrm{Im} \ E_{i} \subset \mathrm{Ker} \ L$. \\
-					Soit $\lambda \in W_{i}$ définie par
+					D'une part, $W_{i}$ est de dimension finie. \\
+					Donc
 					$$
-						\lambda := \sum_{\alpha \in F_{i}} L(\alpha^{*}) \times \alpha
+						F_{i}^{*} := \{ \alpha^{*}, \alpha \in F_{i} \}
 					$$
-					Par hypothèse sur $L$, on a donc $\lambda \neq 0_{W_{i}}$. \\
-					Soit $v \in V$. \\
-					Alors par linéarité de $E_{i}$ et $L$, il vient
+					forme une base de $W_{i}^{*}$. \\
+					On raisonne pour cela par l'absurde en supposant qu'il existe $\alpha_{0} \in F_{i}$ tel que $\forall v \in V, E_{i}(v) \neq \alpha_{0}^{*}$. \\
+					On considère alors l'application suivante
+					$$
+						L := \alpha_{0}^{**} \in \mathcal{L}(W_{i}^{*}, \mathbb{R})
+					$$
+					On a alors pour tout $v \in V$,
+					$$
+						L(E_{i}(v)) = 0
+					$$
+					On pose
+					$$
+						\lambda := \sum_{\alpha \in F_{i}} L(\alpha^{*}) \times \alpha \in W_{i}
+					$$
+					Alors pour $v \in V$, on a par linéarité de $E_{i}(v)$
 					$$
 						\begin{aligned}
-							E_{i}(v)(\lambda) & = \sum_{\alpha \in F_{i}} L(\alpha^{*}) E_{i}(v)(\alpha) \\
-							& = L \! \left( \sum_{\alpha \in F_{i}} \alpha^{*} E_{i}(v)(\alpha) \right)
+							E_{i}(v)(\lambda) & = E_{i}(v) \! \Biggl( \sum_{\alpha \in F_{i}} \underset{\in \mathbb{R}}{\underbrace{L(\alpha^{*})}} \times \alpha \Biggr) \\
+							& = \sum_{\alpha \in F_{i}} L(\alpha^{*}) \times \underset{\in \mathbb{R}}{\underbrace{E_{i}(v)(\alpha)}}
 						\end{aligned}
 					$$
-					Or $\mathrm{Im} \ E_{i} \subset \mathrm{Ker} \ L$. \\
-					Donc $0 = E_{i}(v)(\lambda) = \lambda(v)$. \\
-					Donc $\lambda = 0_{W_{i}}$ ce qui n'est pas possible par construction. \\
-					Donc un tel $L$ n'existe pas et $E_{i}$ est surjective.
+					De même par linéarité de $L$, il vient
+					$$
+						E_{i}(v)(\lambda) = L \! \Biggl( \sum_{\alpha \in F_{i}} \underset{\in \mathbb{R}}{\underbrace{E_{i}(v)(\alpha)}} \times \alpha^{*} \Biggr)
+					$$
+					Ainsi pour tout $\beta \in F_{i}$, on a
+					$$
+						\sum_{\alpha \in F_{i}} E_{i}(v)(\alpha) \times \underset{= \delta_{\alpha, \beta}}{\underbrace{\alpha^{*}(\beta)}} = E_{i}(v)(\beta)
+					$$
+					D'où
+					$$
+						E_{i}(v) = \sum_{\alpha \in F_{i}} E_{i}(v)(\alpha) \times \alpha^{*}
+					$$
+					Soit enfin pour tout $v \in V$.
+					$$
+						\lambda(v) = E_{i}(v)(\lambda) = L(E_{i}(v)) = 0
+					$$
+					Or $\lambda \neq 0_{W_{i}}$, ce qui est absurde. \\
+					Donc $E_{i}$ est surjective. \\
+					Soit $(\beta_{1}, \cdots, \beta_{m}) \in F_{1} \times \cdots \times F_{m}$. \\
+					Soient alors $v_{1}, \cdots, v_{m} \in V$ tels que
+					$$
+						\forall i \in [\![1, m]\!], E_{i}(v) = \beta_{i}^{*}
+					$$
+					Par linéarité de $C_{m}$, il vient
+					$$
+						\begin{aligned}
+							C_{m} & (\xi)(v_{1 \to m}) \\
+							& = \sum_{\alpha_{1} \in F_{1}} \cdots \sum_{\alpha_{m} \in F_{m}} a_{\alpha_{1 \to m}} C_{m}(\alpha_{1} \otimes \cdots \otimes \alpha_{m})(v_{1 \to m}) \\
+							& = \sum_{\alpha_{1} \in F_{1}} \cdots \sum_{\alpha_{m} \in F_{m}} a_{\alpha_{1 \to m}} \prod_{i = 1}^{m} \alpha_{i}(v_{i})
+						\end{aligned}
+					$$
+					Soit $i \in [\![1, m]\!]$, on a alors
+					$$
+						\alpha_{i}(v_{i}) = E_{i}(v_{i})(\alpha_{i}) = \beta_{i}^{*}(\alpha_{i}) = \delta_{\beta_{i}, \alpha_{i}}
+					$$
+					D'où
+					$$
+						\begin{aligned}
+							C_{m} & (\xi)(v_{1 \to m}) \\
+							& = \sum_{\alpha_{1} \in F_{1}} \cdots \sum_{\alpha_{m} \in F_{m}} a_{\alpha_{1 \to m}} \prod_{i = 1}^{m} \delta_{\beta_{i}, \alpha_{i}} \\
+							& = a_{\beta_{1 \to m}}
+						\end{aligned}
+					$$
+					Mais puisque $\xi \in \mathrm{Ker} \ C_{m}$, il vient que $a_{\beta_{1 \to m}} = 0$. \\
+					Et l'injectivité de $C_{m}$.
+				\item[$\bullet$] Supposons $\dim V < +\infty$. Montrons la surjectivité
 			\end{itemize}
 		}
 
@@ -187,7 +255,7 @@
 		$$
 			\otimes^{k} V \times \otimes^{h} V \longrightarrow \otimes^{k + h} V
 		$$
-
+		
 		\mathblock{theorem}{Produit $\otimes^{k, h}$}{
 			On considère l'application
 			$$
